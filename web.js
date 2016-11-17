@@ -4,14 +4,14 @@ keystone.init({
 
     'name': 'webdoc',
 
-    'favicon': 'public/favicon.ico', 
+    // 'favicon': 'public/favicon.ico', 
     'sass': 'public', 
     'static': ['public'], 
 
     'views': 'templates/views',
-    'view engine': 'jade',
+    'view engine': 'pug',
 
-    'auto update': 'jade', 
+    'auto update': true, 
     'mongo': 'mongodb://localhost/webdoc', 
 
     'session': true,

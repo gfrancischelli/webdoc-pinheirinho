@@ -5,7 +5,7 @@ const keystone = require('keystone'),
 // CommonMiddleware
 keystone.pre('routes', middleware.initErrorHandlers);
 keystone.pre('routes', middleware.initLocals);
-keystone.pre('render', middleware.flashMessages;)
+keystone.pre('render', middleware.flashMessages);
 
 // Handle 404 errors
 keystone.set('404', function(req, res, next) {
@@ -14,7 +14,7 @@ keystone.set('404', function(req, res, next) {
 
 // Handle other errors
 keystone.set('500', function(err, req, res, next) {
-   const title, message;
+   let title, message;
 
    if (err instanceof Error) {
         message = err.message;
@@ -26,7 +26,7 @@ keystone.set('500', function(err, req, res, next) {
 
 // Load Routes
 const routes = {
-    views: importRoutes('./views');
+    views: importRoutes('./views'),
 };
 
 exports = module.exports = function(app) {
