@@ -1,0 +1,16 @@
+{
+  "name": "pinheirinho",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@bitbucket.org/gifrancischelli/pinheirinho.git"
+  },
+  "author": "Giovanni Francischelli",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/gifrancischelli/pinheirinho#readme"
+}
