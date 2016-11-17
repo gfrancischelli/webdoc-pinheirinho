@@ -12,5 +12,9 @@
   },
   "author": "Giovanni Francischelli",
   "license": "ISC",
-  "homepage": "https://bitbucket.org/gifrancischelli/pinheirinho#readme"
+  "homepage": "https://bitbucket.org/gifrancischelli/pinheirinho#readme",
+  "dependencies": {
+    "keystone": "^4.0.0-beta.3",
+    "lodash": "^4.17.2"
+  }
 }
