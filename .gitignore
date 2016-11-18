@@ -6,3 +6,6 @@ node_modules
 Capfile
 Gemfile
 Gemfile.lock
+/lib
+/log
+npm-debug.log
