@@ -16,19 +16,19 @@ const postStorage = new keystone.Storage({
 });
 
 Post.add({
-    título: { type: String, initial: false, required: true },
+    title: { type: String, required: true },
     status: { type: Types.Select, options: 'rascunho, publicado, arquivado', default: 'rascunho' },
-    autor: { type: Types.Relationship, ref: 'User' },
+    author: { type: Types.Relationship, ref: 'User' },
     createdAt: { type: Date, default: Date.now },
     publishedAt: Date,
-    capa: { 
+    cover: { 
         type: Types.File,
         storage: postStorage,
     },
-    resumo: { type: Types.Html, wysiwyg: true, height: 150 },
-    conteúdo: { type: Types.Html, wysiwyg: true, height: 400 },
+    desc: { type: Types.Html, wysiwyg: true, height: 150 },
+    content: { type: Types.Html, wysiwyg: true, height: 400 },
 });
 
-Post.defaultColumns = 'título, status|20%, autor|20%, publishedAt|20%';
+Post.defaultColumns = 'title, status|20%, author|20%, publishedAt|20%';
 
 Post.register();
