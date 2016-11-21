@@ -7,11 +7,11 @@ const Post = new keystone.List('Post', {
     defaultSort: '-createdAt', 
 });
 
-const localStorage = new keystone.Storage({
+const postStorage = new keystone.Storage({
   adapter: keystone.Storage.Adapters.FS,
   fs: {
-    path: 'data/files',
-    publicPath: '/files',
+    path: 'uploads/posts',
+    publicPath: '/posts',
   },
 });
 
@@ -23,7 +23,7 @@ Post.add({
     publishedAt: Date,
     capa: { 
         type: Types.File,
-        storage: localStorage,
+        storage: postStorage,
     },
     resumo: { type: Types.Html, wysiwyg: true, height: 150 },
     conteúdo: { type: Types.Html, wysiwyg: true, height: 400 },

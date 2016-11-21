@@ -9,3 +9,4 @@ Gemfile.lock
 /lib
 /log
 npm-debug.log
+/uploads
