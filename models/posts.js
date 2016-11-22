@@ -7,6 +7,10 @@ const Post = new keystone.List('Post', {
     defaultSort: '-createdAt', 
 });
 
+Post.schema.virtual('url').get(function() {
+    return `/noticias/${this.slug}`
+})
+
 const postStorage = new keystone.Storage({
   adapter: keystone.Storage.Adapters.FS,
   fs: {
