@@ -9,7 +9,7 @@ keystone.pre('render', middleware.flashMessages);
 
 // Handle 404 errors
 keystone.set('404', function(req, res, next) {
-   res.notfound(); 
+   res.notfound();
 });
 
 // Handle other errors
@@ -18,7 +18,7 @@ keystone.set('500', function(err, req, res, next) {
 
    if (err instanceof Error) {
         message = err.message;
-        err = err.stack;   
+        err = err.stack;
    }
 
    res.err(err, title, message);
@@ -30,7 +30,10 @@ const routes = {
 };
 
 exports = module.exports = function(app) {
-    
-    app.get('/', routes.views.index);
 
+    app.get('/', routes.views.index);
+ 
+    // News routes
+    app.get('/noticias', routes.views.news)
+    app.get('/noticias/:postSlug', routes.views.singleNew)
 }

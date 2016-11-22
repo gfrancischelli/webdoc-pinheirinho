@@ -1,0 +1,23 @@
+extends ../../layouts/base.pug
+
+block content
+  h1= title
+    ul
+      each single in data.news.results
+          li: a( href=`${single.url}`)= single.title
+
+  br
+
+  if data.news.totalPages > 1
+      ul.pagination
+        - let enabled, url
+        - enabled = data.news.previous ? 'enabled' : 'disabled'
+        - url = data.news.previous ? data.news.previous : data.news.first
+        li: a(href=`?page=${ url }` class=`is-${enabled}`) Previous
+        each page, index in data.news.pages
+          - let active = data.news.currentPage == page ? 'active' : '' 
+          if page < data.news.totalPages
+            li: a(href=`?page=${ page }` class=`${active}`) #{ page }
+        - enabled = data.news.next ? 'enabled' : 'disabled'
+        - url = data.news.next < data.news.totalPages ? data.news.next : data.news.last - 1 
+          li: a(href=`?page=${ url }` class=`is-${enabled}`) Next
