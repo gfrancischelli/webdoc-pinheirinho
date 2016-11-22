@@ -1,0 +1,14 @@
+mixin pagination(items)
+  if items.totalPages > 1
+    ul.pagination
+      - let enabled, url
+      - enabled = items.previous ? 'enabled' : 'disabled'
+      - url = items.previous ? items.previous : items.first
+      li: a(href=`?page=${ url }` class=`is-${enabled}`) Previous
+      each page, index in items.pages
+        - let active = items.currentPage == page ? 'active' : '' 
+        if page < data.news.totalPages
+          li: a(href=`?page=${ page }` class=`${active}`) #{ page }
+      - enabled = items.next ? 'enabled' : 'disabled'
+      - url = items.next < items.totalPages ? items.next : items.last - 1 
+        li: a(href=`?page=${ url }` class=`is-${enabled}`) Next
