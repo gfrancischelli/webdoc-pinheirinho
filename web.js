@@ -8,6 +8,8 @@ keystone.init({
     'sass': 'public', 
     'static': ['public'], 
 
+    'cloudinary config': 'cloudinary://441254311745598:H0SiH9NJftgLT6bXFsF14AEwUyc@dp7rd44b2',
+
     'views': 'templates/views',
     'view engine': 'pug',
 
