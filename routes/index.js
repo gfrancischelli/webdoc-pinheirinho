@@ -27,13 +27,43 @@ keystone.set('500', function(err, req, res, next) {
 // Load Routes
 const routes = {
     views: importRoutes('./views'),
+    api: importRoutes('./api')
+};
+
+function imageAPI(req, res) {
+    const params = req.params,
+          fileName = params.filename;
+
+    const options = {
+        root: `./public/images/${params.folder}/${params.title}/`,
+        headers: {
+            'x-timestamp': Date.now(),
+            'x-sent': true,
+        },
+    };
+
+    res.sendFile(fileName, options, function(err) {
+        if (err) {
+            console.log(err);
+            res.status(err.status).end();
+        } else {
+            console.log(`Image sent: ${fileName}`)
+        }
+    });
 };
 
 exports = module.exports = function(app) {
 
     app.get('/', routes.views.index);
+
  
+    app.get('/public/images/:folder/:title/:filename', imageAPI);
+
     // News routes
-    app.get('/noticias', routes.views.news)
-    app.get('/noticias/:postSlug', routes.views.singleNew)
+    app.get('/noticias', routes.views.news);
+    app.get('/noticias/:postSlug', routes.views.singleNew);
+
+    // Gallery routes
+    app.get('/galerias', routes.views.galleries);
+    app.get('/galerias/:gallerySlug', routes.views.singleGallery);
 }
