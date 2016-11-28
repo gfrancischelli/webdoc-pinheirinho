@@ -5,7 +5,9 @@ block content
   h1= title
     ul
       each single in data.news.results
-          li: a( href=`${single.url}`)= single.title
+          li
+            a( href=single.url)= single.title
+            img( src=single.heroUrl height="100px" )
 
   br
   +pagination(data.news)

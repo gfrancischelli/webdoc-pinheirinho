@@ -7,16 +7,20 @@ const Post = new keystone.List('Post', {
     defaultSort: '-createdAt', 
 });
 
-Post.schema.virtual('url').get(function() {
-    return `/noticias/${this.slug}`
-})
-
 const postStorage = new keystone.Storage({
   adapter: keystone.Storage.Adapters.FS,
   fs: {
-    path: 'uploads/posts',
-    publicPath: '/posts',
+    path: 'public/images/news',
+    publicPath: 'public/images/news',
   },
+});
+
+Post.schema.virtual('url').get(function() {
+    return `/noticias/${ this.slug }`
+});
+
+Post.schema.virtual('heroUrl').get(function() {
+    return `public/images/news/${ this.heroImage.filename }`
 });
 
 Post.add({
@@ -25,7 +29,7 @@ Post.add({
     author: { type: Types.Relationship, ref: 'User' },
     createdAt: { type: Date, default: Date.now },
     publishedAt: Date,
-    cover: { 
+    heroImage: { 
         type: Types.File,
         storage: postStorage,
     },

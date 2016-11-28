@@ -8,7 +8,7 @@ exports = module.exports = function(req, res) {
           locals = res.locals;
 
     locals.data = [];
-    console.log(params.postSlug)
+
     view.on('init', function(next) {
         Post.model
             .findOne({ slug: params.postSlug })

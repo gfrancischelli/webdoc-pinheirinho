@@ -27,7 +27,6 @@ keystone.set('500', function(err, req, res, next) {
 // Load Routes
 const routes = {
     views: importRoutes('./views'),
-    api: importRoutes('./api')
 };
 
 function imageAPI(req, res) {
@@ -35,7 +34,7 @@ function imageAPI(req, res) {
           fileName = params.filename;
 
     const options = {
-        root: `./public/images/${params.folder}/${params.title}/`,
+        root: `./public/images/${params.folder}/`,
         headers: {
             'x-timestamp': Date.now(),
             'x-sent': true,
@@ -55,9 +54,10 @@ function imageAPI(req, res) {
 exports = module.exports = function(app) {
 
     app.get('/', routes.views.index);
-
  
-    app.get('/public/images/:folder/:title/:filename', imageAPI);
+    // TODO - workin titles names
+    app.get('/public/images/:folder/:filename', imageAPI);
+    // app.get('/public/images/:folder/:title/:filename', imageAPI);
 
     // News routes
     app.get('/noticias', routes.views.news);

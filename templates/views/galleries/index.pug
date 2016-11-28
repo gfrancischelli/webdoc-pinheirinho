@@ -3,5 +3,7 @@ extends ../../layouts/base.pug
 block content
   h1= title
   div
-    each gallery in data.galleries
-        li: a(href=gallery.url)= gallery.title
+  each gallery in data.galleries
+    li
+      a( href=gallery.url )= gallery.title
+      img( src=gallery.heroUrl height="100px" )

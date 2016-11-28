@@ -9,17 +9,21 @@ const Gallery = new keystone.List('Gallery', {
     plural: 'Albums',
 });
 
+const galleryStorage = new keystone.Storage({
+    adapter: keystone.Storage.Adapters.FS,
+    fs: {
+        path: 'public/images/galleries',
+        publicPath: 'public/images/galleries',
+    },
+});
+
 Gallery.schema.virtual('url').get(function() {
     return `/galerias/${ this.slug }`
 });
 
-const galleryStorage = new keystone.Storage({
-    adapter: keystone.Storage.Adapters.FS,
-    fs: {
-        path: 'uploads/galleries',
-        publicPath: '/uploads/galleries',
-    },
-});
+Gallery.schema.virtual('heroUrl').get(function() {
+    return `public/images/gallery/${ this.slug }/${ this.heroImage.filename }`
+})
 
 Gallery.add({
     title: { type: String, initial: true, required: true },
