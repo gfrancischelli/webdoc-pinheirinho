@@ -10,3 +10,5 @@ Gemfile.lock
 /log
 npm-debug.log
 /uploads
+public/images/galleries
+public/images/news
