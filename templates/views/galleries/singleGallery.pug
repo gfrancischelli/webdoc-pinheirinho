@@ -1,0 +1,8 @@
+extends ../../layouts/base.pug
+
+block content
+  h1= title
+  
+  ul
+    each image in data.gallery.images
+      img(src=image.url height='300px')
