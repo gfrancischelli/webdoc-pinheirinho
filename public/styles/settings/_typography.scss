@@ -1,10 +1,15 @@
 @import 'colors';
 @import url('https://fonts.googleapis.com/css?family=Lora');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700');
+
+
+$font-primary: 'Lora', serif;
+$font-secondary: 'Open Sans', sans-serif;
 
 // Defaults
 html {
     font-size: 16px;
-    font-family: 'Lora', serif;
+    font-family: $font-primary;
     color: $medium-gray;
     line-height: 1.5;
 
@@ -20,14 +25,14 @@ $font-small:    0.75rem;
 $font-medium:   1rem;
 $font-large:    1.333rem;
 $font-xlarge:   1.777rem;
-$font-giga:     2.369rem;
+$font-kilo:     2.369rem;
 $font-mega:     3.157rem;
-$font-kilo:     4.209rem;
+$font-giga:     4.209rem;
 
 
-h1 { font-size: $font-kilo }
+h1 { font-size: $font-giga }
 h2 { font-size: $font-mega }
-h3 { font-size: $font-giga }
+h3 { font-size: $font-kilo }
 h4 { font-size: $font-xlarge }
 h5 { font-size: $font-large }
 

@@ -36,7 +36,7 @@ Gallery.add({
         publicID: 'slug',
         autoCleanup: true,
     },
-    publishedDate: { type: Types.Date, default: Date.now },
+    publishedAt: { type: Types.Date, default: Date.now },
     createdAt: { type: Types.Date, default: Date.now },
 });
 

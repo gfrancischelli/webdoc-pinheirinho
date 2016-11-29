@@ -2,7 +2,8 @@
 @import '../settings/colors';
 
 .site-nav {
-    padding: $padding-large;
+    padding: $spacing-large;
+    margin-bottom: $spacing-default;
     
     &__list {
         display: flex;
@@ -19,6 +20,7 @@
 
     &__link {
         display: block;
+        font-size: $font-large;
         position: relative;
         color: $dark-gray;
     }

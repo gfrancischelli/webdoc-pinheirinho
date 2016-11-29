@@ -1,7 +1,11 @@
+$spacing-tiny: 10px;
+$spacing-default: 16px;
+$spacing-large: 32px;
+
 // Paddings
-$padding-medium: 12px;
-$padding-large: 32px;
+$padding-medium: $spacing-default;
+$padding-large: $spacing-large;
 
 // Margin
-$margin-medium: 16px;
-$margin-large: 32px;
+$margin-medium: $spacing-default;
+$margin-large: $spacing-large;

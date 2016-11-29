@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*! normalize.css v5.0.0 | MIT License | github.com/necolas/normalize.css */
 /* Document
    ========================================================================== */
@@ -8,6 +9,7 @@
  *    IE on Windows Phone and in iOS.
  */
 @import url("https://fonts.googleapis.com/css?family=Lora");
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,700");
 html {
   font-family: sans-serif;
   /* 1 */
@@ -430,7 +432,7 @@ a:visited {
 
 html {
   font-size: 16px;
-  font-family: 'Lora', serif;
+  font-family: "Lora", serif;
   color: #444444;
   line-height: 1.5;
   background-color: #FCFCFC; }
@@ -461,6 +463,28 @@ p {
 
 .c-btn {
   background-color: red; }
+
+.c-heading {
+  font-size: 2.369rem;
+  margin-bottom: 16px; }
+
+.c-link {
+  font-weight: bold; }
+  .c-link:after {
+    content: ' ▸';
+    opacity: 0;
+    transition: all 0.3s ease;
+    transform: translateY(5px); }
+  .c-link:hover:after {
+    display: inline-block;
+    opacity: 1;
+    transform: translateY(0px); }
+
+.o-wrapper {
+  padding-left: 16px;
+  padding-right: 16px;
+  margin: 0 auto;
+  max-width: 1200px; }
 
 .media {
   margin: 10px; }
@@ -494,7 +518,8 @@ p {
     max-width: none; }
 
 .site-nav {
-  padding: 32px; }
+  padding: 32px;
+  margin-bottom: 16px; }
   .site-nav__list {
     display: flex;
     justify-content: center; }
@@ -504,6 +529,7 @@ p {
     margin-left: 32px; }
   .site-nav__link {
     display: block;
+    font-size: 1.333rem;
     position: relative;
     color: #2A2A2A; }
   .site-nav__link:after {
@@ -532,7 +558,38 @@ p {
     margin: 0 auto;
     height: 100%; }
 
+.o-feat-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 16px; }
+  .o-feat-list__item {
+    display: inline;
+    flex-basis: 30%; }
+  .o-feat-list__item + .o-feat-list__item {
+    margin-left: 16px; }
+  .o-feat-list__img {
+    display: block;
+    height: 200px;
+    width: 100%;
+    margin-bottom: 10px;
+    background-size: cover;
+    background-position: center  center; }
+  .o-feat-list__title {
+    font-size: 1.777rem;
+    margin-bottom: 10px; }
+  @media screen and (max-width: 599px) {
+    .o-feat-list {
+      flex-direction: column; }
+      .o-feat-list__item + .o-feat-list__item {
+        margin-left: 0;
+        margin-top: 16px; } }
+
 .clearfix:after {
   content: "";
   display: table;
   clear: both; }
+
+.u-float-right {
+  float: right;
+  padding-right: 10px; }
