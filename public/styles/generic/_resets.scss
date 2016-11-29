@@ -17,6 +17,13 @@ fieldset, legend {
 
 
 li, ol ,ul {
+    list-style: none;
     margin-bottom: 0;
 }
 
+a, 
+a:hover,
+a:active,
+a:visited {
+    text-decoration: none;
+}
