@@ -1,0 +1,8 @@
+mixin feature_list(items)
+    ul.o-feat-list
+        each item in items
+            li.o-feat-list__item
+                .o-feat-list__img(style=`background-image: url(${item.heroUrl})`)
+                a(href=item.url): h3.o-feat-list__title= item.title
+                p.summary !{item.content.slice(0, 220)}...
+

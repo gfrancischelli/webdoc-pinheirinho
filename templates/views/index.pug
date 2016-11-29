@@ -1,5 +1,12 @@
 extends ../layouts/base
+include ../mixins/feature-list
 
 block content
-    a(href='/noticias') Notícias
-    a(href='/galerias') Galerias
+    .o-band
+    .o-band
+        h2.c-heading Notícias
+        +feature_list(data.news)
+        a.c-link.u-float-right(href='/noticias') mais notícias 
+        
+    // a(href='/noticias') Notícias
+    // a(href='/galerias') Galerias
