@@ -2,11 +2,14 @@ extends ../layouts/base
 include ../mixins/feature-list
 
 block content
-    .o-band
-    .o-band
-        h2.c-heading Notícias
+    .o-band(style="margin-bottom: 30px"): .o-card
+        .o-card__figure: .c-fluid-container-16-9
+          iframe(src="https://www.youtube.com/embed/S5rezgxdPC0" frameborder="0" allowfullscreen)
+        .o-card__title Pinheirinho lorem ipsum sit dolor amet
+    .o-band.clearfix
+        h3.c-heading Notícias
         +feature_list(data.news)
-        a.c-link.u-float-right(href='/noticias') mais notícias 
+        h5: a.c-link.u-float-right(href='/noticias') mais notícias 
         
     // a(href='/noticias') Notícias
     // a(href='/galerias') Galerias

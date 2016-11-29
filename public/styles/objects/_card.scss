@@ -1,0 +1,34 @@
+.o-card {
+    margin: 0;
+    padding: $spacing-tiny;
+
+    &__figure {
+        display: block;
+        width: 100%;
+        margin-bottom: $spacing-default;
+    }
+
+    &__title {
+        margin-bottom: $spacing-tiny;
+    }
+
+    &__body {
+        display: block;
+        width: 100%;
+    }
+}
+
+.c-fluid-container-16-9 {
+    position: relative;
+    padding-bottom: 56.25%;
+    overflow: hidden;
+
+    img,
+    iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+}

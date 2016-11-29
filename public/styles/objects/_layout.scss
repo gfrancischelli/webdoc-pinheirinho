@@ -1,42 +1,13 @@
-.o-feat-list {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-
-    margin-bottom: $spacing-default;
+.o-layout {
+    margin-left: -$spacing-large;
 
     &__item {
-        display: inline;
-        flex-basis: 30%;
+        display: inline-block;
+        padding-left: $spacing-large;
+        vertical-align: top;
     }
 
     &__item + &__item {
-        margin-left: $spacing-default;
+        margin-top: $spacing-large; 
     }
-
-    &__img {
-        display: block;
-        height: 200px;
-        width: 100%;
-        margin-bottom: $spacing-tiny;
-        background-size: cover;
-        background-position: center  center;
-    }
-
-    &__title {
-        font-size: $font-xlarge;
-        margin-bottom: $spacing-tiny;
-    }
-
-    @media screen and (max-width: 599px) {
-        flex-direction: column;
-        
-        &__item + &__item {
-            margin-left: 0;
-            margin-top: $spacing-default;
-        }
-    }
-
-
 }
-

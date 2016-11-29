@@ -1,0 +1,12 @@
+.o-list-ui {
+    padding-left: $spacing-default;
+
+    &__item {
+        border-bottom: 1px solid $lighter-gray;
+        padding-bottom:  $spacing-large;
+        
+        & + & {
+            margin-top: $spacing-large;
+        }
+    }
+}
