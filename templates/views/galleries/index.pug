@@ -4,6 +4,7 @@ block content
   h1= title
   div
   each gallery in data.galleries
-    li
-      a( href=gallery.url )= gallery.title
-      img( src=gallery.heroUrl height="100px" )
+    .flag
+      img.flag__solid-cp( src=gallery.heroUrl height="100px" )
+      .flag__fluid-cp
+        a( href=gallery.url )= gallery.title

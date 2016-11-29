@@ -3,11 +3,10 @@ include ../../mixins/pagination.pug
 
 block content
   h1= title
-    ul
-      each single in data.news.results
-          li
-            a( href=single.url)= single.title
-            img( src=single.heroUrl height="100px" )
+  each single in data.news.results
+    .flag
+      img.flag__solid-cp( src=single.heroUrl height="100px" )
+      .flag__fluid-cp: a( href=single.url)= single.title
 
   br
   +pagination(data.news)

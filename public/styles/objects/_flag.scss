@@ -1,0 +1,30 @@
+.flag {
+    display: table;
+    width: 100%;
+
+    &__solid-cp,
+    &__fluid-cp {
+        display: table-cell;
+        vertical-align: top;
+
+        &--middle {
+            vertical-align: middle;
+        }
+
+        &--bottom {
+            vertical-align: bottom;
+        }
+    }
+    
+    &__fluid-cp {
+        width: 100%;
+    }
+
+    &__solid-cp {
+        
+        >img {
+            display: block;
+            max-width: none;
+        }
+    }
+}
