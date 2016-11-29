@@ -1,0 +1,20 @@
+.media {
+    margin: 10px;
+}
+
+    .media__img {
+        float: left;
+        margin-right: 10px;
+
+        & img {
+            display: block;
+        }
+    }
+    
+    .media__body {
+        display: inline-block;
+        vertical-align: top;
+        overflow: hidden;
+        zoom: 1;
+    }
+    

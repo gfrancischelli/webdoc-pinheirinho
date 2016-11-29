@@ -1,0 +1,36 @@
+@import 'colors';
+@import url('https://fonts.googleapis.com/css?family=Lora');
+
+// Defaults
+html {
+    font-size: 16px;
+    font-family: 'Lora', serif;
+    color: $medium-gray;
+    line-height: 1.5;
+
+    background-color: $base-white;
+
+    @media screen and (max-width: 599px) {
+        font-size: 10px;
+    } 
+}
+
+// Font Scale
+$font-small:    0.75rem;
+$font-medium:   1rem;
+$font-large:    1.333rem;
+$font-xlarge:   1.777rem;
+$font-giga:     2.369rem;
+$font-mega:     3.157rem;
+$font-kilo:     4.209rem;
+
+
+h1 { font-size: $font-kilo }
+h2 { font-size: $font-mega }
+h3 { font-size: $font-giga }
+h4 { font-size: $font-xlarge }
+h5 { font-size: $font-large }
+
+h1, h2, h3, h4, h5 { color: $dark-gray }
+
+p { font-size: $font-medium }

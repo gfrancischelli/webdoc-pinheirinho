@@ -7,6 +7,7 @@
  * 3. Prevent adjustments of font size after orientation changes in
  *    IE on Windows Phone and in iOS.
  */
+@import url("https://fonts.googleapis.com/css?family=Lora");
 html {
   font-family: sans-serif;
   /* 1 */
@@ -418,7 +419,120 @@ fieldset, legend {
   padding: 0; }
 
 li, ol, ul {
+  list-style: none;
   margin-bottom: 0; }
+
+a,
+a:hover,
+a:active,
+a:visited {
+  text-decoration: none; }
+
+html {
+  font-size: 16px;
+  font-family: 'Lora', serif;
+  color: #444444;
+  line-height: 1.5;
+  background-color: #FCFCFC; }
+  @media screen and (max-width: 599px) {
+    html {
+      font-size: 10px; } }
+
+h1 {
+  font-size: 4.209rem; }
+
+h2 {
+  font-size: 3.157rem; }
+
+h3 {
+  font-size: 2.369rem; }
+
+h4 {
+  font-size: 1.777rem; }
+
+h5 {
+  font-size: 1.333rem; }
+
+h1, h2, h3, h4, h5 {
+  color: #2A2A2A; }
+
+p {
+  font-size: 1rem; }
 
 .c-btn {
   background-color: red; }
+
+.media {
+  margin: 10px; }
+
+.media__img {
+  float: left;
+  margin-right: 10px; }
+  .media__img img {
+    display: block; }
+
+.media__body {
+  display: inline-block;
+  vertical-align: top;
+  overflow: hidden;
+  zoom: 1; }
+
+.flag {
+  display: table;
+  width: 100%; }
+  .flag__solid-cp, .flag__fluid-cp {
+    display: table-cell;
+    vertical-align: top; }
+    .flag__solid-cp--middle, .flag__fluid-cp--middle {
+      vertical-align: middle; }
+    .flag__solid-cp--bottom, .flag__fluid-cp--bottom {
+      vertical-align: bottom; }
+  .flag__fluid-cp {
+    width: 100%; }
+  .flag__solid-cp > img {
+    display: block;
+    max-width: none; }
+
+.site-nav {
+  padding: 32px; }
+  .site-nav__list {
+    display: flex;
+    justify-content: center; }
+  .site-nav__item {
+    float: left; }
+  .site-nav__item + .site-nav__item {
+    margin-left: 32px; }
+  .site-nav__link {
+    display: block;
+    position: relative;
+    color: #2A2A2A; }
+  .site-nav__link:after {
+    content: '';
+    position: absolute;
+    bottom: 1px;
+    left: 0;
+    height: 1px;
+    width: 100%;
+    background-color: #2A2A2A;
+    transform: scaleX(0);
+    transform-origin: 50% 50%;
+    transition: transform 0.5s ease; }
+  .site-nav__link:hover:after {
+    transform: scaleX(1); }
+
+.page-head {
+  margin: 0; }
+  .page-head__img--placeholder {
+    display: block;
+    width: 100%;
+    height: 240px;
+    background-color: #AAAAAA; }
+  .page-head .placeholder {
+    display: block;
+    margin: 0 auto;
+    height: 100%; }
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both; }

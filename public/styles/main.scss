@@ -2,6 +2,19 @@
 @import 'generic/normalize';
 @import 'generic/resets';
 
+// Settings
+@import 'settings/typography';
+@import 'settings/colors';
+@import 'settings/spacing';
 
 // Components
 @import 'components/buttons';
+
+// Objects
+@import 'objects/media';
+@import 'objects/flag';
+@import 'objects/header';
+@import 'objects/page-head';
+
+// Utilities
+@import 'utilities/clearfix';
