@@ -11,13 +11,14 @@ exports = module.exports = function(req, res) {
 
     view.on('init', function(next) {
         Gallery.model
-        .find()
-        .sort('-publishedDate')
-        .exec(function(err, results) {
-            locals.data.galleries = results;
-            next(err);
-        })
+            .find()
+            .sort('-publishedAt')
+            .exec(function(err, results) {
+                locals.data.galleries = results;
+                next(err);
+            });
     });
 
-    view.render('galleries/index')
+    view.render('galleries/index');
+    
 }

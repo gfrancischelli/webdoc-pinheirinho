@@ -477,9 +477,16 @@ p {
     height: 100%; }
 
 .c-heading {
-  font-size: 1.777rem;
   font-family: "Open Sans", sans-serif;
-  margin-bottom: 32px; }
+  line-height: 1;
+  font-size: 2.369rem;
+  margin-bottom: 16px; }
+  .c-heading--large {
+    font-size: 3.157rem;
+    margin-bottom: 32px; }
+  .c-heading--small {
+    font-size: 1.777rem;
+    margin-bottom: 10px; }
 
 .c-link {
   font-weight: bold;
@@ -498,6 +505,18 @@ p {
   width: 140px; }
   .c-thumb-large {
     width: 220px; }
+  .c-thumb-jumbo {
+    width: 340px; }
+
+.o-band {
+  margin: 0 auto;
+  padding: 32px 0; }
+  .o-band--large {
+    padding: 32px 48px; }
+  .o-band--tint {
+    background-color: #E8E8E8; }
+  .o-band--red {
+    background-color: #de5e51; }
 
 .o-card {
   margin: 0;
@@ -608,7 +627,7 @@ p {
 .o-list-ui {
   padding-left: 16px; }
   .o-list-ui__item {
-    border-bottom: 1px solid #BBBBBB;
+    border-bottom: 1px solid #CCCCCC;
     padding-bottom: 32px; }
     .o-list-ui__item + .o-list-ui__item {
       margin-top: 32px; }
@@ -661,3 +680,9 @@ p {
   padding-left: 16px; }
   .u-pad-left-large {
     padding-left: 32px; }
+
+.u-font-white {
+  color: #F5F5F5; }
+
+.u-text-center {
+  text-align: center; }

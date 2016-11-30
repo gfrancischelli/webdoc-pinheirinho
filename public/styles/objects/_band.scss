@@ -1,0 +1,16 @@
+.o-band {
+    margin: 0 auto;
+    padding: $spacing-large 0;
+    
+    &--large { 
+        padding: $spacing-large $spacing-kilo;
+    }
+
+    &--tint {
+        background-color: $lighter-gray;
+    }
+
+    &--red {
+        background-color: $primary-red;
+    }
+}

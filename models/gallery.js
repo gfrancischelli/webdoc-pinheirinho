@@ -27,6 +27,7 @@ Gallery.schema.virtual('heroUrl').get(function() {
 
 Gallery.add({
     title: { type: String, initial: true, required: true },
+    desc: { type: String, required: true, default: 'descrição' },
     heroImage: { 
         type: Types.File,
         storage: galleryStorage,

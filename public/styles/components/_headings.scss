@@ -1,5 +1,17 @@
 .c-heading {
-    font-size: $font-xlarge;
     font-family: $font-secondary;
-    margin-bottom: $spacing-large;
+    line-height: 1;
+
+    font-size: $font-kilo;
+    margin-bottom: $spacing-default;
+
+    &--large {
+        font-size: $font-mega;
+        margin-bottom: $spacing-large;
+    }
+
+    &--small {
+        font-size: $font-xlarge;
+        margin-bottom: $spacing-tiny;
+    }
 }
