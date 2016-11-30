@@ -12,7 +12,7 @@ const postStorage = new keystone.Storage({
   adapter: keystone.Storage.Adapters.FS,
   fs: {
     path: path.join( __dirname, '..', '/public/images/news'),
-    publicPath: path.join( __dirname, '..', '/public/images/news'),
+    publicPath: '/public/images/news',
   },
 });
 
