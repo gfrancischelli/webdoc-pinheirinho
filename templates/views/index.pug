@@ -6,10 +6,16 @@ block content
         .o-card__figure: .c-fluid-container-16-9
           iframe(src="https://www.youtube.com/embed/S5rezgxdPC0" frameborder="0" allowfullscreen)
         .o-card__title Pinheirinho lorem ipsum sit dolor amet
-    .o-band.clearfix
+
+    // News Section
+    section.o-band.o-band--tint: .o-wrapper.clearfix
         h3.c-heading Notícias
         +feature_list(data.news)
         h5: a.c-link.u-float-right(href='/noticias') mais notícias 
-        
-    // a(href='/noticias') Notícias
-    // a(href='/galerias') Galerias
+   
+    // Gallery Section
+    section.o-band.o-band--red: .o-wrapper.clearfix
+        h3.c-heading.u-font-white.u-text-center Galeria
+        +feature_list(data.galleries)
+        h5: a.c-link.u-font-white.u-float-right(href='/galerias') mais galerias 
+

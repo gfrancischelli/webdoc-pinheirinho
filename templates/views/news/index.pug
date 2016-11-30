@@ -2,16 +2,17 @@ extends ../../layouts/base.pug
 include ../../mixins/pagination.pug
 
 block content
-  h2= title
-  .layout
-    section.layout__item: ul.list-ui
-      each single in data.news.results
-        li.o-list-ui__item
-          .flag
-            .flag__solid-cp: img.c-thumb-large( src=single.heroUrl )
-            .flag__fluid-cp.u-pad-left-large
-                a( href=single.url ): h5= single.title
-                p !{ single.content.slice(0, 260) }...
+  section.o-wrapper
+    h2.c-heading.c-heading--large= title
+    .o-layout
+      .o-layout__item: ul.list-ui
+        each single in data.news.results
+          li.o-list-ui__item
+            .flag
+              .flag__solid-cp: img.c-thumb-large( src=single.heroUrl )
+              .flag__fluid-cp.u-pad-left-large
+                  a( href=single.url ): h3.c-heading.c-heading--small= single.title
+                  p !{ single.content.slice(0, 260) }...
 
   br
   +pagination(data.news)
