@@ -13,8 +13,8 @@ const Gallery = new keystone.List('Gallery', {
 const galleryStorage = new keystone.Storage({
     adapter: keystone.Storage.Adapters.FS,
     fs: {
-        path: path.join( __dirname, '..', '/public/images/news'),
-        publicPath: path.join( __dirname, '..', '/public/images/news'),
+        path: path.join( __dirname, '..', '/public/images/galleries'),
+        publicPath: path.join( __dirname, '..', '/public/images/galleries'),
     },
 });
 
