@@ -33,9 +33,11 @@ const routes = {
 function imageAPI(req, res) {
     const params = req.params,
           fileName = params.filename;
+    
+    const root = process.ENV == 'production' ? './current/public' : './public';
 
     const options = {
-        root: `./public/images/${params.folder}/`,
+        root: `${root}/images/${params.folder}/`,
         headers: {
             'x-timestamp': Date.now(),
             'x-sent': true,

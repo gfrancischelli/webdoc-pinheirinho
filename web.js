@@ -4,7 +4,6 @@ keystone.init({
 
     'name': 'webdoc',
 
-
     // 'favicon': 'public/favicon.ico', 
     'sass': 'public', 
     'static': ['public'], 
@@ -24,10 +23,8 @@ keystone.init({
 
 });
 
-if (process.env.ROOT) keystone.set('module root', process.env.ROOT );
-
 require('./models');
-keystone.set('routes', require('./routes'));
 
+keystone.set('routes', require('./routes'));
 
 keystone.start();

@@ -11,7 +11,7 @@ const Post = new keystone.List('Post', {
 const postStorage = new keystone.Storage({
   adapter: keystone.Storage.Adapters.FS,
   fs: {
-    path: path.join( __dirname, '..', '/public/images/news'),
+    path: keystone.expandPath('./public/images/news'),
     publicPath: '/public/images/news',
   },
 });
