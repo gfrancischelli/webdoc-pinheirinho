@@ -1,5 +1,6 @@
 const keystone = require('keystone'),
-      Types = keystone.Field.Types;
+      Types = keystone.Field.Types,
+      path = require('path');
 
 const Post = new keystone.List('Post', {
     autokey: { path: 'slug', from: 'title', unique: true },
@@ -10,8 +11,8 @@ const Post = new keystone.List('Post', {
 const postStorage = new keystone.Storage({
   adapter: keystone.Storage.Adapters.FS,
   fs: {
-    path: 'public/images/news',
-    publicPath: 'public/images/news',
+    path: path.join( __dirname, '..', '/public/images/news'),
+    publicPath: path.join( __dirname, '..', '/public/images/news'),
   },
 });
 
