@@ -1,0 +1,78 @@
+.c-form {
+  ---radius: $radius-small;
+  display: block;
+  position: relative;
+  border: 1px solid $light-gray;
+  border-top-left-radius: var(--radius);
+  border-top-right-radius: var(--radius);
+}
+
+.c-form__field {
+  display: block;
+  position: relative;
+  padding-bottom: 0;
+  width: 100%;
+  overflow: hidden;
+  
+  & + & { 
+    border-top: 1px solid $light-gray;
+  }
+}
+
+.c-form__label {
+  display: block;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  
+  color: $soft-gray;
+  font-size: $font-small;
+}
+
+.c-form__status-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: $font-medium;
+  height: $font-medium;
+  opacity: 0;
+  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/check.svg");
+  transition: opacity 0.6s ease;
+}
+
+.c-form__input {
+  display: block;
+  position: relative;
+  width: 100%;
+  padding: $spacing-tiny;
+  padding-top: 40px;
+  
+  border: none;
+  background-color: transparent;
+
+  font-size: $font-large;
+  
+  transition: padding 0.6s ease;
+  
+  &:focus { 
+    outline: none;
+    background-color: $lighter-gray;
+
+    // Stop input border from hiding 
+    // parent element (.c-form) border
+    border: transparent;
+    border-radius: calc(var(--radius) + 2px);
+  }
+  
+  // Reveal success icon if input is valid
+  &:valid:not(:placeholder-shown) {
+    & + .c-form__status-icon {
+      opacity: 1;
+      transition: all 0.6s ease;
+    }
+  }
+  
+  &:invalid:not(:focus) {
+    background-color: $thin-red;
+  }
+}
