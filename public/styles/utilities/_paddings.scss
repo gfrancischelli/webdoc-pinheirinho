@@ -2,7 +2,8 @@
     &-left {
         padding-left: $spacing-default;
         &-large {
-            padding-left: $spacing-large;
+            padding-left: $spacing-small;
+            // padding-left: $spacing-large;
         }
     }
 }

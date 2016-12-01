@@ -3,4 +3,10 @@
     padding-right: $spacing-default;
     margin: 0 auto;
     max-width: 1200px;
+
+    @media screen and (min-width: 600px) {
+        &--small\@ds {
+            max-width: 800px;
+        }
+    }
 }

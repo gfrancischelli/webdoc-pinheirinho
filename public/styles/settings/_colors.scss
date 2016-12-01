@@ -1,9 +1,17 @@
 
-$primary-red: rgb(222, 94, 81);
+// $primary-red: rgb(222, 94, 81);
+
+$thin-red: #ffc9c9;
+$light-red: #fa5252;
+$medium-red: #f03e3e;
+$dark-red: #e03131; 
+
+$primary-red: $medium-red;
 
 $base-white: #F5F5F5;
 
 $lighter-gray: #E8E8E8;
 $light-gray: #CCCCCC; 
+$soft-gray: #777777;
 $medium-gray: #444444;
 $dark-gray: #2A2A2A;

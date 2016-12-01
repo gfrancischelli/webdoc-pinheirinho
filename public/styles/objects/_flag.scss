@@ -21,10 +21,13 @@
     }
 
     &__solid-cp {
-        
-        >img {
+        > img {
             display: block;
-            max-width: none;
+            max-width: $spacing-giga;
+            
+            @media screen and (min-width: 600px) {
+                max-width: none;
+            }
         }
     }
 }

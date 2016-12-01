@@ -1,7 +1,11 @@
 $spacing-tiny: 10px;
-$spacing-default: 16px;
+$spacing-small: 16px;
+$spacing-default: $spacing-small;
+$spacing-medium: 24px;
 $spacing-large: 32px;
 $spacing-kilo: 48px;
+$spacing-mega: 64px;
+$spacing-giga: 80px;
 
 // Paddings
 $padding-medium: $spacing-default;
@@ -10,3 +14,7 @@ $padding-large: $spacing-large;
 // Margin
 $margin-medium: $spacing-default;
 $margin-large: $spacing-large;
+
+// Radius
+$radius-tiny: 8px;
+$radius-small: 12px;

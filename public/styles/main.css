@@ -410,6 +410,9 @@ template {
 *:after {
   box-sizing: border-box; }
 
+html {
+  overflow-x: hidden; }
+
 body,
 h1, h2, h3, h4, h5, h6,
 blockquote, p, pre,
@@ -430,6 +433,12 @@ a:active,
 a:visited {
   text-decoration: none; }
 
+button,
+button:active,
+button:hover {
+  outline: none;
+  border: none; }
+
 html {
   font-size: 16px;
   font-family: "Lora", serif;
@@ -438,7 +447,7 @@ html {
   background-color: #F5F5F5; }
   @media screen and (max-width: 599px) {
     html {
-      font-size: 10px; } }
+      font-size: 12px; } }
 
 h1 {
   font-size: 4.209rem; }
@@ -462,7 +471,16 @@ p {
   font-size: 1rem; }
 
 .c-btn {
-  background-color: red; }
+  display: block;
+  width: 100%;
+  padding: 10px 24px;
+  font-size: 1.333rem;
+  color: #F5F5F5;
+  background-color: #f03e3e; }
+  .c-btn:hover {
+    background-color: #fa5252; }
+  .c-btn:active {
+    background-color: #e03131; }
 
 .c-fluid-container-16-9 {
   position: relative;
@@ -475,6 +493,65 @@ p {
     left: 0;
     width: 100%;
     height: 100%; }
+
+.c-form {
+  ---radius: 12px;
+  display: block;
+  position: relative;
+  border: 1px solid #CCCCCC;
+  border-top-left-radius: var(--radius);
+  border-top-right-radius: var(--radius); }
+
+.c-form__field {
+  display: block;
+  position: relative;
+  padding-bottom: 0;
+  width: 100%;
+  overflow: hidden; }
+  .c-form__field + .c-form__field {
+    border-top: 1px solid #CCCCCC; }
+
+.c-form__label {
+  display: block;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  color: #777777;
+  font-size: 0.75rem; }
+
+.c-form__status-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 1rem;
+  height: 1rem;
+  opacity: 0;
+  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/check.svg");
+  transition: opacity 0.6s ease; }
+
+.c-form__input {
+  display: block;
+  position: relative;
+  width: 100%;
+  padding: 10px;
+  padding-top: 40px;
+  border: none;
+  background-color: transparent;
+  font-size: 1.333rem;
+  transition: padding 0.6s ease; }
+  @media screen and (max-width: 600px) {
+    .c-form__input {
+      font-size: 1.777rem; } }
+  .c-form__input:focus {
+    outline: none;
+    background-color: #E8E8E8;
+    border: transparent;
+    border-radius: calc(var(--radius) + 2px); }
+  .c-form__input:valid:not(:placeholder-shown) + .c-form__status-icon {
+    opacity: 1;
+    transition: all 0.6s ease; }
+  .c-form__input:invalid:not(:focus) {
+    background-color: #ffc9c9; }
 
 .c-heading {
   font-family: "Open Sans", sans-serif;
@@ -490,7 +567,7 @@ p {
 
 .c-link {
   font-weight: bold;
-  color: #de5e51; }
+  color: #f03e3e; }
   .c-link:after {
     content: ' ▸';
     opacity: 0;
@@ -516,7 +593,7 @@ p {
   .o-band--tint {
     background-color: #E8E8E8; }
   .o-band--red {
-    background-color: #de5e51; }
+    background-color: #f03e3e; }
 
 .o-card {
   margin: 0;
@@ -545,30 +622,32 @@ p {
 
 .o-feat-list {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
+  width: 100%;
   margin-bottom: 16px; }
   .o-feat-list__item {
-    display: inline;
-    flex-basis: 30%; }
-  .o-feat-list__item + .o-feat-list__item {
-    margin-left: 16px; }
+    flex: 0 1 30%; }
   .o-feat-list__img {
     display: block;
-    height: 200px;
-    width: 100%;
+    height: 160px;
     margin-bottom: 10px;
     background-size: cover;
     background-position: center  center; }
+    @media screen and (min-width: 600px) {
+      .o-feat-list__img {
+        height: 200px; } }
   .o-feat-list__title {
     font-size: 1.777rem;
     margin-bottom: 10px; }
-  @media screen and (max-width: 599px) {
+  .o-feat-list__item + .o-feat-list__item {
+    margin-top: 16px; }
+  @media screen and (min-width: 600px) {
     .o-feat-list {
-      flex-direction: column; }
+      flex-direction: row; }
       .o-feat-list__item + .o-feat-list__item {
-        margin-left: 0;
-        margin-top: 16px; } }
+        margin-top: 0;
+        margin-left: 16px; } }
 
 .flag {
   display: table;
@@ -584,7 +663,10 @@ p {
     width: 100%; }
   .flag__solid-cp > img {
     display: block;
-    max-width: none; }
+    max-width: 80px; }
+    @media screen and (min-width: 600px) {
+      .flag__solid-cp > img {
+        max-width: none; } }
 
 .site-nav {
   padding: 32px;
@@ -664,6 +746,9 @@ p {
   padding-right: 16px;
   margin: 0 auto;
   max-width: 1200px; }
+  @media screen and (min-width: 600px) {
+    .o-wrapper--small\@ds {
+      max-width: 800px; } }
 
 .clearfix:after {
   content: "";
@@ -679,7 +764,7 @@ p {
 .u-pad-left {
   padding-left: 16px; }
   .u-pad-left-large {
-    padding-left: 32px; }
+    padding-left: 16px; }
 
 .u-font-white {
   color: #F5F5F5; }
