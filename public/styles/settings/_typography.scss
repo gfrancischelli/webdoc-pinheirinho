@@ -8,15 +8,15 @@ $font-secondary: 'Open Sans', sans-serif;
 
 // Defaults
 html {
-    font-size: 16px;
+    font-size: 14px;
     font-family: $font-primary;
     color: $medium-gray;
     line-height: 1.5;
 
     background-color: $base-white;
 
-    @media screen and (max-width: 599px) {
-        font-size: 12px;
+    @media screen and (min-width: 600px) {
+        font-size: 16px;
     } 
 }
 

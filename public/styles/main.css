@@ -440,14 +440,14 @@ button:hover {
   border: none; }
 
 html {
-  font-size: 16px;
+  font-size: 14px;
   font-family: "Lora", serif;
   color: #444444;
   line-height: 1.5;
   background-color: #F5F5F5; }
-  @media screen and (max-width: 599px) {
+  @media screen and (min-width: 600px) {
     html {
-      font-size: 12px; } }
+      font-size: 16px; } }
 
 h1 {
   font-size: 4.209rem; }
@@ -523,8 +523,8 @@ p {
   position: absolute;
   top: 10px;
   right: 10px;
-  width: 1rem;
-  height: 1rem;
+  width: 1.333rem;
+  height: 1.333rem;
   opacity: 0;
   background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/check.svg");
   transition: opacity 0.6s ease; }
@@ -558,9 +558,10 @@ p {
   line-height: 1;
   font-size: 2.369rem;
   margin-bottom: 16px; }
-  .c-heading--large {
-    font-size: 3.157rem;
-    margin-bottom: 32px; }
+  @media screen and (min-width: 600px) {
+    .c-heading--large\@ds {
+      font-size: 3.157rem;
+      margin-bottom: 32px; } }
   .c-heading--small {
     font-size: 1.777rem;
     margin-bottom: 10px; }
