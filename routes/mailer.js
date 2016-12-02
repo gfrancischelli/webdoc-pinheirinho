@@ -1,36 +1,37 @@
-const keystone = require('keystone'),
-      nodemailer = require('nodemailer'),
-      secrets = require('../secrets.json');
-
-function handlerEmailRequest(req, res) {
-
-    const transporter = nodemailer.createTransport({
-        service: secrets.mail_service,
-        auth: secrets.mail_auth,
-    });
-}
-
+const secrets = require('../secrets.json');
+const Mailgun = require('mailgun-js');
 
 exports = module.exports = function(req, res) {
-    
-    const sender_name = req.body.name;
-    const sender_adress = req.body.mail;
-    const mail_content = req.body.message;
-    
-    const mailOptions = {
-        from: sender_adress,
-        to: 'gifrancischelli@gmail.com',
-        subject: 'Webdoc Pinheirinho',
-        text: mail_content,
+
+
+    const mailgun = new Mailgun({
+        apiKey: "key-851e14dc7571b7b1568f8c054a73fd59", 
+        domain: "https://api.mailgun.net/v3/sandbox15deb2d8f5b14ad293686e5c8d9a88f7.mailgun.org/messages", 
+    });
+
+    const sender_name = req.body.FullName;
+    const sender_address = req.body.Email;
+    const mail_subject = req.body.Subject;
+    const mail_content = req.body.Content;
+
+
+    const data = {
+        from: 'Mailgun Sandbox <postmaster@sandbox15deb2d8f5b14ad293686e5c8d9a88f7.mailgun.org>',
+        to: 'Giovanni <gifrancischelli@gmail.com>',
+        subject: "Funcitona em nome de jesus",
+        text: "funciona em nome de jesus",
     };
 
-    transporter.sendMail(mailOptions, function(error, info) {
-        if(error) {
-            console.log(error);
-            res.json({status: 'error'});
+    console.log(data);
+
+    mailgun.messages().send(data, function(error, body) {
+        
+        if (error) {
+            console.log('Error sending email: ', error);
+            res.send(error);
         } else {
-            console.log(`Message sent: ${info.response}`);
-            res.json({status: 'success'});
+            console.log('Mail sent sucessfully: ', body);
+            res.send(body);
         }
     });
 }
