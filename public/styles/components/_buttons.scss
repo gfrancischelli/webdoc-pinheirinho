@@ -1,14 +1,16 @@
 .c-btn {
   display: block;
-  width: 100%;
   padding: $spacing-tiny $spacing-medium;
   
   font-size: $font-large;
   color: $base-white;
   
   background-color: $primary-red;
-  // border-radius: $radius-tiny;
   
+  &--fluid {
+    width: 100%;
+  }
+
   &:hover {
     background-color: $light-red;
   }

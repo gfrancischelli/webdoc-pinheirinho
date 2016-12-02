@@ -1,14 +1,16 @@
-.site-nav {
+.c-site-nav {
     padding: $spacing-large;
     margin-bottom: $spacing-default;
+    border-bottom: 2px solid $light-gray;
     
     &__list {
-        display: flex;
-        justify-content: center;
+        display: block;
+        margin: 0 auto;
+        text-align: center;
     }
 
     &__item {
-        float: left;
+        display: inline;
     }
 
     &__item + &__item {
@@ -16,10 +18,9 @@
     }
 
     &__link {
-        display: block;
-        font-size: $font-large;
         position: relative;
         color: $dark-gray;
+        font-size: $font-large;
     }
 
     &__link:after {
@@ -30,6 +31,7 @@
         height: 1px;
         width: 100%;
         background-color: $dark-gray;
+        
         transform: scaleX(0);
         transform-origin: 50% 50%;
         transition: transform 0.5s ease;
