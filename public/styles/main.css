@@ -517,7 +517,7 @@ p {
   top: 10px;
   left: 10px;
   color: #777777;
-  font-size: 0.75rem; }
+  font-size: 1rem; }
 
 .c-form__status-icon {
   position: absolute;
@@ -554,10 +554,11 @@ p {
     background-color: #ffc9c9; }
 
 .c-heading {
+  color: var(--font-color, #2A2A2A);
+  font-size: 2.369rem;
   font-family: "Open Sans", sans-serif;
   line-height: 1;
-  font-size: 2.369rem;
-  margin-bottom: 16px; }
+  margin-bottom: 32px; }
   @media screen and (min-width: 600px) {
     .c-heading--large\@ds {
       font-size: 3.157rem;
@@ -588,12 +589,13 @@ p {
 
 .o-band {
   margin: 0 auto;
-  padding: 32px 0; }
+  padding: 48px 0; }
   .o-band--large {
-    padding: 32px 48px; }
+    padding: 48px 48px; }
   .o-band--tint {
     background-color: #E8E8E8; }
   .o-band--red {
+    --font-color: #F5F5F5;
     background-color: #f03e3e; }
 
 .o-card {

@@ -1,9 +1,9 @@
 .o-band {
     margin: 0 auto;
-    padding: $spacing-large 0;
+    padding: $spacing-kilo 0;
     
     &--large { 
-        padding: $spacing-large $spacing-kilo;
+        padding: $spacing-kilo $spacing-kilo;
     }
 
     &--tint {
@@ -11,6 +11,7 @@
     }
 
     &--red {
+        --font-color: $base-white;
         background-color: $primary-red;
     }
 }

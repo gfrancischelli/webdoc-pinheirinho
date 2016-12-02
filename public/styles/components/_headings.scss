@@ -1,9 +1,10 @@
 .c-heading {
+    color: var(--font-color, $dark-gray);
+    font-size: $font-kilo;
     font-family: $font-secondary;
     line-height: 1;
 
-    font-size: $font-kilo;
-    margin-bottom: $spacing-default;
+    margin-bottom: $spacing-large;
 
     &--large\@ds {
         @media screen and (min-width: 600px) {
