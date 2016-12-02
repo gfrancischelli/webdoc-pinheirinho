@@ -1,4 +1,5 @@
 const keystone = require('keystone'),
+      mailer = require('./mailer'),
       middleware = require('./middleware'),
       importRoutes = keystone.importer(__dirname);
 
@@ -69,4 +70,8 @@ exports = module.exports = function(app) {
     // Gallery routes
     app.get('/galerias', routes.views.galleries);
     app.get('/galerias/:gallerySlug', routes.views.singleGallery);
+
+
+    // Mail
+    app.post('/mail', mailer);
 }
