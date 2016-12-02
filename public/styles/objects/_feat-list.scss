@@ -10,22 +10,6 @@
         flex: 0 1 30%;
     }
 
-    &__img {
-        display: block;
-        height: 160px;
-        margin-bottom: $spacing-tiny;
-        background-size: cover;
-        background-position: center  center;
-        
-        @media screen and (min-width: 600px) {
-            height: 200px;
-        }
-    }
-
-    &__title {
-        font-size: $font-xlarge;
-        margin-bottom: $spacing-tiny;
-    }
 
     &__item + &__item {
         margin-top: $spacing-default;
