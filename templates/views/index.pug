@@ -22,16 +22,4 @@ block content
     // Contact Form
     section.o-band: div(class="o-wrapper o-wrapper--small@ds")
         h3.c-heading Fale Conosco
-        form.c-form(action="post")
-            .c-form__field
-                input.c-form__input(placeholder="joão exemplo" type="text")
-                span.c-form__status-icon
-                label.c-form__label nome
-            .c-form__field
-                input.c-form__input(placeholder="joão@exemplo.com" type="email")
-                span.c-form__status-icon
-                label.c-form__label email
-            .c-form__field
-                textarea.c-form__input(type="text")
-                label.c-form__label mensagem
-            button.c-btn(type="submit") Enviar
+        include ../includes/contact-form.pug

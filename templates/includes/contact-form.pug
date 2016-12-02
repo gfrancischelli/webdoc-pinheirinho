@@ -1,0 +1,36 @@
+form.c-form(id="senMailForm" method="post" action="/mail")
+    .c-form__field
+        input.c-form__input(
+            id="FullName"
+            type="text"
+            name="FullName"
+            placeholder="joão exemplo"
+        )
+        span.c-form__status-icon
+        label.c-form__label(for="FullName") nome
+    .c-form__field
+        input.c-form__input(
+            id="Email"
+            type="email"
+            name="Email"
+            placeholder="joão@exemplo.com"
+        )
+        span.c-form__status-icon
+        label.c-form__label(for="Email") email
+    .c-form__field
+        input.c-form__input(
+            id="Subject"
+            type="text"
+            name="Subject"
+            placeholder="Exemplo"
+        )
+        span.c-form__status-icon
+        label.c-form__label(for="Subject") assunto
+    .c-form__field
+        textarea.c-form__input(
+            id="Content"
+            type="text"
+            name="Content"
+        )
+        label.c-form__label(for="Content") mensagem
+    button.c-btn.c-btn--fluid(type="submit") Enviar
