@@ -1,26 +1,7 @@
 const secrets = require('../secrets.json');
 const Mailgun = require('mailgun-js');
-<<<<<<< HEAD
 
 exports = module.exports = function(req, res) {
-
-
-    const mailgun = new Mailgun(secrets.mailgun_auth);
-
-    const sender_name = req.body.FullName;
-    const sender_address = req.body.Email;
-    const mail_subject = req.body.Subject;
-    const mail_content = req.body.Content;
-
-    const data = {
-        from: 'Webdoc Pinheirinho <postmaster@sandbox15deb2d8f5b14ad293686e5c8d9a88f7.mailgun.org>',
-        to: secrets.mail_to,
-        subject: mail_subject,
-        text: mail_content,
-=======
-
-exports = module.exports = function(req, res) {
-
 
     const mailgun = new Mailgun({
         apiKey: "key-851e14dc7571b7b1568f8c054a73fd59", 
@@ -32,16 +13,12 @@ exports = module.exports = function(req, res) {
     const mail_subject = req.body.Subject;
     const mail_content = req.body.Content;
 
-
     const data = {
         from: 'Mailgun Sandbox <postmaster@sandbox15deb2d8f5b14ad293686e5c8d9a88f7.mailgun.org>',
         to: 'Giovanni <gifrancischelli@gmail.com>',
         subject: "Funcitona em nome de jesus",
         text: "funciona em nome de jesus",
->>>>>>> 1a0ed358ffa74df9f1869c4591dfa7ae16083d7e
     };
-
-    console.log(data);
 
     mailgun.messages().send(data, function(error, body) {
         
