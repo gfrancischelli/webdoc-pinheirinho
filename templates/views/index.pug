@@ -22,4 +22,14 @@ block content
     // Contact Form
     section.o-band: div(class="o-wrapper o-wrapper--small@ds")
         h3.c-heading Fale Conosco
-        include ../includes/contact-form.pug
+
+        contact-form
+
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/riot/3.0.1/riot.min.js')
+    script(src='/js/components/load-button.js')
+    script(src='/js/components/contact-form.js')
+    script.
+        console.log('riot.mount');
+        riot.mount('*', {name: 'Giovanni'});
+
+
