@@ -4,7 +4,9 @@
   "description": "",
   "main": "web.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "riot": "riot --config riot.config -w",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon web.js && riot --config riot.config -w"
   },
   "repository": {
     "type": "git",
@@ -14,10 +16,12 @@
   "license": "ISC",
   "homepage": "https://bitbucket.org/gifrancischelli/pinheirinho#readme",
   "dependencies": {
+    "body-parser": "^1.15.2",
     "keystone": "^4.0.0-beta.3",
     "lodash": "^4.17.2",
     "mailgun-js": "^0.7.14",
     "node-sass-middleware": "^0.10.0",
-    "pug": "^2.0.0-beta6"
+    "pug": "^2.0.0-beta6",
+    "riot": "^3.0.1"
   }
 }
