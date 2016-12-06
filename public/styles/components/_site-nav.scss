@@ -1,8 +1,13 @@
 .c-site-nav {
-    padding: $spacing-large;
+    padding: $spacing-small;
     margin-bottom: $spacing-default;
     border-bottom: 2px solid $light-gray;
     
+
+    @include media('>tablet') {
+        padding: $spacing-large;
+    }
+
     &__list {
         display: block;
         margin: 0 auto;
@@ -14,13 +19,20 @@
     }
 
     &__item + &__item {
-        margin-left: $margin-large;
+        margin-left: $spacing-tiny;
+        
+        @include media('>phone') {
+            margin-left: $spacing-large;
+        }
     }
 
     &__link {
         position: relative;
         color: $dark-gray;
-        font-size: $font-large;
+        
+        @include media('>tablet') {
+            font-size: $font-large;
+        }
     }
 
     &__link:after {

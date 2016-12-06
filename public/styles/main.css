@@ -555,9 +555,12 @@ p {
     background-color: #ffc9c9; }
 
 .c-site-nav {
-  padding: 32px;
+  padding: 16px;
   margin-bottom: 16px;
   border-bottom: 2px solid #CCCCCC; }
+  @media (min-width: 769px) {
+    .c-site-nav {
+      padding: 32px; } }
   .c-site-nav__list {
     display: block;
     margin: 0 auto;
@@ -565,11 +568,16 @@ p {
   .c-site-nav__item {
     display: inline; }
   .c-site-nav__item + .c-site-nav__item {
-    margin-left: 32px; }
+    margin-left: 10px; }
+    @media (min-width: 421px) {
+      .c-site-nav__item + .c-site-nav__item {
+        margin-left: 32px; } }
   .c-site-nav__link {
     position: relative;
-    color: #2A2A2A;
-    font-size: 1.333rem; }
+    color: #2A2A2A; }
+    @media (min-width: 769px) {
+      .c-site-nav__link {
+        font-size: 1.333rem; } }
   .c-site-nav__link:after {
     content: '';
     position: absolute;
