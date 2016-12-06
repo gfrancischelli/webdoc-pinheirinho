@@ -40,7 +40,7 @@
         
         this.status = 'initial';
 
-        post(e) {
+        this.post = (e) => {
             e.preventDefault()
             
             this.status = 'pending'

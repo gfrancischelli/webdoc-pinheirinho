@@ -8,8 +8,10 @@ html
         title= title || 'Webdoc'
         link(rel="shortcut icone", href="/favicon.ico", type="image/x-icon")
         link(href="/styles/main.css", rel="stylesheet")
-
+     
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/riot/3.0.1/riot.min.js')
         script(src="https://use.fontawesome.com/f39734232b.js")
+     
         block css
         block head
 
@@ -21,6 +23,6 @@ html
             block content
         #footer Footer
     
-    script(src='')
+    script(src='/js/bundle.js')
 
     block js
