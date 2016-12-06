@@ -16,7 +16,6 @@
         </span>
 
     </button>
-    console.log('btn')
 
     this.state = opts.state
 

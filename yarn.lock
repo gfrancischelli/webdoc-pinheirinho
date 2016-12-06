@@ -1400,7 +1400,7 @@ character-parser@^2.1.1:
   dependencies:
     is-regex "^1.0.3"
 
-chokidar@^1.0.0, chokidar@^1.6.0, chokidar@^1.6.1:
+chokidar@^1.0.0, chokidar@^1.6.1:
   version "1.6.1"
   resolved "https://registry.yarnpkg.com/chokidar/-/chokidar-1.6.1.tgz#2f4447ab5e96e50fb3d789fd90d4c72e0e4c70c2"
   dependencies:
@@ -2226,10 +2226,6 @@ expression-match@0.0.17:
   resolved "https://registry.yarnpkg.com/expression-match/-/expression-match-0.0.17.tgz#1f8cb7e10e937ae40090831ad46ed8e6d1b3cf45"
   dependencies:
     lodash "4.11.1"
-
-extend-object@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/extend-object/-/extend-object-1.0.0.tgz#42514f84015d1356caf5187969dfb2bc1bda0823"
 
 extend@~3.0.0, extend@3, extend@3.0.0:
   version "3.0.0"
@@ -4869,18 +4865,6 @@ riot:
     simple-dom "0.3.2"
     simple-html-tokenizer "^0.2.5"
 
-riot-cli@^2.6.2:
-  version "2.6.2"
-  resolved "https://registry.yarnpkg.com/riot-cli/-/riot-cli-2.6.2.tgz#2efd43bed8b286d558dc09b55a5f0e80c9f10c09"
-  dependencies:
-    chalk "^1.1.3"
-    chokidar "^1.6.0"
-    co "^4.6.0"
-    optionator "^0.8.1"
-    riot-compiler "^2.5.3"
-    rollup "^0.36.1"
-    shelljs "^0.7.3"
-
 riot-cli@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/riot-cli/-/riot-cli-3.0.0.tgz#02c6fc704d5db5655802ea180b68acc83c7df2e6"
@@ -4893,7 +4877,7 @@ riot-cli@^3.0.0:
     rollup "^0.36.3"
     shelljs "^0.7.5"
 
-riot-compiler@^2.3.22, riot-compiler@^2.5.3, riot-compiler@^2.5.5:
+riot-compiler@^2.3.22:
   version "2.5.7"
   resolved "https://registry.yarnpkg.com/riot-compiler/-/riot-compiler-2.5.7.tgz#dc418366f1178d39c6c18fd9fc0190cbeecc1695"
 
@@ -4901,47 +4885,13 @@ riot-compiler@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/riot-compiler/-/riot-compiler-3.0.0.tgz#9d4259d743341f5c79ae06667cf3161056fd2a6b"
 
-riot-loader:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/riot-loader/-/riot-loader-1.0.0.tgz#76a029692dfe59586c1fb30812079389cd749b28"
-  dependencies:
-    extend-object "^1.0.0"
-    loader-utils "^0.2.6"
-    riot "^2.0.1"
-
-riot-observable@^2.5.0:
-  version "2.5.0"
-  resolved "https://registry.yarnpkg.com/riot-observable/-/riot-observable-2.5.0.tgz#5fb9682685b6ebd52d54ad0f4c4e72af9eb904c4"
-
 riot-observable@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/riot-observable/-/riot-observable-3.0.0.tgz#8bbd2daf72a2141bb043082df4023dc504bad2eb"
 
-riot-route@^2.5.0:
-  version "2.5.0"
-  resolved "https://registry.yarnpkg.com/riot-route/-/riot-route-2.5.0.tgz#aafcd0ee2df470db89a587770cd557760b2ac2b5"
-  dependencies:
-    riot-observable "^2.5.0"
-
-riot-tmpl@^2.4.2:
-  version "2.4.2"
-  resolved "https://registry.yarnpkg.com/riot-tmpl/-/riot-tmpl-2.4.2.tgz#daa1a86c430dbf5ed79530014355f10692ad67b7"
-
 riot-tmpl@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/riot-tmpl/-/riot-tmpl-3.0.0.tgz#fe8bb496dd8ef001f32a731d0d6c0d806bf1dbfd"
-
-riot@^2.0.1:
-  version "2.6.7"
-  resolved "https://registry.yarnpkg.com/riot/-/riot-2.6.7.tgz#9995b7563b35c4fea435213bc91cfb2809382373"
-  dependencies:
-    riot-cli "^2.6.2"
-    riot-compiler "^2.5.5"
-    riot-observable "^2.5.0"
-    riot-route "^2.5.0"
-    riot-tmpl "^2.4.2"
-    simple-dom "0.3.2"
-    simple-html-tokenizer "^0.2.5"
 
 riotjs-loader:
   version "3.0.0"
@@ -4958,7 +4908,7 @@ ripemd160@0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/ripemd160/-/ripemd160-0.2.0.tgz#2bf198bde167cacfa51c0a928e84b68bbe171fce"
 
-rollup@^0.36.1, rollup@^0.36.3:
+rollup@^0.36.3:
   version "0.36.4"
   resolved "https://registry.yarnpkg.com/rollup/-/rollup-0.36.4.tgz#a224494c5386c1d73d38f7bb86f69f5eb011a3d2"
   dependencies:
@@ -5089,7 +5039,7 @@ shell-quote@^1.4.2, shell-quote@^1.4.3:
     array-reduce "~0.0.0"
     jsonify "~0.0.0"
 
-shelljs@^0.7.3, shelljs@^0.7.5:
+shelljs@^0.7.5:
   version "0.7.5"
   resolved "https://registry.yarnpkg.com/shelljs/-/shelljs-0.7.5.tgz#2eef7a50a21e1ccf37da00df767ec69e30ad0675"
   dependencies:
@@ -5887,4 +5837,8 @@ yargs@~3.27.0:
     os-locale "^1.4.0"
     window-size "^0.1.2"
     y18n "^3.2.0"
+
+zenscroll:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/zenscroll/-/zenscroll-3.3.0.tgz#1dd3facb548e4f4fda3da2e8b48ae509a1297dc0"
 

@@ -26,7 +26,6 @@
         <div class="c-form__field">
             <textarea ref="content" name="Content" class="c-form__input"
                 type="text"></textarea>
-            <span class="c-form__status-icon"></span>
             <label class="c-form__label" for="Subject">mensagem</label>
         </div>
 
