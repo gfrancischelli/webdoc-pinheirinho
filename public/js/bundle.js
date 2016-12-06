@@ -46,28 +46,18 @@
 
 	/* WEBPACK VAR INJECTION */(function(riot) {'use strict';
 
-	__webpack_require__(1);
+	__webpack_require__(2);
 	__webpack_require__(3);
+	__webpack_require__(4);
+
+	__webpack_require__(5);
 
 	riot.mount('*');
 	console.log('mounted');
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ },
 /* 1 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* WEBPACK VAR INJECTION */(function(riot) {'use strict';
-
-	riot.tag2('load-button', '<button __disabled="{state == \'success\'}" class="c-btn c-btn--fluid {c-btn--disabled: state == \'success\'}"> <span show="{state == \'initial\'}"><yield from="initial"></yield></span> <span show="{state == \'pending\'}" class="fa fa-spinner fa-pulse"></span> <span show="{state == \'success\'}"> <yield from="completed"></yield> <span class="fa fa-check"></span> </span> <span show="{state == \'error\'}"> Tente novamente mais tarde <span class="fa fa-exclamation"></span> </span> </button>', '', '', function (opts) {
-	  console.log('btn');
-
-	  this.state = opts.state;
-	});
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
-
-/***/ },
-/* 2 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(riot) {'use strict';
@@ -2864,7 +2854,19 @@
 
 	  Object.defineProperty(exports, '__esModule', { value: true });
 	});
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+
+/***/ },
+/* 2 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(riot) {'use strict';
+
+	riot.tag2('load-button', '<button __disabled="{state == \'success\'}" class="c-btn c-btn--fluid {c-btn--disabled: state == \'success\'}"> <span show="{state == \'initial\'}"><yield from="initial"></yield></span> <span show="{state == \'pending\'}" class="fa fa-spinner fa-pulse"></span> <span show="{state == \'success\'}"> <yield from="completed"></yield> <span class="fa fa-check"></span> </span> <span show="{state == \'error\'}"> Tente novamente mais tarde <span class="fa fa-exclamation"></span> </span> </button>', '', '', function (opts) {
+
+	  this.state = opts.state;
+	});
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ },
 /* 3 */
@@ -2872,7 +2874,7 @@
 
 	/* WEBPACK VAR INJECTION */(function(riot) {'use strict';
 
-	riot.tag2('contact-form', '<form refs="contactForm" onsubmit="{post}" class="c-form" method="post"> <div class="c-form__field"> <input ref="name" name="FullName" class="c-form__input" type="text" placeholder="joão exemplo"> <span class="c-form__status-icon"></span> <label class="c-form__label" for="FullName">nome</label> </div> <div class="c-form__field"> <input ref="email" name="Email" class="c-form__input" placeholder="joão@exemplo.com" type="email"> <span class="c-form__status-icon"></span> <label class="c-form__label" for="Email">email</label> </div> <div class="c-form__field"> <input ref="subject" name="Subject" class="c-form__input" type="text" placeholder="Exemplo"> <span class="c-form__status-icon"></span> <label class="c-form__label" for="Subject">assunto</label> </div> <div class="c-form__field"> <textarea ref="content" name="Content" class="c-form__input" type="text"></textarea> <span class="c-form__status-icon"></span> <label class="c-form__label" for="Subject">mensagem</label> </div> <load-button state="{status}"> <yield to="initial">Enviar</yield> <yield to="completed">Mensagem Enviada</yield> </load-button> </form>', '', '', function (opts) {
+	riot.tag2('contact-form', '<form refs="contactForm" onsubmit="{post}" class="c-form" method="post"> <div class="c-form__field"> <input ref="name" name="FullName" class="c-form__input" type="text" placeholder="joão exemplo"> <span class="c-form__status-icon"></span> <label class="c-form__label" for="FullName">nome</label> </div> <div class="c-form__field"> <input ref="email" name="Email" class="c-form__input" placeholder="joão@exemplo.com" type="email"> <span class="c-form__status-icon"></span> <label class="c-form__label" for="Email">email</label> </div> <div class="c-form__field"> <input ref="subject" name="Subject" class="c-form__input" type="text" placeholder="Exemplo"> <span class="c-form__status-icon"></span> <label class="c-form__label" for="Subject">assunto</label> </div> <div class="c-form__field"> <textarea ref="content" name="Content" class="c-form__input" type="text"></textarea> <label class="c-form__label" for="Subject">mensagem</label> </div> <load-button state="{status}"> <yield to="initial">Enviar</yield> <yield to="completed">Mensagem Enviada</yield> </load-button> </form>', '', '', function (opts) {
 	    var _this = this;
 
 	    this.status = 'initial';
@@ -2909,7 +2911,332 @@
 	        });
 	    };
 	});
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+
+/***/ },
+/* 4 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(riot) {'use strict';
+
+	riot.tag2('navbar', '<nav class="c-site-nav"> <ul class="c-site-nav__list"> <li each="{links.always_visible}" class="c-site-nav__item"> <a class="c-site-nav__link {title}" href="{url}"> {link} </a> </li> <li each="{links.mobile_hidden}" class="c-site-nav__item mobile-hidden"> <a class="c-site-nav__link {title}" href="{url}"> {link} </a> </li> <li ref="btn_action" id="dropdown-btn" onclick="{collapse}" class="c-site-nav__item"> <button><span class="fa fa-bars"></span></button> </li> </ul> <ul ref="dropdown" id="dropdown" class="c-site-nav__list"> <li each="{links.mobile_hidden}" class="c-site-nav__item"> <a class="c-site-nav__link" href="{url}"> {link} </a> </li> </ul> </nav>', 'navbar .mobile-hidden,[riot-tag="navbar"] .mobile-hidden,[data-is="navbar"] .mobile-hidden{ display: none; } navbar #dropdown,[riot-tag="navbar"] #dropdown,[data-is="navbar"] #dropdown{ opacity: 0; height: 0; transition: all 0.5s ease; } navbar #dropdown.active,[riot-tag="navbar"] #dropdown.active,[data-is="navbar"] #dropdown.active{ padding-top: 12px; opacity: 1; height: auto; } navbar #dropdown-btn button,[riot-tag="navbar"] #dropdown-btn button,[data-is="navbar"] #dropdown-btn button{ background-color: transparent; } @media screen and (min-width: 600px) { navbar .mobile-hidden,[riot-tag="navbar"] .mobile-hidden,[data-is="navbar"] .mobile-hidden{ display: inline; } navbar #dropdown,[riot-tag="navbar"] #dropdown,[data-is="navbar"] #dropdown,navbar #dropdown-btn,[riot-tag="navbar"] #dropdown-btn,[data-is="navbar"] #dropdown-btn{ display: none; } }', '', function (opts) {
+	    var _this = this;
+
+	    this.hey = opts.title;
+
+	    this.links = {
+	        always_visible: [{ link: "home", url: "/" }, { link: "galerias", url: "/galerias" }, { link: "notícias", url: "/noticias" }],
+	        mobile_hidden: [{ link: "ficha técnica", url: "/ficha-tecnica" }, { link: "fale conosco", url: "#fale-conosco" }, { link: "jurídico", url: "#juridico" }]
+	    };
+
+	    this.collapse = function (e) {
+	        console.log('click');
+	        _this.refs.dropdown.classList.toggle('active');
+	    };
+	});
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+
+/***/ },
+/* 5 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
+
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+	/**
+	 * Zenscroll 3.3.0
+	 * https://github.com/zengabor/zenscroll/
+	 *
+	 * Copyright 2015–2016 Gabor Lenard
+	 *
+	 * This is free and unencumbered software released into the public domain.
+	 * 
+	 * Anyone is free to copy, modify, publish, use, compile, sell, or
+	 * distribute this software, either in source code form or as a compiled
+	 * binary, for any purpose, commercial or non-commercial, and by any
+	 * means.
+	 * 
+	 * In jurisdictions that recognize copyright laws, the author or authors
+	 * of this software dedicate any and all copyright interest in the
+	 * software to the public domain. We make this dedication for the benefit
+	 * of the public at large and to the detriment of our heirs and
+	 * successors. We intend this dedication to be an overt act of
+	 * relinquishment in perpetuity of all present and future rights to this
+	 * software under copyright law.
+	 * 
+	 * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+	 * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+	 * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+	 * IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+	 * OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+	 * ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+	 * OTHER DEALINGS IN THE SOFTWARE.
+	 * 
+	 * For more information, please refer to <http://unlicense.org>
+	 *
+	 */
+
+	/*jshint devel:true, asi:true */
+
+	/*global define, module */
+
+	(function (root, factory) {
+		if (true) {
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory()), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+		} else if ((typeof module === "undefined" ? "undefined" : _typeof(module)) === "object" && module.exports) {
+			module.exports = factory();
+		} else {
+			root.zenscroll = factory();
+		}
+	})(undefined, function () {
+		"use strict";
+
+		// Detect if the browser already supports native smooth scrolling (e.g., Firefox 36+ and Chrome 49+) and it is enabled:
+
+		var isNativeSmoothScrollEnabledOn = function isNativeSmoothScrollEnabledOn(elem) {
+			return "getComputedStyle" in window && window.getComputedStyle(elem)["scroll-behavior"] === "smooth";
+		};
+
+		// Exit if it’s not a browser environment:
+		if (typeof window === "undefined" || !("document" in window)) {
+			return {};
+		}
+
+		var createScroller = function createScroller(scrollContainer, defaultDuration, edgeOffset) {
+
+			defaultDuration = defaultDuration || 999; //ms
+			if (!edgeOffset && edgeOffset !== 0) {
+				// When scrolling, this amount of distance is kept from the edges of the scrollContainer:
+				edgeOffset = 9; //px
+			}
+
+			var scrollTimeoutId;
+			var setScrollTimeoutId = function setScrollTimeoutId(newValue) {
+				scrollTimeoutId = newValue;
+			};
+			var docElem = document.documentElement;
+
+			var getScrollTop = function getScrollTop() {
+				if (scrollContainer) {
+					return scrollContainer.scrollTop;
+				} else {
+					return window.scrollY || docElem.scrollTop;
+				}
+			};
+
+			var getViewHeight = function getViewHeight() {
+				if (scrollContainer) {
+					return Math.min(scrollContainer.offsetHeight, window.innerHeight);
+				} else {
+					return window.innerHeight || docElem.clientHeight;
+				}
+			};
+
+			var getRelativeTopOf = function getRelativeTopOf(elem) {
+				if (scrollContainer) {
+					return elem.offsetTop;
+				} else {
+					return elem.getBoundingClientRect().top + getScrollTop() - docElem.offsetTop;
+				}
+			};
+
+			/**
+	   * Immediately stops the current smooth scroll operation
+	   */
+			var stopScroll = function stopScroll() {
+				clearTimeout(scrollTimeoutId);
+				setScrollTimeoutId(0);
+			};
+
+			/**
+	   * Scrolls to a specific vertical position in the document.
+	   *
+	   * @param {endY} The vertical position within the document.
+	   * @param {duration} Optionally the duration of the scroll operation.
+	   *        If 0 or not provided it is automatically calculated based on the 
+	   *        distance and the default duration.
+	   * @param {onDone} Callback function to be invoken once the scroll finishes.
+	   */
+			var scrollToY = function scrollToY(endY, duration, onDone) {
+				stopScroll();
+				if (isNativeSmoothScrollEnabledOn(scrollContainer ? scrollContainer : document.body)) {
+					(scrollContainer || window).scrollTo(0, endY);
+					if (onDone) {
+						onDone();
+					}
+				} else {
+					var startY = getScrollTop();
+					var distance = Math.max(endY, 0) - startY;
+					duration = duration || Math.min(Math.abs(distance), defaultDuration);
+					var startTime = new Date().getTime();
+					(function loopScroll() {
+						setScrollTimeoutId(setTimeout(function () {
+							var p = Math.min((new Date().getTime() - startTime) / duration, 1); // percentage
+							var y = Math.max(Math.floor(startY + distance * (p < 0.5 ? 2 * p * p : p * (4 - p * 2) - 1)), 0);
+							if (scrollContainer) {
+								scrollContainer.scrollTop = y;
+							} else {
+								window.scrollTo(0, y);
+							}
+							if (p < 1 && getViewHeight() + y < (scrollContainer || docElem).scrollHeight) {
+								loopScroll();
+							} else {
+								setTimeout(stopScroll, 99); // with cooldown time
+								if (onDone) {
+									onDone();
+								}
+							}
+						}, 9));
+					})();
+				}
+			};
+
+			/**
+	   * Scrolls to the top of a specific element.
+	   *
+	   * @param {elem} The element.
+	   * @param {duration} Optionally the duration of the scroll operation.
+	   *        A value of 0 is ignored.
+	   * @param {onDone} Callback function to be invoken once the scroll finishes.
+	   * @returns {endY} The new vertical scoll position that will be valid once the scroll finishes.
+	   */
+			var scrollToElem = function scrollToElem(elem, duration, onDone) {
+				var endY = getRelativeTopOf(elem) - edgeOffset;
+				scrollToY(endY, duration, onDone);
+				return endY;
+			};
+
+			/**
+	   * Scrolls an element into view if necessary.
+	   *
+	   * @param {elem} The element.
+	   * @param {duration} Optionally the duration of the scroll operation.
+	   *        A value of 0 is ignored.
+	   * @param {onDone} Callback function to be invoken once the scroll finishes.
+	   */
+			var scrollIntoView = function scrollIntoView(elem, duration, onDone) {
+				var elemHeight = elem.getBoundingClientRect().height;
+				var elemTop = getRelativeTopOf(elem);
+				var elemBottom = elemTop + elemHeight;
+				var containerHeight = getViewHeight();
+				var containerTop = getScrollTop();
+				var containerBottom = containerTop + containerHeight;
+				if (elemTop - edgeOffset < containerTop || elemHeight + edgeOffset > containerHeight) {
+					// Element is clipped at top or is higher than screen.
+					scrollToElem(elem, duration, onDone);
+				} else if (elemBottom + edgeOffset > containerBottom) {
+					// Element is clipped at the bottom.
+					scrollToY(elemBottom - containerHeight + edgeOffset, duration, onDone);
+				} else if (onDone) {
+					onDone();
+				}
+			};
+
+			/**
+	   * Scrolls to the center of an element.
+	   *
+	   * @param {elem} The element.
+	   * @param {duration} Optionally the duration of the scroll operation.
+	   * @param {offset} Optionally the offset of the top of the element from the center of the screen.
+	   *        A value of 0 is ignored.
+	   * @param {onDone} Callback function to be invoken once the scroll finishes.
+	   */
+			var scrollToCenterOf = function scrollToCenterOf(elem, duration, offset, onDone) {
+				scrollToY(Math.max(getRelativeTopOf(elem) - getViewHeight() / 2 + (offset || elem.getBoundingClientRect().height / 2), 0), duration, onDone);
+			};
+
+			/**
+	   * Changes default settings for this scroller.
+	   *
+	   * @param {newDefaultDuration} New value for default duration, used for each scroll method by default.
+	   *        Ignored if 0 or falsy.
+	   * @param {newEdgeOffset} New value for the edge offset, used by each scroll method by default.
+	   */
+			var setup = function setup(newDefaultDuration, newEdgeOffset) {
+				if (newDefaultDuration) {
+					defaultDuration = newDefaultDuration;
+				}
+				if (newEdgeOffset === 0 || newEdgeOffset) {
+					edgeOffset = newEdgeOffset;
+				}
+			};
+
+			return {
+				setup: setup,
+				to: scrollToElem,
+				toY: scrollToY,
+				intoView: scrollIntoView,
+				center: scrollToCenterOf,
+				stop: stopScroll,
+				moving: function moving() {
+					return !!scrollTimeoutId;
+				},
+				getY: getScrollTop
+			};
+		};
+
+		// Create a scroller for the browser window, omitting parameters:
+		var defaultScroller = createScroller();
+
+		// Create listeners for the documentElement only & exclude IE8-
+		if ("addEventListener" in window && !(isNativeSmoothScrollEnabledOn(document.body) || window.noZensmooth)) {
+			if ("scrollRestoration" in history) {
+				history.scrollRestoration = "manual";
+				window.addEventListener("popstate", function (event) {
+					if (event.state && "scrollY" in event.state) {
+						defaultScroller.toY(event.state.scrollY);
+					}
+				}, false);
+			}
+			var replaceUrl = function replaceUrl(hash, newY) {
+				try {
+					history.replaceState({ scrollY: defaultScroller.getY() }, ""); // remember the scroll position before scrolling
+					history.pushState({ scrollY: newY }, "", window.location.href.split("#")[0] + hash); // remember the new scroll position (which will be after scrolling)
+				} catch (e) {
+					// To avoid the Security exception in Chrome when the page was opened via the file protocol, e.g., file://index.html
+				}
+			};
+			window.addEventListener("click", function (event) {
+				var anchor = event.target;
+				while (anchor && anchor.tagName !== "A") {
+					anchor = anchor.parentNode;
+				}
+				// Only handle links that were clicked with the primary button, without modifier keys:
+				if (!anchor || event.which !== 1 || event.shiftKey || event.metaKey || event.ctrlKey || event.altKey) {
+					return;
+				}
+				var href = anchor.getAttribute("href") || "";
+				if (href.indexOf("#") === 0) {
+					if (href === "#") {
+						event.preventDefault();
+						defaultScroller.toY(0);
+						replaceUrl("", 0);
+					} else {
+						var targetId = anchor.hash.substring(1);
+						var targetElem = document.getElementById(targetId);
+						if (targetElem) {
+							event.preventDefault();
+							replaceUrl("#" + targetId, defaultScroller.to(targetElem));
+						}
+					}
+				}
+			}, false);
+		}
+
+		return {
+			// Expose the "constructor" that can create a new scroller:
+			createScroller: createScroller,
+			// Surface the methods of the default scroller:
+			setup: defaultScroller.setup,
+			to: defaultScroller.to,
+			toY: defaultScroller.toY,
+			intoView: defaultScroller.intoView,
+			center: defaultScroller.center,
+			stop: defaultScroller.stop,
+			moving: defaultScroller.moving
+		};
+	});
 
 /***/ }
 /******/ ]);
