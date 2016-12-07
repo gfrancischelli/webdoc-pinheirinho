@@ -4,7 +4,16 @@
     margin: 0 auto;
     max-width: 1200px;
 
-    @media screen and (min-width: 600px) {
+    .birbi {
+        font-size: $font-small;
+        color: $soft-gray;
+        margin-bottom: $spacing-tiny;
+    }
+
+    @include media('>tablet') {
+        &--slim\@ds {
+            max-width: 980px;
+        }
         &--small\@ds {
             max-width: 800px;
         }

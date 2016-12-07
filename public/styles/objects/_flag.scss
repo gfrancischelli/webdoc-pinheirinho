@@ -25,7 +25,7 @@
             display: block;
             max-width: $spacing-giga;
             
-            @media screen and (min-width: 600px) {
+            @include media('>tablet') {
                 max-width: none;
             }
         }

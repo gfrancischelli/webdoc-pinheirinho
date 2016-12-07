@@ -540,7 +540,7 @@ p {
   background-color: transparent;
   font-size: 1.333rem;
   transition: padding 0.6s ease; }
-  @media screen and (max-width: 600px) {
+  @media (min-width: 769px) {
     .c-form__input {
       font-size: 1.777rem; } }
   .c-form__input:focus {
@@ -598,7 +598,7 @@ p {
   font-family: "Open Sans", sans-serif;
   line-height: 1;
   margin-bottom: 32px; }
-  @media screen and (min-width: 600px) {
+  @media (min-width: 769px) {
     .c-heading--large\@ds {
       font-size: 3.157rem;
       margin-bottom: 32px; } }
@@ -672,7 +672,7 @@ p {
     flex: 0 1 30%; }
   .o-feat-list__item + .o-feat-list__item {
     margin-top: 16px; }
-  @media screen and (min-width: 600px) {
+  @media (min-width: 769px) {
     .o-feat-list {
       flex-direction: row; }
       .o-feat-list__item + .o-feat-list__item {
@@ -694,7 +694,7 @@ p {
   .flag__solid-cp > img {
     display: block;
     max-width: 80px; }
-    @media screen and (min-width: 600px) {
+    @media (min-width: 769px) {
       .flag__solid-cp > img {
         max-width: none; } }
 
@@ -747,7 +747,13 @@ p {
   padding-right: 16px;
   margin: 0 auto;
   max-width: 1200px; }
-  @media screen and (min-width: 600px) {
+  .o-wrapper .birbi {
+    font-size: 0.75rem;
+    color: #777777;
+    margin-bottom: 10px; }
+  @media (min-width: 769px) {
+    .o-wrapper--slim\@ds {
+      max-width: 980px; }
     .o-wrapper--small\@ds {
       max-width: 800px; } }
 

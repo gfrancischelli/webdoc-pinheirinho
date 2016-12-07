@@ -15,7 +15,7 @@
         margin-top: $spacing-default;
     }
 
-    @media screen and (min-width: 600px) {
+    @include media('>tablet') {
         flex-direction: row;
         
         &__item + &__item {
