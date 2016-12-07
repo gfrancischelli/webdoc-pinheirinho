@@ -35,7 +35,7 @@ function imageAPI(req, res) {
     const params = req.params,
           fileName = params.filename;
     
-    const root = process.env.ENV == 'production' ? './current/public' : './public';
+    const root = process.env.ENV == 'production' ? './apllications/webdoc/current/public' : './public';
 
     const options = {
         root: `${root}/images/${params.folder}/`,
