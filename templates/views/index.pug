@@ -2,10 +2,11 @@ extends ../layouts/base
 include ../mixins/feature-list
 
 block content
-    .o-band(style="margin-bottom: 30px"): .o-card
-        .o-card__figure: .c-fluid-container-16-9
-          iframe(src="https://www.youtube.com/embed/S5rezgxdPC0" frameborder="0" allowfullscreen)
-        .o-card__title Pinheirinho lorem ipsum sit dolor amet
+    .o-band(style="margin-bottom: 30px"): .o-wrapper
+        .o-card
+            .o-card__figure: .c-fluid-container-16-9
+                iframe(src="https://www.youtube.com/embed/S5rezgxdPC0" frameborder="0" allowfullscreen)
+            .o-card__title Pinheirinho lorem ipsum sit dolor amet
 
     // News Section
     section.o-band.o-band--tint: .o-wrapper.clearfix
