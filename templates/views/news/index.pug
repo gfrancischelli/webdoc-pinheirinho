@@ -8,7 +8,7 @@ block content
       .o-layout__item: ul.list-ui
         each single in data.news.results
           li.o-list-ui__item
-            .flag
+            div(class="flag flag--stack@mb")
               .flag__solid-cp: img.c-thumb-large( src=single.heroUrl )
               .flag__fluid-cp.u-pad-left-large
                   a( href=single.url ): h3.c-heading.c-heading--small= single.title

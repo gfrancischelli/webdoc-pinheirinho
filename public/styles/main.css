@@ -680,7 +680,7 @@ p {
         margin-left: 16px; } }
 
 .flag {
-  display: table;
+  display: block;
   width: 100%; }
   .flag__solid-cp, .flag__fluid-cp {
     display: table-cell;
@@ -689,11 +689,22 @@ p {
       vertical-align: middle; }
     .flag__solid-cp--bottom, .flag__fluid-cp--bottom {
       vertical-align: bottom; }
+  @media (max-width: 420px) {
+    .flag--stack\@mb .flag__solid-cp,
+    .flag--stack\@mb .flag__fluid-cp {
+      display: block;
+      max-width: 100%; }
+    .flag--stack\@mb .flag__fluid-cp {
+      padding-left: 0 !important; }
+    .flag--stack\@mb .flag__solid-cp > img {
+      max-width: 100%;
+      width: 100%;
+      margin: 0;
+      margin-bottom: 10px; } }
   .flag__fluid-cp {
     width: 100%; }
   .flag__solid-cp > img {
-    display: block;
-    max-width: 80px; }
+    display: block; }
     @media (min-width: 769px) {
       .flag__solid-cp > img {
         max-width: none; } }
