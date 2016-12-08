@@ -1,0 +1,29 @@
+.o-mosaic {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    &__item {
+        --margin: $spacing-tiny / 2;
+        width: calc( 50% - var(--margin));
+        margin-top: var(--margin);
+        
+        overflow: hidden;
+        max-height: 200px;
+        
+        > img {
+            width: 100%;
+        }
+        
+        @include media('>phone', '<=tablet') {
+            width: calc( 33% - var(--margin) );
+            max-height: 250px;
+        }
+        
+        @include media('>tablet') {
+            width: calc( 25% - var(--margin) );
+            max-height: 300px;
+        }
+    }
+
+}

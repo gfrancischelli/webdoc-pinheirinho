@@ -730,6 +730,28 @@ p {
   overflow: hidden;
   zoom: 1; }
 
+.o-mosaic {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; }
+  .o-mosaic__item {
+    --margin: 5px;
+    width: calc( 50% - var(--margin));
+    margin-top: var(--margin);
+    overflow: hidden;
+    max-height: 200px; }
+    .o-mosaic__item > img {
+      width: 100%; }
+
+@media (min-width: 421px) and (max-width: 768px) {
+  .o-mosaic__item {
+    width: calc( 33% - var(--margin));
+    max-height: 250px; } }
+    @media (min-width: 769px) {
+      .o-mosaic__item {
+        width: calc( 25% - var(--margin));
+        max-height: 300px; } }
+
 .page-head {
   margin: 0; }
   .page-head__img--placeholder {
