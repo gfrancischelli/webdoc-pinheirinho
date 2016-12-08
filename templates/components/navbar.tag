@@ -1,6 +1,6 @@
 <navbar>
     
-    <nav class="c-site-nav">
+    <nav ref="nav" class="c-site-nav is-on-header">
         <ul class="c-site-nav__list">
             <li each={ links.always_visible } class="c-site-nav__item">
                 <a class="c-site-nav__link { title }" href={ url }>
@@ -28,7 +28,9 @@
         </ul>
     </nav>
 
-    this.hey = opts.title
+    let initial_height;
+
+    this.on('mount', () => initial_height = this.refs.nav.offsetTop)
 
     this.links = {
         always_visible: [
@@ -43,14 +45,24 @@
         ],
     }
     
-
     this.collapse = (e) => {
         console.log('click')
         this.refs.dropdown
             .classList
             .toggle('active')
     }
+    
+    this.offsetY = () => {
+        const nav = this.refs.nav;
+        const distance_scrolled  = document.body.scrollTop;
+        if ( distance_scrolled > initial_height) {
+           nav.classList.remove('is-on-header')
+        } else {
+           nav.classList.add('is-on-header') 
+        }
+    }
 
+    window.addEventListener('scroll', this.offsetY)
 
     <style scoped>
         .mobile-hidden { 
@@ -67,9 +79,11 @@
             height: auto;
         }
         #dropdown-btn button {
+            color: currentColor;
             background-color: transparent;
         }
         
+        /* see _include-media.scss */ 
         @media screen and (min-width: 600px) {
             .mobile-hidden { 
                 display: inline;

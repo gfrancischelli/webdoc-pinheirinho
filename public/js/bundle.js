@@ -2919,10 +2919,14 @@
 
 	/* WEBPACK VAR INJECTION */(function(riot) {'use strict';
 
-	riot.tag2('navbar', '<nav class="c-site-nav"> <ul class="c-site-nav__list"> <li each="{links.always_visible}" class="c-site-nav__item"> <a class="c-site-nav__link {title}" href="{url}"> {link} </a> </li> <li each="{links.mobile_hidden}" class="c-site-nav__item mobile-hidden"> <a class="c-site-nav__link {title}" href="{url}"> {link} </a> </li> <li ref="btn_action" id="dropdown-btn" onclick="{collapse}" class="c-site-nav__item"> <button><span class="fa fa-bars"></span></button> </li> </ul> <ul ref="dropdown" id="dropdown" class="c-site-nav__list"> <li each="{links.mobile_hidden}" class="c-site-nav__item"> <a class="c-site-nav__link" href="{url}"> {link} </a> </li> </ul> </nav>', 'navbar .mobile-hidden,[riot-tag="navbar"] .mobile-hidden,[data-is="navbar"] .mobile-hidden{ display: none; } navbar #dropdown,[riot-tag="navbar"] #dropdown,[data-is="navbar"] #dropdown{ opacity: 0; height: 0; transition: all 0.5s ease; } navbar #dropdown.active,[riot-tag="navbar"] #dropdown.active,[data-is="navbar"] #dropdown.active{ padding-top: 12px; opacity: 1; height: auto; } navbar #dropdown-btn button,[riot-tag="navbar"] #dropdown-btn button,[data-is="navbar"] #dropdown-btn button{ background-color: transparent; } @media screen and (min-width: 600px) { navbar .mobile-hidden,[riot-tag="navbar"] .mobile-hidden,[data-is="navbar"] .mobile-hidden{ display: inline; } navbar #dropdown,[riot-tag="navbar"] #dropdown,[data-is="navbar"] #dropdown,navbar #dropdown-btn,[riot-tag="navbar"] #dropdown-btn,[data-is="navbar"] #dropdown-btn{ display: none; } }', '', function (opts) {
+	riot.tag2('navbar', '<nav ref="nav" class="c-site-nav is-on-header"> <ul class="c-site-nav__list"> <li each="{links.always_visible}" class="c-site-nav__item"> <a class="c-site-nav__link {title}" href="{url}"> {link} </a> </li> <li each="{links.mobile_hidden}" class="c-site-nav__item mobile-hidden"> <a class="c-site-nav__link {title}" href="{url}"> {link} </a> </li> <li ref="btn_action" id="dropdown-btn" onclick="{collapse}" class="c-site-nav__item"> <button><span class="fa fa-bars"></span></button> </li> </ul> <ul ref="dropdown" id="dropdown" class="c-site-nav__list"> <li each="{links.mobile_hidden}" class="c-site-nav__item"> <a class="c-site-nav__link" href="{url}"> {link} </a> </li> </ul> </nav>', 'navbar .mobile-hidden,[riot-tag="navbar"] .mobile-hidden,[data-is="navbar"] .mobile-hidden{ display: none; } navbar #dropdown,[riot-tag="navbar"] #dropdown,[data-is="navbar"] #dropdown{ opacity: 0; height: 0; transition: all 0.5s ease; } navbar #dropdown.active,[riot-tag="navbar"] #dropdown.active,[data-is="navbar"] #dropdown.active{ padding-top: 12px; opacity: 1; height: auto; } navbar #dropdown-btn button,[riot-tag="navbar"] #dropdown-btn button,[data-is="navbar"] #dropdown-btn button{ color: currentColor; background-color: transparent; } @media screen and (min-width: 600px) { navbar .mobile-hidden,[riot-tag="navbar"] .mobile-hidden,[data-is="navbar"] .mobile-hidden{ display: inline; } navbar #dropdown,[riot-tag="navbar"] #dropdown,[data-is="navbar"] #dropdown,navbar #dropdown-btn,[riot-tag="navbar"] #dropdown-btn,[data-is="navbar"] #dropdown-btn{ display: none; } }', '', function (opts) {
 	    var _this = this;
 
-	    this.hey = opts.title;
+	    var initial_height = void 0;
+
+	    this.on('mount', function () {
+	        return initial_height = _this.refs.nav.offsetTop;
+	    });
 
 	    this.links = {
 	        always_visible: [{ link: "home", url: "/" }, { link: "galerias", url: "/galerias" }, { link: "notícias", url: "/noticias" }],
@@ -2933,6 +2937,18 @@
 	        console.log('click');
 	        _this.refs.dropdown.classList.toggle('active');
 	    };
+
+	    this.offsetY = function () {
+	        var nav = _this.refs.nav;
+	        var distance_scrolled = document.body.scrollTop;
+	        if (distance_scrolled > initial_height) {
+	            nav.classList.remove('is-on-header');
+	        } else {
+	            nav.classList.add('is-on-header');
+	        }
+	    };
+
+	    window.addEventListener('scroll', this.offsetY);
 	});
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
