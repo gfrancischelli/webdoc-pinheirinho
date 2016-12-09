@@ -527,7 +527,7 @@ p {
   width: 1rem;
   height: 1rem;
   opacity: 0;
-  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/check.svg");
+  color: green;
   transition: opacity 0.6s ease; }
   @media (min-width: 769px) {
     .c-form__status-icon {

@@ -36,7 +36,7 @@
   width: $font-medium;
   height: $font-medium;
   opacity: 0;
-  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/check.svg");
+  color: green;
   transition: opacity 0.6s ease;
 
   @include media('>tablet') {

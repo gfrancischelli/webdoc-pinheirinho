@@ -5,21 +5,21 @@
         <div class="c-form__field">
             <input ref="name" name="FullName" class="c-form__input"
                 type="text" placeholder=" " required>
-            <span class="c-form__status-icon"></span>
+            <span class="fa fa-check-circle c-form__status-icon"></span>
             <label class="c-form__label" for="FullName">nome</label>
         </div>
         
         <div class="c-form__field">
             <input ref="email" name="Email" class="c-form__input"
                 type="email" placeholder=" " required>
-            <span class="c-form__status-icon"></span>
+            <span class="fa fa-check-circle c-form__status-icon"></span>
             <label class="c-form__label" for="Email">email</label>
         </div>
         
         <div class="c-form__field">
             <input ref="subject" name="Subject" class="c-form__input"
                 type="text" placeholder=" " required>
-            <span class="c-form__status-icon"></span>
+            <span class="fa fa-check-circle c-form__status-icon"></span>
             <label class="c-form__label" for="Subject">assunto</label>
         </div>
 
