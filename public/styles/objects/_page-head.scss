@@ -1,12 +1,12 @@
 .page-head {
     position: relative;
+    width: 100%;
     margin: 0;
 
-    &__img--placeholder {
+    &__img {
         display: block;
         
         width: 100%;
-        height: 280px;
         background-color: #AAAAAA;
     }
 

@@ -9,14 +9,14 @@
 
     color: $dark-gray;
     background-color: $base-white;
-    box-shadow: 0 5px 10px 0px rgba($dark-gray, 0.2); 
+    box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.3); 
 
     transition: all 0.3s ease;
 
     &.is-on-header {
         position: absolute;
         color: $base-white;
-        background-color: rgba($dark-gray, 0.2); 
+        background-color: rgba(0, 0, 0, 0.5); 
         top: unset;
         bottom: 0;
    }

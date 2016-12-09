@@ -1,4 +1,7 @@
 header.page-head
-  .page-head__img--placeholder
-    img.placeholder(src="/images/icons/img-icon.svg")
+  picture
+    - const src = Math.floor( Math.random() * 3 )
+    source(media="(max-width: 481px)" srcset=`/images/header/${src}/site-header-480.png`)
+    source(media="(max-width: 781px)" srcset=`/images/header/${src}/site-header-780.png`)
+    img.page-head__img(src=`/images/header/${src}/site-header-1440.png`)
   navbar(title="home")
