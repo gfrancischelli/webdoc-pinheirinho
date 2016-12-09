@@ -690,7 +690,7 @@ p {
     flex: 0 1 30%; }
   .o-feat-list__item + .o-feat-list__item {
     margin-top: 16px; }
-  @media (min-width: 769px) {
+  @media (min-width: 421px) {
     .o-feat-list {
       flex-direction: row; }
       .o-feat-list__item + .o-feat-list__item {
@@ -769,8 +769,13 @@ p {
     margin-top: var(--margin);
     overflow: hidden;
     max-height: 200px; }
-    .o-mosaic__item > img {
+    .o-mosaic__item img,
+    .o-mosaic__item > picture {
       width: 100%; }
+    @media (max-width: 767px) {
+      .o-mosaic__item--100\@sm {
+        width: 100%;
+        max-height: unset; } }
 
 @media (min-width: 421px) and (max-width: 768px) {
   .o-mosaic__item {

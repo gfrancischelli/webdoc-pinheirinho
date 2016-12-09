@@ -1,4 +1,5 @@
 extends ../../layouts/base.pug
+include ../../mixins/source.pug
 
 block content
   h1= title
@@ -6,4 +7,7 @@ block content
   ul.o-mosaic
     each image in data.gallery.images
       li.o-mosaic__item
-        img(src=image.url)
+        picture
+            +source(image.url, 'max-width: 420px', 380)
+            +source(image.url, 'max-width: 780px', 600)
+            img(src=image.url)

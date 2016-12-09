@@ -11,8 +11,16 @@
         overflow: hidden;
         max-height: 200px;
         
-        > img {
+        & img,
+        > picture {
             width: 100%;
+        }
+        
+        &--100\@sm {
+            @include media('<tablet') {
+                width: 100%;
+                max-height: unset;
+            }
         }
         
         @include media('>phone', '<=tablet') {

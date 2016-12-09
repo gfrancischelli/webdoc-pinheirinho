@@ -9,7 +9,7 @@ block content
         each single in data.news.results
           li.o-list-ui__item
             div(class="flag flag--stack@mb")
-              .flag__solid-cp: img.c-thumb-large( src=single.heroUrl )
+              .flag__solid-cp: img.c-thumb-large( src=`${ single.heroUrl }?=width300`)
               .flag__fluid-cp.u-pad-left-large
                   a( href=single.url ): h3.c-heading.c-heading--small= single.title
                   P.birbi 06/06/2006 Pamella Correia 

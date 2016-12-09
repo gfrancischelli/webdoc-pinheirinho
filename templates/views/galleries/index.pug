@@ -3,11 +3,11 @@ extends ../../layouts/base.pug
 block content
   .o-wrapper
     h3 title
-    ul.o-layout
+    ul.o-mosaic
       each gallery in data.galleries
-        li.o-layout__item
+        li(class="o-mosaic__item o-mosaic__item--100@sm")
           .o-card
-            .o-card__figure: img.c-thumb-jumbo( src=gallery.heroUrl )
+            .o-card__figure: img.c-thumb-jumbo( src=`${gallery.heroUrl }?width=300`)
             .o-card__body
                 a( href=gallery.url ): h5.o-card__title= gallery.title
                 p !{ gallery.desc.slice(0, 260) }

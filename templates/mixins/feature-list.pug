@@ -1,8 +1,13 @@
+include ./source.pug
+
 mixin feature_list(items)
     ul.o-feat-list
         each item in items
             li.o-feat-list__item.o-card
-                img.o-card__figure(src=item.heroUrl)
+                picture
+                    +source( item.heroUrl, 'max-width: 780px', 370 )
+                    +source( item.heroUrl, 'min-width: 781px', 400 )
+                    img.o-card__figure
                 .o-card__body
                     a(href=item.url): h3.c-heading.c-heading--small= item.title
                     if item.content

@@ -15,7 +15,7 @@
         margin-top: $spacing-default;
     }
 
-    @include media('>tablet') {
+    @include media('>phone') {
         flex-direction: row;
         
         &__item + &__item {

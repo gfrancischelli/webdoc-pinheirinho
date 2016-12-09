@@ -1,6 +1,7 @@
 const keystone = require('keystone'),
       mailer = require('./mailer'),
       middleware = require('./middleware'),
+      images = require('./images'),
       importRoutes = keystone.importer(__dirname);
 
 // CommonMiddleware
@@ -31,36 +32,12 @@ const routes = {
     views: importRoutes('./views'),
 };
 
-function imageAPI(req, res) {
-    const params = req.params,
-          fileName = params.filename;
-    
-    const root = process.env.ENV == 'production' ? './applications/webdoc/current/public' : './public';
-
-    const options = {
-        root: `${root}/images/${params.folder}/`,
-        headers: {
-            'x-timestamp': Date.now(),
-            'x-sent': true,
-        },
-    };
-
-    res.sendFile(fileName, options, function(err) {
-        if (err) {
-            console.log(err);
-            res.status(err.status).end();
-        } else {
-            console.log(`Image sent: ${fileName}`)
-        }
-    });
-};
-
 exports = module.exports = function(app) {
 
     app.get('/', routes.views.index);
  
     // TODO - workin titles names
-    app.get('/public/images/:folder/:filename', imageAPI);
+    app.get('/images/:folder/:filename', images);
     // app.get('/public/images/:folder/:title/:filename', imageAPI);
 
     // News routes
