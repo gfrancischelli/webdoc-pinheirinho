@@ -524,11 +524,15 @@ p {
   position: absolute;
   top: 10px;
   right: 10px;
-  width: 1.333rem;
-  height: 1.333rem;
+  width: 1rem;
+  height: 1rem;
   opacity: 0;
   background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/check.svg");
   transition: opacity 0.6s ease; }
+  @media (min-width: 769px) {
+    .c-form__status-icon {
+      width: 1.333rem;
+      height: 1.333rem; } }
 
 .c-form__input {
   display: block;
@@ -539,7 +543,7 @@ p {
   border: none;
   background-color: transparent;
   font-size: 1.333rem;
-  transition: padding 0.6s ease; }
+  transition: background-color 0.6s ease; }
   @media (min-width: 769px) {
     .c-form__input {
       font-size: 1.777rem; } }
@@ -551,7 +555,7 @@ p {
   .c-form__input:valid:not(:placeholder-shown) + .c-form__status-icon {
     opacity: 1;
     transition: all 0.6s ease; }
-  .c-form__input:invalid:not(:focus) {
+  .c-form__input:invalid:not(:focus):not(:placeholder-shown) {
     background-color: #ffc9c9; }
 
 .c-site-nav {

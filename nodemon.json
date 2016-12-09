@@ -1,4 +1,3 @@
 {
-    "verbose": true,
     "ignore": ["./public/js/bundle.js", "./templates/components"]
 }

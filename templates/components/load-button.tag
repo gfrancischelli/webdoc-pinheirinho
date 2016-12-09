@@ -3,7 +3,7 @@
     <button disabled={ state == 'success' }
             class="c-btn c-btn--fluid {c-btn--disabled: state == 'success' }">
 
-        <span show={ state == 'initial' }><yield from="initial" /></span>
+        <span show={ state == 'initial' }>{ message }</span>
 
         <span show={ state == 'pending' } class="fa fa-spinner fa-pulse"></span>
 
@@ -17,6 +17,7 @@
 
     </button>
 
-    this.state = opts.state
+    this.state = opts.state;
+    this.message = opts.message;
 
 </load-button>

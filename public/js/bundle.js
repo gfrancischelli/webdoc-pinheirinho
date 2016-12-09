@@ -2862,9 +2862,10 @@
 
 	/* WEBPACK VAR INJECTION */(function(riot) {'use strict';
 
-	riot.tag2('load-button', '<button __disabled="{state == \'success\'}" class="c-btn c-btn--fluid {c-btn--disabled: state == \'success\'}"> <span show="{state == \'initial\'}"><yield from="initial"></yield></span> <span show="{state == \'pending\'}" class="fa fa-spinner fa-pulse"></span> <span show="{state == \'success\'}"> <yield from="completed"></yield> <span class="fa fa-check"></span> </span> <span show="{state == \'error\'}"> Tente novamente mais tarde <span class="fa fa-exclamation"></span> </span> </button>', '', '', function (opts) {
+	riot.tag2('load-button', '<button __disabled="{state == \'success\'}" class="c-btn c-btn--fluid {c-btn--disabled: state == \'success\'}"> <span show="{state == \'initial\'}">{message}</span> <span show="{state == \'pending\'}" class="fa fa-spinner fa-pulse"></span> <span show="{state == \'success\'}"> <yield from="completed"></yield> <span class="fa fa-check"></span> </span> <span show="{state == \'error\'}"> Tente novamente mais tarde <span class="fa fa-exclamation"></span> </span> </button>', '', '', function (opts) {
 
 	  this.state = opts.state;
+	  this.message = opts.message;
 	});
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
@@ -2874,19 +2875,28 @@
 
 	/* WEBPACK VAR INJECTION */(function(riot) {'use strict';
 
-	riot.tag2('contact-form', '<form refs="contactForm" onsubmit="{post}" class="c-form" method="post"> <div class="c-form__field"> <input ref="name" name="FullName" class="c-form__input" type="text" placeholder="joão exemplo"> <span class="c-form__status-icon"></span> <label class="c-form__label" for="FullName">nome</label> </div> <div class="c-form__field"> <input ref="email" name="Email" class="c-form__input" placeholder="joão@exemplo.com" type="email"> <span class="c-form__status-icon"></span> <label class="c-form__label" for="Email">email</label> </div> <div class="c-form__field"> <input ref="subject" name="Subject" class="c-form__input" type="text" placeholder="Exemplo"> <span class="c-form__status-icon"></span> <label class="c-form__label" for="Subject">assunto</label> </div> <div class="c-form__field"> <textarea ref="content" name="Content" class="c-form__input" type="text"></textarea> <label class="c-form__label" for="Subject">mensagem</label> </div> <load-button state="{status}"> <yield to="initial">Enviar</yield> <yield to="completed">Mensagem Enviada</yield> </load-button> </form>', '', '', function (opts) {
+	riot.tag2('contact-form', '<form ref="contactForm" onsubmit="{post}" class="c-form" method="post"> <div class="c-form__field"> <input ref="name" name="FullName" class="c-form__input" type="text" placeholder=" " required> <span class="c-form__status-icon"></span> <label class="c-form__label" for="FullName">nome</label> </div> <div class="c-form__field"> <input ref="email" name="Email" class="c-form__input" placeholder=" " required type="email"> <span class="c-form__status-icon"></span> <label class="c-form__label" for="Email">email</label> </div> <div class="c-form__field"> <input ref="subject" name="Subject" class="c-form__input" type="text" placeholder=" " required> <span class="c-form__status-icon"></span> <label class="c-form__label" for="Subject">assunto</label> </div> <div class="c-form__field"> <textarea ref="content" name="Content" class="c-form__input" type="text" placeholder=" " required></textarea> <label class="c-form__label" for="Subject">mensagem</label> </div> <load-button message="{⁗Enviar⁗}" state="{status}"> <yield to="completed">Mensagem Enviada</yield> </load-button> </form>', '', '', function (opts) {
 	    var _this = this;
 
+	    var form = void 0;
 	    this.status = 'initial';
+	    this.on('mount', function () {
+	        return form = _this.refs.contactForm;
+	    });
 
 	    this.post = function (e) {
 	        e.preventDefault();
+	        var self = _this;
+
+	        if (!form.checkValidity()) {
+	            self.tags['load-button'].message = "Verifique a validade dos campos";
+	            self.update();
+	            return;
+	        }
 
 	        _this.status = 'pending';
 	        _this.tags['load-button'].state = _this.status;
 	        _this.update();
-
-	        var self = _this;
 
 	        var body = JSON.stringify({
 	            name: _this.refs.name.value,
@@ -2907,6 +2917,7 @@
 	        }).then(function (data) {
 	            self.status = data.status;
 	            self.tags['load-button'].state = self.status;
+	            form.reset();
 	            self.update();
 	        });
 	    };
