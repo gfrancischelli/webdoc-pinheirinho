@@ -37,7 +37,7 @@ exports = module.exports = function(app) {
     app.get('/', routes.views.index);
  
     // TODO - workin titles names
-    app.get('/images/:folder/:filename', images);
+    app.get('/imgs/:folder/:filename', images);
     // app.get('/public/images/:folder/:title/:filename', imageAPI);
 
     // News routes

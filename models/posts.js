@@ -21,7 +21,7 @@ Post.schema.virtual('url').get(function() {
 });
 
 Post.schema.virtual('heroUrl').get(function() {
-    return `images/news/${ this.heroImage.filename }`
+    return `imgs/news/${ this.heroImage.filename }`
 });
 
 Post.add({
