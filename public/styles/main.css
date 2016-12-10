@@ -558,6 +558,42 @@ p {
   .c-form__input:invalid:not(:focus):not(:placeholder-shown) {
     background-color: #ffc9c9; }
 
+.c-link {
+  font-weight: bold;
+  color: #f03e3e; }
+  .c-link:after {
+    content: ' ▸';
+    opacity: 0;
+    transition: all 0.3s ease;
+    transform: translateY(5px); }
+  .c-link:hover:after {
+    display: inline-block;
+    opacity: 1;
+    transform: translateY(0px); }
+
+.c-pagination {
+  display: block;
+  margin-top: 16px; }
+  .c-pagination__item {
+    display: inline; }
+  .c-pagination__item + .c-pagination__item {
+    margin-left: 5px; }
+  .c-pagination__link {
+    color: #2A2A2A;
+    font-size: 0.75rem;
+    padding: 5px;
+    border: 1px solid #CCCCCC;
+    background-color: #E8E8E8; }
+    .c-pagination__link:visited {
+      color: #2A2A2A; }
+    .c-pagination__link.is-active {
+      font-size: 1rem;
+      padding: 10px; }
+    .c-pagination__link.is-disabled {
+      pointer-events: none;
+      background-color: #E8E8E8;
+      color: #CCCCCC; }
+
 .c-site-nav {
   --is-on-header: 0;
   position: fixed;
@@ -623,19 +659,6 @@ p {
   .c-heading--small {
     font-size: 1.777rem;
     margin-bottom: 10px; }
-
-.c-link {
-  font-weight: bold;
-  color: #f03e3e; }
-  .c-link:after {
-    content: ' ▸';
-    opacity: 0;
-    transition: all 0.3s ease;
-    transform: translateY(5px); }
-  .c-link:hover:after {
-    display: inline-block;
-    opacity: 1;
-    transform: translateY(0px); }
 
 .c-thumb {
   width: 140px; }
@@ -766,8 +789,7 @@ p {
   .o-mosaic__item {
     --margin: 5px;
     width: calc( 50% - var(--margin));
-    margin-top: var(--margin);
-    max-height: 200px; }
+    margin-top: var(--margin); }
     .o-mosaic__item img,
     .o-mosaic__item > picture {
       width: 100%;
@@ -779,12 +801,10 @@ p {
 
 @media (min-width: 421px) and (max-width: 768px) {
   .o-mosaic__item {
-    width: calc( 33% - var(--margin));
-    max-height: 250px; } }
+    width: calc( 33% - var(--margin)); } }
     @media (min-width: 769px) {
       .o-mosaic__item {
-        width: calc( 25% - var(--margin));
-        max-height: 300px; } }
+        width: calc( 25% - var(--margin)); } }
 
 .page-head {
   position: relative;

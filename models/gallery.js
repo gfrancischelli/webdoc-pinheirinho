@@ -38,10 +38,9 @@ Gallery.add({
         publicID: 'slug',
         autoCleanup: true,
     },
-    publishedAt: { type: Types.Date, default: Date.now },
     createdAt: { type: Types.Date, default: Date.now },
 });
 
-Gallery.defaultColumns = 'title, publishedDate, createdAt';
+Gallery.defaultColumns = 'title, createdAt';
 
 Gallery.register();

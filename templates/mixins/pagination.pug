@@ -1,14 +1,20 @@
 mixin pagination(items)
   if items.totalPages > 1
-    ul.pagination
+    ul.c-pagination
       - let enabled, url
       - enabled = items.previous ? 'enabled' : 'disabled'
       - url = items.previous ? items.previous : items.first
-      li: a.c-link(href=`?page=${ url }` class=`is-${enabled}`) Previous
+      li.c-pagination__item 
+        a.c-pagination__link(href=`?page=${ url }` class=`is-${ enabled }`)
+          span.fa.fa-chevron-left
       each page, index in items.pages
-        - let active = items.currentPage == page ? 'active' : '' 
-        if page < data.news.totalPages
-          li: a.c-link(href=`?page=${ page }` class=`${active}`) #{ page }
+        - let active = items.currentPage == page ? 'is-active' : ''
+        - let url = page == '...' ? ( index ? items.totalPages : 1 ) : page
+        li.c-pagination__item
+            a.c-pagination__link(href=`?page=${ url  }` class=active)= page
       - enabled = items.next ? 'enabled' : 'disabled'
-      - url = items.next < items.totalPages ? items.next : items.last - 1 
-        li: a.c-link(href=`?page=${ url }` class=`is-${enabled}`) Next
+      - url = items.next ? items.next : items.totalPages
+      li.c-pagination__item
+          a.c-pagination__link(href=`?page=${ url }` class=`is-${ enabled }`)
+            span.fa.fa-chevron-right
+ 

@@ -10,13 +10,16 @@ exports = module.exports = function(req, res) {
     locals.title = 'Galerias';
 
     view.on('init', function(next) {
-        Gallery.model
-            .find()
-            .sort('-publishedAt')
-            .exec(function(err, results) {
-                locals.data.galleries = results;
-                next(err);
-            });
+        Gallery.paginate({
+            page: req.query.page || 1,
+            perPage: 10,
+            maxPages: 10,
+        })
+        .sort('-createdAt')
+        .exec(function(err, results) {
+            locals.data.galleries = results;
+            next(err);
+        });
     });
 
     view.render('galleries/index');
