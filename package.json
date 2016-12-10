@@ -16,7 +16,7 @@
   "license": "ISC",
   "homepage": "https://bitbucket.org/gifrancischelli/pinheirinho#readme",
   "dependencies": {
-    "body-parser": "^1.15.2",
+    "dotenv": "^2.0.0",
     "gm": "^1.23.0",
     "keystone": "^4.0.0-beta.3",
     "lodash": "^4.17.2",

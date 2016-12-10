@@ -1,4 +1,6 @@
-const keystone = require('keystone');
+require('dotenv').config();
+
+const keystone = require('keystone')
 
 keystone.init({
 
@@ -8,7 +10,7 @@ keystone.init({
     'sass': 'public', 
     'static': ['public'], 
 
-    'cloudinary config': 'cloudinary://441254311745598:H0SiH9NJftgLT6bXFsF14AEwUyc@dp7rd44b2',
+    'cloudinary config': process.env.CLOUDINARY_CONFIG,
 
     'views': 'templates/views',
     'view engine': 'pug',
@@ -19,7 +21,7 @@ keystone.init({
     'session': true,
     'auth': true, 
     'user model': 'User', 
-    'cookie secret': "52M336H&7wK9ae%Q0`ID01pTn6@CpD", 
+    'cookie secret': process.env.COOKIE_SECRET, 
 
 });
 
