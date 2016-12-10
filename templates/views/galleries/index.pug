@@ -1,13 +1,16 @@
 extends ../../layouts/base.pug
+include ../../mixins/pagination.pug
 
 block content
   .o-band: .o-wrapper
     h3(class="c-heading c-heading--large@ds") Galerias
     ul.o-mosaic
-      each gallery in data.galleries
+      each gallery in data.galleries.results
         li(class="o-mosaic__item o-mosaic__item--100@sm")
           .o-card
             .o-card__figure: img.c-thumb-jumbo( src=`${gallery.heroUrl }?width=300`)
             .o-card__body
                 a( href=gallery.url ): h5.o-card__title= gallery.title
                 p !{ gallery.desc.slice(0, 260) }
+
+    +pagination(data.galleries)

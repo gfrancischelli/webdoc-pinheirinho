@@ -1,0 +1,35 @@
+.c-pagination {
+    display: block;
+    margin-top: $spacing-default;
+
+    &__item {
+        display: inline;
+    }
+
+    &__item + &__item {
+        margin-left: $spacing-tiny / 2;
+    }
+
+    &__link {
+        color: $dark-gray;
+        font-size: $font-small;
+        padding: $spacing-tiny / 2;
+        border: 1px solid $light-gray;
+        background-color: $lighter-gray;
+
+        &:visited {
+            color: $dark-gray;
+        }
+
+        &.is-active {
+            font-size: $font-medium;
+            padding: $spacing-tiny;
+        }
+
+        &.is-disabled {
+            pointer-events:none;
+            background-color: $lighter-gray;
+            color: $light-gray;
+        }
+    }
+}
