@@ -793,7 +793,14 @@ p {
   .page-head__img {
     display: block;
     width: 100%;
+    height: 145px;
     background-color: #AAAAAA; }
+    @media (min-width: 421px) {
+      .page-head__img {
+        height: 236px; } }
+    @media (min-width: 769px) {
+      .page-head__img {
+        height: 435px; } }
   .page-head .placeholder {
     display: block;
     margin: 0 auto;
