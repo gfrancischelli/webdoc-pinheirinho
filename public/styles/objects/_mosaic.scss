@@ -8,12 +8,12 @@
         width: calc( 50% - var(--margin));
         margin-top: var(--margin);
         
-        overflow: hidden;
         max-height: 200px;
         
         & img,
         > picture {
             width: 100%;
+            object-fit: cover;
         }
         
         &--100\@sm {

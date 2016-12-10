@@ -767,11 +767,11 @@ p {
     --margin: 5px;
     width: calc( 50% - var(--margin));
     margin-top: var(--margin);
-    overflow: hidden;
     max-height: 200px; }
     .o-mosaic__item img,
     .o-mosaic__item > picture {
-      width: 100%; }
+      width: 100%;
+      object-fit: cover; }
     @media (max-width: 767px) {
       .o-mosaic__item--100\@sm {
         width: 100%;
@@ -791,7 +791,8 @@ p {
   width: 100%;
   margin: 0; }
   .page-head__img {
-    display: block; }
+    display: block;
+    width: 100%; }
   .page-head .placeholder {
     display: block;
     margin: 0 auto;

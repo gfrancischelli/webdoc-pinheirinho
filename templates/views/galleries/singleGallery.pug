@@ -2,12 +2,15 @@ extends ../../layouts/base.pug
 include ../../mixins/source.pug
 
 block content
-  h1= title
+  .o-band: .o-wrapper
+    h3(class="c-heading c-heading--large@ds")= data.gallery.title
+    p= data.gallery.desc
   
-  ul.o-mosaic
+  .o-wrapper: gallery
     each image in data.gallery.images
       li.o-mosaic__item
         picture
-            +source(image.url, 'max-width: 420px', 380)
-            +source(image.url, 'max-width: 780px', 600)
-            img(src=image.url)
+          +source(image.url, 'max-width: 420px', 380)
+          +source(image.url, 'max-width: 780px', 600)
+          img(src=image.url)
+

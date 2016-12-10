@@ -1,6 +1,5 @@
 node_modules
 .git
-.yarn.lock
 /lib/capistrano
 /config
 Capfile

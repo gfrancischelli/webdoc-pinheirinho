@@ -49,11 +49,11 @@
 	__webpack_require__(2);
 	__webpack_require__(3);
 	__webpack_require__(4);
+	__webpack_require__(7);
 
-	__webpack_require__(5);
+	__webpack_require__(6);
 
 	riot.mount('*');
-	console.log('mounted');
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ },
@@ -64,7 +64,7 @@
 
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-	/* Riot v3.0.1, @license MIT */
+	/* Riot v3.0.2, @license MIT */
 	(function (global, factory) {
 	  ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' ? factory(exports) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [exports], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.riot = global.riot || {});
 	})(undefined, function (exports) {
@@ -87,6 +87,7 @@
 	  var RE_RESERVED_NAMES = /^(?:_(?:item|id|parent)|update|root|(?:un)?mount|mixin|is(?:Mounted|Loop)|tags|refs|parent|opts|trigger|o(?:n|ff|ne))$/;
 	  var RE_SVG_TAGS = /^(altGlyph|animate(?:Color)?|circle|clipPath|defs|ellipse|fe(?:Blend|ColorMatrix|ComponentTransfer|Composite|ConvolveMatrix|DiffuseLighting|DisplacementMap|Flood|GaussianBlur|Image|Merge|Morphology|Offset|SpecularLighting|Tile|Turbulence)|filter|font|foreignObject|g(?:lyph)?(?:Ref)?|image|line(?:arGradient)?|ma(?:rker|sk)|missing-glyph|path|pattern|poly(?:gon|line)|radialGradient|rect|stop|svg|switch|symbol|text(?:Path)?|tref|tspan|use)$/;
 	  var RE_HTML_ATTRS = /([-\w]+) ?= ?(?:"([^"]*)|'([^']*)|({[^}]*}))/g;
+	  var CASE_SENSITIVE_ATTRIBUTES = { 'viewbox': 'viewBox' };
 	  var RE_BOOL_ATTRS = /^(?:disabled|checked|readonly|required|allowfullscreen|auto(?:focus|play)|compact|controls|default|formnovalidate|hidden|ismap|itemscope|loop|multiple|muted|no(?:resize|shade|validate|wrap)?|open|reversed|seamless|selected|sortable|truespeed|typemustmatch)$/;
 	  var IE_VERSION = (WIN && WIN.document || {}).documentMode | 0;
 
@@ -442,7 +443,7 @@
 
 	  /**
 	   * The riot template engine
-	   * @version v3.0.0
+	   * @version v3.0.1
 	   */
 	  /**
 	   * riot.util.brackets
@@ -676,11 +677,9 @@
 
 	      if (_tmpl.errorHandler) {
 	        _tmpl.errorHandler(err);
-	      }
-
-	      if (typeof console !== 'undefined' && typeof console.error === 'function') {
+	      } else if (typeof console !== 'undefined' && typeof console.error === 'function') {
 	        if (err.riotData.tagName) {
-	          console.error('Riot template error thrown in the <%s> tag', err.riotData.tagName);
+	          console.error('Riot template error thrown in the <%s> tag', err.riotData.tagName.toLowerCase());
 	        }
 	        console.error(err);
 	      }
@@ -831,7 +830,7 @@
 	      return expr;
 	    }
 
-	    _tmpl.version = brackets.version = 'v3.0.0';
+	    _tmpl.version = brackets.version = 'v3.0.1';
 
 	    return _tmpl;
 	  }();
@@ -1236,11 +1235,11 @@
 	      return;
 	    }
 
-	    if (old === value) {
-	      return;
-	    }
 	    if (expr.isRtag && value) {
 	      return updateDataIs(expr, this);
+	    }
+	    if (old === value) {
+	      return;
 	    }
 	    // no change, so nothing more to do
 	    if (isValueAttr && dom.value === value) {
@@ -1290,8 +1289,12 @@
 	      dom.value = value;
 	      // <img src="{ expr }">
 	    } else if (startsWith(attrName, RIOT_PREFIX) && attrName !== RIOT_TAG_IS) {
+	      attrName = attrName.slice(RIOT_PREFIX.length);
+	      if (CASE_SENSITIVE_ATTRIBUTES[attrName]) {
+	        attrName = CASE_SENSITIVE_ATTRIBUTES[attrName];
+	      }
 	      if (value != null) {
-	        setAttr(dom, attrName.slice(RIOT_PREFIX.length), value);
+	        setAttr(dom, attrName, value);
 	      }
 	    } else {
 	      // <select> <option selected={true}> </select>
@@ -2410,6 +2413,14 @@
 
 	      this.trigger('before-unmount');
 
+	      // clear all attributes coming from the mounted tag
+	      walkAttrs(impl.attrs, function (name) {
+	        if (startsWith(name, RIOT_PREFIX)) {
+	          name = name.slice(RIOT_PREFIX.length);
+	        }
+	        remAttr(root, name);
+	      });
+
 	      // remove this tag instance from the global virtualDom variable
 	      if (~tagIndex) {
 	        __TAGS_CACHE.splice(tagIndex, 1);
@@ -2964,7 +2975,8 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ },
-/* 5 */
+/* 5 */,
+/* 6 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -3264,6 +3276,55 @@
 			moving: defaultScroller.moving
 		};
 	});
+
+/***/ },
+/* 7 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(riot) {'use strict';
+
+	riot.tag2('gallery', '<ul ref="list" class="o-mosaic" id="gallery-list"> <yield></yield> </ul> <div ref="modal" onclick="{closeModal}" class="modal"> <img ref modal_img riot-src="{current_image_src}"> </div>', 'gallery .fa,[riot-tag="gallery"] .fa,[data-is="gallery"] .fa{ position: absolute; top: 50%; font-size: 36px; color: white; transform: translateY(-50%); } gallery #right,[riot-tag="gallery"] #right,[data-is="gallery"] #right{ right: 24px; } gallery #left,[riot-tag="gallery"] #left,[data-is="gallery"] #left{ left: 24px; } gallery .modal,[riot-tag="gallery"] .modal,[data-is="gallery"] .modal{ pointer-events: none; position: fixed; width: 100vw; height: 100vh; z-index: 100; top: 0; left: 0; opacity: 0; transition: opacity 0.5s ease; } gallery .modal.active,[riot-tag="gallery"] .modal.active,[data-is="gallery"] .modal.active{ pointer-events: auto; opacity: 1; background-color: rgba(0, 0, 0, 0.4) } gallery .modal img,[riot-tag="gallery"] .modal img,[data-is="gallery"] .modal img{ display: block; margin: 0 auto; }', '', function (opts) {
+	    var _this = this;
+
+	    var self = this;
+	    this.current_image_src = '';
+	    this.current_image = 0;
+	    var images = void 0;
+	    var modal = void 0;
+
+	    function handleClick(item, index) {
+	        item.addEventListener('click', function () {
+	            modal.classList.add('active');
+	            changeImage(index);
+	        });
+	    }
+
+	    function changeImage(id) {
+	        self.current_image = id;
+	        self.update({ current_image_src: images[id].getAttribute('src') });
+	    }
+
+	    this.on('mount', function () {
+	        modal = _this.refs.modal;
+	        images = Array.from(document.querySelectorAll('#gallery-list img'));
+	        images.forEach(handleClick);
+	    });
+
+	    this.next = function () {
+	        var next = self.curret_image + 1;
+	        changeImage(next);
+	    };
+
+	    this.previous = function () {
+	        var previous = self.current_image ? self.current_image - 1 : 0;
+	        changeImage(previous);
+	    };
+
+	    this.closeModal = function () {
+	        modal.classList.remove('active');
+	    };
+	});
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }
 /******/ ]);

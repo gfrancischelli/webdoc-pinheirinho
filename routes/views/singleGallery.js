@@ -18,7 +18,7 @@ exports = module.exports = function(req, res) {
                     console.log(result);
                 } else {
                     return res.status(404)
-                        .send(keystone.wraPhtmleRROR('Galeria não encontrado! (404)'))
+                        .send(keystone.wrapHTMLError('Galeria não encontrado! (404)'))
                 }
                 next(err);
             });
