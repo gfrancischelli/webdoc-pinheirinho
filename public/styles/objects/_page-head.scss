@@ -5,18 +5,6 @@
 
     &__img {
         display: block;
-        
-        width: 100%;
-        height: 145px;
-        background-color: #AAAAAA;
-
-        @include media('>phone') {
-            height: 236px;
-        }
-
-        @include media('>tablet') {
-            height: 435px;
-        }
     }
 
     // Img Icon Placeholder
