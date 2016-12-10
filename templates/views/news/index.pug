@@ -2,7 +2,7 @@ extends ../../layouts/base.pug
 include ../../mixins/pagination.pug
 
 block content
-  section(class="o-wrapper o-wrapper--slim@ds")
+  .o-band: section(class="o-wrapper o-wrapper--slim@ds")
     h2.c-heading.c-heading--large= title
     .o-layout
       .o-layout__item: ul.list-ui
@@ -12,7 +12,7 @@ block content
               .flag__solid-cp: img.c-thumb-large( src=`${ single.heroUrl }?=width300`)
               .flag__fluid-cp.u-pad-left-large
                   a( href=single.url ): h3.c-heading.c-heading--small= single.title
-                  P.birbi 06/06/2006 Pamella Correia 
+                  P= single.content.createdAt
                   p !{ single.content.slice(0, 360) }...
                   .birbi
 

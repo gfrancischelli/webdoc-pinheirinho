@@ -76,6 +76,7 @@
         background-color: rgba(0, 0, 0, 0.4)
     }
     .modal img {
+        width: 100%;
         display: block;
         margin: 0 auto;
     }

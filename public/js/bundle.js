@@ -49,7 +49,7 @@
 	__webpack_require__(2);
 	__webpack_require__(3);
 	__webpack_require__(4);
-	__webpack_require__(7);
+	__webpack_require__(5);
 
 	__webpack_require__(6);
 
@@ -2975,7 +2975,55 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ },
-/* 5 */,
+/* 5 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(riot) {'use strict';
+
+	riot.tag2('gallery', '<ul ref="list" class="o-mosaic" id="gallery-list"> <yield></yield> </ul> <div ref="modal" onclick="{closeModal}" class="modal"> <img ref modal_img riot-src="{current_image_src}"> </div>', 'gallery .fa,[riot-tag="gallery"] .fa,[data-is="gallery"] .fa{ position: absolute; top: 50%; font-size: 36px; color: white; transform: translateY(-50%); } gallery #right,[riot-tag="gallery"] #right,[data-is="gallery"] #right{ right: 24px; } gallery #left,[riot-tag="gallery"] #left,[data-is="gallery"] #left{ left: 24px; } gallery .modal,[riot-tag="gallery"] .modal,[data-is="gallery"] .modal{ pointer-events: none; position: fixed; width: 100vw; height: 100vh; z-index: 100; top: 0; left: 0; opacity: 0; transition: opacity 0.5s ease; } gallery .modal.active,[riot-tag="gallery"] .modal.active,[data-is="gallery"] .modal.active{ pointer-events: auto; opacity: 1; background-color: rgba(0, 0, 0, 0.4) } gallery .modal img,[riot-tag="gallery"] .modal img,[data-is="gallery"] .modal img{ width: 100%; display: block; margin: 0 auto; }', '', function (opts) {
+	    var _this = this;
+
+	    var self = this;
+	    this.current_image_src = '';
+	    this.current_image = 0;
+	    var images = void 0;
+	    var modal = void 0;
+
+	    function handleClick(item, index) {
+	        item.addEventListener('click', function () {
+	            modal.classList.add('active');
+	            changeImage(index);
+	        });
+	    }
+
+	    function changeImage(id) {
+	        self.current_image = id;
+	        self.update({ current_image_src: images[id].getAttribute('src') });
+	    }
+
+	    this.on('mount', function () {
+	        modal = _this.refs.modal;
+	        images = Array.from(document.querySelectorAll('#gallery-list img'));
+	        images.forEach(handleClick);
+	    });
+
+	    this.next = function () {
+	        var next = self.curret_image + 1;
+	        changeImage(next);
+	    };
+
+	    this.previous = function () {
+	        var previous = self.current_image ? self.current_image - 1 : 0;
+	        changeImage(previous);
+	    };
+
+	    this.closeModal = function () {
+	        modal.classList.remove('active');
+	    };
+	});
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+
+/***/ },
 /* 6 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -3276,55 +3324,6 @@
 			moving: defaultScroller.moving
 		};
 	});
-
-/***/ },
-/* 7 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* WEBPACK VAR INJECTION */(function(riot) {'use strict';
-
-	riot.tag2('gallery', '<ul ref="list" class="o-mosaic" id="gallery-list"> <yield></yield> </ul> <div ref="modal" onclick="{closeModal}" class="modal"> <img ref modal_img riot-src="{current_image_src}"> </div>', 'gallery .fa,[riot-tag="gallery"] .fa,[data-is="gallery"] .fa{ position: absolute; top: 50%; font-size: 36px; color: white; transform: translateY(-50%); } gallery #right,[riot-tag="gallery"] #right,[data-is="gallery"] #right{ right: 24px; } gallery #left,[riot-tag="gallery"] #left,[data-is="gallery"] #left{ left: 24px; } gallery .modal,[riot-tag="gallery"] .modal,[data-is="gallery"] .modal{ pointer-events: none; position: fixed; width: 100vw; height: 100vh; z-index: 100; top: 0; left: 0; opacity: 0; transition: opacity 0.5s ease; } gallery .modal.active,[riot-tag="gallery"] .modal.active,[data-is="gallery"] .modal.active{ pointer-events: auto; opacity: 1; background-color: rgba(0, 0, 0, 0.4) } gallery .modal img,[riot-tag="gallery"] .modal img,[data-is="gallery"] .modal img{ display: block; margin: 0 auto; }', '', function (opts) {
-	    var _this = this;
-
-	    var self = this;
-	    this.current_image_src = '';
-	    this.current_image = 0;
-	    var images = void 0;
-	    var modal = void 0;
-
-	    function handleClick(item, index) {
-	        item.addEventListener('click', function () {
-	            modal.classList.add('active');
-	            changeImage(index);
-	        });
-	    }
-
-	    function changeImage(id) {
-	        self.current_image = id;
-	        self.update({ current_image_src: images[id].getAttribute('src') });
-	    }
-
-	    this.on('mount', function () {
-	        modal = _this.refs.modal;
-	        images = Array.from(document.querySelectorAll('#gallery-list img'));
-	        images.forEach(handleClick);
-	    });
-
-	    this.next = function () {
-	        var next = self.curret_image + 1;
-	        changeImage(next);
-	    };
-
-	    this.previous = function () {
-	        var previous = self.current_image ? self.current_image - 1 : 0;
-	        changeImage(previous);
-	    };
-
-	    this.closeModal = function () {
-	        modal.classList.remove('active');
-	    };
-	});
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }
 /******/ ]);
