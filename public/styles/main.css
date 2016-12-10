@@ -677,6 +677,9 @@ p {
   .o-band--red {
     --font-color: #F5F5F5;
     background-color: #f03e3e; }
+  .o-band--dark {
+    --font-color: #F5F5F5;
+    background-color: #2A2A2A; }
 
 .o-card {
   margin: 0;

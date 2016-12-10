@@ -14,4 +14,9 @@
         --font-color: $base-white;
         background-color: $primary-red;
     }
+
+    &--dark {
+        --font-color: $base-white;
+        background-color: $dark-gray;
+    }
 }
