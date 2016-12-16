@@ -16,6 +16,14 @@ const postStorage = new keystone.Storage({
   },
 });
 
+const pdfStorage = new keystone.Storage({
+  adapter: keystone.Storage.Adapters.FS,
+  fs: {
+    path: keystone.expandPath('./public/pdf'),
+    publicPath: '/public/pdf',
+  },
+});
+
 Post.schema.virtual('url').get(function() {
     return `/noticias/${ this.slug }`
 });
@@ -25,17 +33,32 @@ Post.schema.virtual('heroUrl').get(function() {
 });
 
 Post.add({
-    title: { type: String, required: true },
-    status: { type: Types.Select, options: 'rascunho, publicado, arquivado', default: 'rascunho' },
-    author: { type: Types.Relationship, ref: 'User' },
-    createdAt: { type: Date, default: Date.now },
-    publishedAt: Date,
+    "título": { type: String, initial: true, required: true },
+    "tipo": { type:Types.Select, options: 'timeline, noticía', initial: true, required: true},
+    "data": { type: Date, dependsOn: { tipo: 'timeline' }  },
+    status: { 
+      type: Types.Select, options: 'rascunho, publicado, arquivado',
+      default: 'rascunho', required: true, dependsOn: { tipo: 'notícia' }
+    },
+    pdf: {
+      type: Types.File,
+      storage: pdfStorage,
+    },
+    categoria: {
+      type: Types.Select, options: 'importante, judicial, exemplo',
+      dependsOn: { tipo: 'timeline' },
+    },
     heroImage: { 
         type: Types.File,
         storage: postStorage,
+        label: 'foto de capa',
     },
-    desc: { type: Types.Html, wysiwyg: true, height: 150 },
+    "vídeo": { type: Types.Url },
+    flicker: { type: Types.Url },
+    autor: { type: String, dependsOn: { tipo: 'noticía' } },
     content: { type: Types.Html, wysiwyg: true, height: 400 },
+    createdAt: { type: Types.Date, default: Date.now, dependsOn: { tipo: 'notícia' } },
+    publishedAt: { type: Types.Date, dependsOn: { tipo: 'notícia' } } ,
 });
 
 Post.defaultColumns = 'title, status|20%, author|20%, publishedAt|20%';
