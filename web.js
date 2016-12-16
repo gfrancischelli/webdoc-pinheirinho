@@ -1,4 +1,8 @@
-require('dotenv').config();
+if (process.env.ENV == 'production') {
+  require('dotenv').config('../.env');
+} else {
+  require('dotenv').config();
+}
 
 const keystone = require('keystone')
 
