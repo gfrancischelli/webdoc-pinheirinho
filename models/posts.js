@@ -3,8 +3,8 @@ const keystone = require('keystone'),
       path = require('path');
 
 const Post = new keystone.List('Post', {
-    autokey: { path: 'slug', from: 'title', unique: true },
-    map: { name: 'title' },
+    autokey: { path: 'slug', from: 'título', unique: true },
+    map: { name: 'título' },
     defaultSort: '-createdAt', 
 });
 
@@ -35,7 +35,8 @@ Post.schema.virtual('heroUrl').get(function() {
 Post.add({
     "título": { type: String, initial: true, required: true },
     "tipo": { type:Types.Select, options: 'timeline, noticía', initial: true, required: true},
-    "data": { type: Date, dependsOn: { tipo: 'timeline' }  },
+    "data": { type: Types.Date, dependsOn: { tipo: 'timeline' }  },
+    "horário": { type: String, dependsOn: { tipo: 'timeline' } },
     status: { 
       type: Types.Select, options: 'rascunho, publicado, arquivado',
       default: 'rascunho', required: true, dependsOn: { tipo: 'notícia' }
@@ -61,6 +62,6 @@ Post.add({
     publishedAt: { type: Types.Date, dependsOn: { tipo: 'notícia' } } ,
 });
 
-Post.defaultColumns = 'title, status|20%, author|20%, publishedAt|20%';
+Post.defaultColumns = 'title, tipo|10%, status|10%, publishedAt|10%';
 
 Post.register();

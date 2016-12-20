@@ -21,10 +21,8 @@ exports = module.exports = function(req, res) {
     
     mailgun.messages().send(data, function(error, body) {
         if (error) {
-            console.log('Error sending email: ', error);
             res.json({status: 'error'})
         } else {
-            console.log('Mail sent sucessfully: ', body);
             res.json({status: 'success'});
         }
     });
