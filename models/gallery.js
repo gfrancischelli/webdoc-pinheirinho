@@ -23,7 +23,7 @@ Gallery.schema.virtual('url').get(function() {
 });
 
 Gallery.schema.virtual('heroUrl').get(function() {
-    return `imgs/galleries/${ this.heroImage.filename }`
+    return `images/galleries/${ this.heroImage.filename }`
 })
 
 Gallery.add({
