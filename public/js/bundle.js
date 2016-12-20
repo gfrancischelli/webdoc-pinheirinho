@@ -2952,7 +2952,7 @@
 
 	    this.links = {
 	        always_visible: [{ link: "home", url: "/" }, { link: "galerias", url: "/galerias" }, { link: "notícias", url: "/noticias" }],
-	        mobile_hidden: [{ link: "ficha técnica", url: "/ficha-tecnica" }, { link: "fale conosco", url: "#fale-conosco" }, { link: "jurídico", url: "#juridico" }]
+	        mobile_hidden: [{ link: "ficha técnica", url: "/ficha-tecnica" }, { link: "fale conosco", url: "#fale-conosco" }, { link: "linha do tempo", url: "/timeline" }]
 	    };
 
 	    this.collapse = function (e) {

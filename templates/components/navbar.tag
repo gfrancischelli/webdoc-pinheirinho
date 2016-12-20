@@ -41,7 +41,7 @@
         mobile_hidden: [
             { link: "ficha técnica", url: "/ficha-tecnica" },
             { link: "fale conosco", url: "#fale-conosco" },
-            { link: "jurídico", url: "#juridico" },
+            { link: "linha do tempo", url: "/timeline" },
         ],
     }
     

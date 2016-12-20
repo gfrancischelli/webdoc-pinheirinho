@@ -45,6 +45,9 @@ exports = module.exports = function(app) {
     app.get('/galerias', routes.views.galleries);
     app.get('/galerias/:gallerySlug', routes.views.singleGallery);
 
+    // TImeline routes
+    app.get('/timeline', routes.views.timeline);
+
     
     // Api
   

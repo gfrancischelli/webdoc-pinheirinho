@@ -1,0 +1,12 @@
+extends ../../layouts/base.pug
+include ../../mixins/pagination.pug
+
+block content
+  .o-band: section(class="o-wrapper o-wrapper--slim@ds")
+    h2.c-heading.c-heading--large= title 
+    ul.o-layout
+      each post in posts
+        li.o-layout__item(style='display: block')
+          span= post.data
+          h5= post['título']
+          div !{ post.content }
