@@ -5,7 +5,7 @@ const keystone = require('keystone'),
 const Post = new keystone.List('Post', {
     autokey: { path: 'slug', from: 'título', unique: true },
     map: { name: 'título' },
-    defaultSort: '-createdAt', 
+    defaultSort: '-createdAt',
 });
 
 const postStorage = new keystone.Storage({
@@ -35,9 +35,9 @@ Post.schema.virtual('heroUrl').get(function() {
 Post.add({
     "título": { type: String, initial: true, required: true },
     "tipo": { type:Types.Select, options: 'timeline, noticía', initial: true, required: true},
-    "data": { type: Types.Date, dependsOn: { tipo: 'timeline' }  },
+    "data": { type: Types.Date, format: 'D M YYYY', dependsOn: { tipo: 'timeline' }  },
     "horário": { type: String, dependsOn: { tipo: 'timeline' } },
-    status: { 
+    status: {
       type: Types.Select, options: 'rascunho, publicado, arquivado',
       default: 'rascunho', required: true, dependsOn: { tipo: 'notícia' }
     },
@@ -49,7 +49,7 @@ Post.add({
       type: Types.Select, options: 'importante, judicial, exemplo',
       dependsOn: { tipo: 'timeline' },
     },
-    heroImage: { 
+    heroImage: {
         type: Types.File,
         storage: postStorage,
         label: 'foto de capa',
@@ -62,6 +62,6 @@ Post.add({
     publishedAt: { type: Types.Date, dependsOn: { tipo: 'notícia' } } ,
 });
 
-Post.defaultColumns = 'title, tipo|10%, status|10%, publishedAt|10%';
+Post.defaultColumns = 'título, tipo|10%, status|10%, publishedAt|10%';
 
 Post.register();
