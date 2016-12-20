@@ -30,16 +30,13 @@ keystone.set('500', function(err, req, res, next) {
 // Load Routes
 const routes = {
     views: importRoutes('./views'),
+    api: importRoutes('./api'),
 };
 
 exports = module.exports = function(app) {
 
     app.get('/', routes.views.index);
  
-    // TODO - workin titles names
-    app.get('/imgs/:folder/:filename', images);
-    // app.get('/public/images/:folder/:title/:filename', imageAPI);
-
     // News routes
     app.get('/noticias', routes.views.news);
     app.get('/noticias/:postSlug', routes.views.singleNew);
@@ -47,6 +44,16 @@ exports = module.exports = function(app) {
     // Gallery routes
     app.get('/galerias', routes.views.galleries);
     app.get('/galerias/:gallerySlug', routes.views.singleGallery);
+
+    
+    // Api
+  
+    // TODO - workin titles names
+    // app.get('/public/images/:folder/:title/:filename', imageAPI);
+    app.get('/imgs/:folder/:filename', images);
+    
+    // Timeline 
+    app.get('/api/timeline', routes.api.timeline);
 
 
     // Mail
