@@ -4,9 +4,11 @@ include ../../mixins/pagination.pug
 block content
   .o-band: section(class="o-wrapper o-wrapper--slim@ds")
     h2.c-heading.c-heading--large= title 
-    ul.o-layout
+    ul.o-layout(
+        style="border-left: 3px solid #333")
       each post in posts
-        li.o-layout__item(style='display: block')
+        li.o-layout__item(
+            style='display: block; margin-bottom: 2.3rem')
           span= post.data
           h5= post['título']
           div !{ post.content }
