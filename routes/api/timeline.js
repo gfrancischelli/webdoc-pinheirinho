@@ -5,7 +5,9 @@ exports = module.exports = function(req, res) {
 
     let news;
 
-    // res.set('Content-Type', 'application/json');
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+
     Post.paginate({
           page: req.query.page || 1,
           perPage: 10,
