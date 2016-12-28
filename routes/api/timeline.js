@@ -1,23 +1,25 @@
+const sanitizeHtml = require('sanitize-html');
 const keystone = require('keystone'),
       Post = keystone.list('Post');
 
 exports = module.exports = function(req, res) {
 
-    let news;
+  let news;
 
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 
-    Post.paginate({
-          page: req.query.page || 1,
-          perPage: 10,
-          maxPages: 10,
-      })
-      .where('tipo', 'timeline')
-      .sort('data')
-      .exec(function(err, results) {
-          news = results;
-          err ? res.json({status: err}) : res.json(news);
-      });
-
+  Post.paginate({
+      page: req.query.page || 1,
+      perPage: 10,
+      maxPages: 10,
+    })
+    .where('tipo', 'timeline')
+    .sort('data')
+    .exec(function(err, results) {
+      news = results;
+      news.results.forEach( post => post.content = sanitizeHtml(post.content) );
+      
+      err ? res.json({status: err}) : res.json(news);
+  });
 }

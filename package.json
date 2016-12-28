@@ -6,6 +6,7 @@
   "scripts": {
     "riot": "riot --config riot.config -w",
     "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "cap production deploy",
     "webpack": "webpack -w"
   },
   "repository": {
@@ -23,6 +24,7 @@
     "mailgun-js": "^0.7.14",
     "node-sass-middleware": "^0.10.0",
     "pug": "^2.0.0-beta6",
+    "sanitize-html": "^1.13.0",
     "zenscroll": "^3.3.0"
   },
   "devDependencies": {
