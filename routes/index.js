@@ -35,20 +35,7 @@ const routes = {
 
 exports = module.exports = function(app) {
 
-    app.get('/', routes.views.index);
- 
-    // News routes
-    app.get('/noticias', routes.views.news);
-    app.get('/noticias/:postSlug', routes.views.singleNew);
 
-    // Gallery routes
-    app.get('/galerias', routes.views.galleries);
-    app.get('/galerias/:gallerySlug', routes.views.singleGallery);
-
-    // TImeline routes
-    app.get('/timeline', routes.views.timeline);
-
-    
     // Api
   
     // TODO - workin titles names
@@ -61,4 +48,7 @@ exports = module.exports = function(app) {
 
     // Mail
     app.post('/mail', mailer);
+
+
+  app.get(/(?!api)/, routes.views.index);
 }

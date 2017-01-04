@@ -9,21 +9,13 @@ html
         link(rel="shortcut icone", href="/favicon.ico", type="image/x-icon")
         link(href="/styles/main.css", rel="stylesheet")
      
-    
         block css
         block head
 
     body
-        include ../includes/header
-        #main 
-            block intro
-            +flash-messages(messages)
-            block content
-        include ../includes/footer
+        block content
     
-    script(src='https://cdnjs.cloudflare.com/ajax/libs/riot/3.0.1/riot.min.js')
     script(src="https://use.fontawesome.com/f39734232b.js")
-    script(src='/js/smooth_scroll.js')
     script(src='/js/bundle.js')
 
     block js
