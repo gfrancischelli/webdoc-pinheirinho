@@ -34,7 +34,7 @@ Post.schema.virtual('heroUrl').get(function() {
 
 Post.add({
     "título": { type: String, initial: true, required: true },
-    "tipo": { type:Types.Select, options: 'timeline, noticía', initial: true, required: true},
+    "tipo": { type:Types.Select, options: 'timeline, notícia', initial: true, required: true},
     "data": { type: Types.Date, format: 'D M YYYY', dependsOn: { tipo: 'timeline' }  },
     "horário": { type: String, dependsOn: { tipo: 'timeline' } },
     status: {
