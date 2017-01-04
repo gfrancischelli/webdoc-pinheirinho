@@ -4,15 +4,16 @@
 
     &:after {
         content: ' ▸';
+        display: inline-block;
         opacity: 0;
         transition: all 0.3s ease;
-        transform: translateY(5px);
+        transform: translate(5px, 5px);
     }
 
     &:hover:after {
         display: inline-block;
         opacity: 1;
-        transform: translateY(0px);
+        transform: translate(5px, 0);
     }
 }
 
