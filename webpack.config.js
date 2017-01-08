@@ -6,8 +6,6 @@ var ReactCustomResolver = {
     resolver.plugin('module', function(request, callback) {
       if (request.request[0] === '#') {
         var req = request.request.substr(1);
-      console.log('request', request)
-      console.log('req', req)
         const filepath = req + '/' + path.basename(req) + '.js';
         var obj = {
           path: request.path,
