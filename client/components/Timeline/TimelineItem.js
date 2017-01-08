@@ -10,7 +10,6 @@ class TimelineItem extends Component {
     } else {
       this.setState({open: 0});
     }
-    console.log(this.state.open)
   }
 
   constructor() {
@@ -20,7 +19,6 @@ class TimelineItem extends Component {
   }
   
   render() {
-  console.log('timelineitem')
     const title = this.props.post['título'];
     const { content, data } = this.props.post;
     const date = new Date(data);
@@ -32,7 +30,7 @@ class TimelineItem extends Component {
           <h6>
             { `${date.getMonth().toLocaleString('pt-BR')}/${date.getFullYear()}` }
           </h6>
-          <h4> { title }</h4>
+          <h5> { title }</h5>
         </div>
 
         { this.state.open == 0 ? null:
@@ -40,18 +38,6 @@ class TimelineItem extends Component {
             dangerouslySetInnerHTML={{__html: content}}>
           </div>
         }
-
-        <style jsx>{`
-          .timeline-item {
-            cursor: pointer;
-            margin-bottom: 20px;
-          }
-
-          .timeline-item h6,
-          .timeline-item h4 {
-            display: inline;
-          }
-        `}</style>
       </div>
     )
   }
