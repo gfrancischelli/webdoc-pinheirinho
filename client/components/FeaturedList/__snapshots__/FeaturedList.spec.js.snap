@@ -1,0 +1,77 @@
+exports[`test FeaturedList renders correctly 1`] = `
+<ul
+  className="o-feat-list">
+  <li
+    className="o-feat-list__item o-card">
+    <Component
+      url="dummy hero">
+      <img
+        className="o-card__figure" />
+    </Component>
+    <div
+      className="o-card__body">
+      <undefined>
+        <h3
+          className="c-heading c-heading--small">
+          dummy title
+        </h3>
+      </undefined>
+      <p
+        className="summary"
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "dummy content",
+          }
+        } />
+    </div>
+  </li>
+  <li
+    className="o-feat-list__item o-card">
+    <Component
+      url="dummy hero">
+      <img
+        className="o-card__figure" />
+    </Component>
+    <div
+      className="o-card__body">
+      <undefined>
+        <h3
+          className="c-heading c-heading--small">
+          dummy title
+        </h3>
+      </undefined>
+      <p
+        className="summary"
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "dummy content",
+          }
+        } />
+    </div>
+  </li>
+  <li
+    className="o-feat-list__item o-card">
+    <Component
+      url="dummy hero">
+      <img
+        className="o-card__figure" />
+    </Component>
+    <div
+      className="o-card__body">
+      <undefined>
+        <h3
+          className="c-heading c-heading--small">
+          dummy title
+        </h3>
+      </undefined>
+      <p
+        className="summary"
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "dummy content",
+          }
+        } />
+    </div>
+  </li>
+</ul>
+`;

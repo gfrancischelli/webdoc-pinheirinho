@@ -1,0 +1,11 @@
+exports[`test should render correctly 1`] = `
+<picture>
+  <source
+    media="max-width: 420px"
+    srcSet="?width=370" />
+  <source
+    media="max-width: 768px"
+    srcSet="?width=400" />
+  <img />
+</picture>
+`;
