@@ -4,14 +4,19 @@
   "description": "",
   "main": "web.js",
   "scripts": {
-    "test": "jest",
+    "test": "clear && jest",
+    "start": "nodemon web.js",
     "build": "webpack --config ./webpack.deploy.config.js --progress --colors",
     "deploy": "npm run build && cap production deploy",
     "webpack": "webpack -w"
   },
   "jest": {
-    "setupFiles": ["./jest.setup.js"],
-    "testPathDirs": ["./client"],
+    "setupFiles": [
+      "./jest.setup.js"
+    ],
+    "testPathDirs": [
+      "./client"
+    ],
     "snapshotSerializers": [
       "<rootDir>/node_modules/enzyme-to-json/serializer"
     ],
@@ -54,6 +59,7 @@
     "enzyme": "^2.7.0",
     "enzyme-to-json": "^1.4.5",
     "jest": "^18.1.0",
+    "node-fetch": "^1.6.3",
     "react-addons-test-utils": "^15.4.1",
     "react-test-renderer": "^15.4.1",
     "riot": "^3.0.1",
