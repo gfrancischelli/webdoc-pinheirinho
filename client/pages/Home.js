@@ -1,41 +1,59 @@
 import React from 'react';
 import { Link } from 'react-router';
+
+// Components
 import Header from '../components/Header/Header';
+import TimelineItem from 'components/Timeline/TimelineItem';
 import FeaturedList from '../components/FeaturedList/FeaturedList';
 
 class Home extends React.Component {
   render() {
+    const { news, galleries } = APP_DATA;
+    console.log('news: \n', news)
     return (
-      <div>
-        <div className='c-fluid-container-16-9'>
-          <iframe 
-            allowFullScreen
-            src='https://www.youtube.com/embed/S5rezgxdPC0' />
-        </div>
+      <main id="main">
+        <section className='o-wrapper'>
+          <div className='c-fluid-container-16-9'>
+            <iframe 
+              allowFullScreen
+              src='https://www.youtube.com/embed/S5rezgxdPC0' />
+          </div>
+        </section>
+        { /* Preview Timeline */ }
         <section className='o-band o-band--tint'>
           <div className='o-wrapper clearfix'>
-            <h3 className='c-heading'>Notícias</h3>
-            <FeaturedList featured={ data.news } />
-            <h5>
-              <a href='/noticias'
-                className='c-link u-float-right'>
-                 mais notícias
-              </a>
-            </h5>
+              <Link to='/timeline'>
+                <h3 className='c-heading'>Linha do Tempo</h3>
+              </Link>
+              { APP_DATA.timeline.map( post => (
+                <TimelineItem key={post.id} post={post} />
+              ))}
           </div>
         </section>
         <section className='o-band o-band--tint'>
           <div className='o-wrapper clearfix'>
-            <h3 className='c-heading'>Galerias</h3>
-            <FeaturedList featured={ data.galleries } />
+            <h3 className='c-heading'>Notícias</h3>
+            <FeaturedList featured={ news } />
             <h5>
-              <a href='/noticias'
-                className='c-link u-float-right'> mais galerias
-              </a>
+              <Link to='/noticias'
+                className='c-link u-float-right'>
+                mais notícias
+              </Link>
             </h5>
-            </div>
+          </div>
         </section>
-      </div>
+        <section className='o-band o-band--red'>
+          <div className='o-wrapper clearfix'>
+            <h3 className='c-heading u-font-white'>Galerias</h3>
+            <FeaturedList featured={ galleries } />
+            <h5>
+              <Link to='/noticias'
+                className='c-link u-float-right'> mais galerias
+              </Link>
+            </h5>
+          </div>
+        </section>
+      </main>
     )
   }
 }

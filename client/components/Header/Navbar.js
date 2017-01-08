@@ -1,5 +1,5 @@
 import React from 'react';
-import Link from 'react-router';
+import { Link } from 'react-router';
 import breakpoints from '../../media-query';
 import measure from 'remeasure';
 
@@ -7,12 +7,12 @@ const links = {
   always_visible: [
     { name: "home", path: "/" },
     { name: "galerias", path: "/galerias" },
+    { name: "linha do tempo", path: "/timeline" },
     { name: "notícias", path: "/noticias" },
   ],
   mobile_hidden: [
     { name: "ficha técnica", path: "/ficha-tecnica" },
     { name: "fale conosco", path: "#fale-conosco" },
-    { name: "linha do tempo", path: "/timeline" },
   ],
 }
 
@@ -49,11 +49,11 @@ class Nav extends React.Component {
     <li 
       key={link.name}
       className='c-site-nav__item'>
-      <a 
-        href={link.path}
+      <Link 
+        to={link.path}
         className='c-site-nav__link' >
         {link.name}
-      </a>
+      </Link>
     </li>
   )
 
