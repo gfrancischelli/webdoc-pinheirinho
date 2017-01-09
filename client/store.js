@@ -1,41 +1,51 @@
 class Store {
   constructor() {
-    this.next = 0;
-    this.posts = ['dumb api starts counting from 1'];
+    this.news = {
+      posts: ['dumb api starts counting from 1'],
+      next: 1,
+    }
+    this.timeline = {
+      posts: ['dumb api starts counting from 1'],
+      next: 1,
+    }
+    this.galleries = {
+      posts: ['dumb api starts counting from 1'],
+      next: 1,
+    }
   }
 
-  getPage = (page) => {
-    if(this.posts[page]) {
+  getPage = (page, type) => {
+    if(this[type].posts[page]) {
       return Promise.resolve({
-        posts: this.posts.slice(0, page + 1),
+        posts: this[type].posts.slice(0, page + 1),
         next: page + 1,
       });
     }
     else {
-      return this.loadPage(page);
+      return this.loadPage(page, type);
     }
   }
 
-  updateState = (data) => {
+  updateState = (data, type) => {
     this.currentPage = data.currentPage;
-    this.next = data.next
-    this.posts = this.posts.concat([ data.results ]);
+    this[type].next = data.next
+    this[type].posts = this[type].posts.concat([ data.results ]);
   }
   
-  loadPage = (page) => {
+  loadPage = (page, type) => {
     const store = this;
     const page_query = `?page=${page ? page : 0}`;
     const url =
-      `http://104.236.198.234/api/timeline${page_query}`;
+      `/api/${type}${page_query}`;
 
 
     return fetch( url )
       .then( res => res.json() )
       .then( pages => {
-        store.updateState(pages);
+        store.updateState(pages, type);
         return {
-          posts: store.posts,
-          next: store.next,
+          posts: store[type].posts,
+          next: store[type].next,
         }
       });
   }
