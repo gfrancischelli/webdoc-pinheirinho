@@ -1,45 +1,108 @@
 import React from 'react';
+import FormField from './FormField';
+import StatusButton from 'components/StatusButton/StatusButton';
+
+const text_fields = [
+  {name: 'FullName', label: 'nome'},
+  {name: 'Email', label: 'email', type: 'email'},
+  {name: 'Subject', label: 'assunto'},
+]
 
 class ContactForm extends React.Component {
+
+  constructor() {
+    super();
+    this.state = {
+      FullName: '',
+      Email: '',
+      Subject: '',
+      Content: '',
+      Status: 'initial',
+    }
+  }
+
+  handleChange = (e) => {
+    this.setState({
+      [e.target.name]: e.target.value,
+    });
+  }
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    if ( !this.form.checkValidity() ) {
+      this.setState({
+        status: 'invalid'
+      });
+      return
+    }
+
+    this.setState({
+      status: 'pending'
+    })
+
+    const state = this.state;
+    const body =  JSON.stringify({
+        name: state.FullName,
+        address: state.Email,
+        subject: state.Subject,
+        content: state.Content,
+    });
+
+    console.log(body);
+
+    const component = this;
+    fetch('/api/mail', {
+      method: 'post',
+      body: body,
+      headers: {
+        'Accept': 'application/json, application/xml, text/plain, text/html, *.*',
+        'Content-Type': 'application/json',
+      },
+    })
+    .then( res => res.json() )
+    .catch( err => {
+      component.setState({
+        status: 'error',
+      });
+    })
+    .then( data => {
+      component.setState({
+        status: 'success',
+      })
+      component.form.reset();
+    });
+  }
+
   render() {
+    const component = this;
     return (
-      <form onSubmit={ post } classNameName="c-form" method="post">
+      <form
+        ref={ (c) => component.form = c}
+        className="c-form"
+        onSubmit={ this.post }>
 
-        <div className="c-form__field">
-            <input ref="name" name="FullName" className="c-form__input"
-                type="text" placeholder=" " required>
-            <span className="fa fa-check-circle c-form__status-icon"></span>
-            <label className="c-form__label" for="FullName">nome</label>
-        </div>
+        {text_fields.map( (field, index) => (
+          <FormField
+            key={index}
+            name={field.name}
+            label={field.label}
+            type ={field.type || 'text'}
+            onChange={component.handleChange} />
+        ))}
 
-        <div className="c-form__field">
-            <input ref="email" name="Email" className="c-form__input"
-                type="email" placeholder=" " required>
-            <span className="fa fa-check-circle c-form__status-icon"></span>
-            <label className="c-form__label" for="Email">email</label>
-        </div>
-          
-        <div className="c-form__field">
-            <input ref="subject" name="Subject" className="c-form__input"
-                type="text" placeholder=" " required>
-            <span className="fa fa-check-circle c-form__status-icon"></span>
-            <label className="c-form__label" for="Subject">assunto</label>
-        </div>
+        <FormField
+          name='Content'
+          label='mensagem'>
+          <textarea 
+            onChange={component.handleChange}/>
+        </FormField>
 
-        <div className="c-form__field">
-            <textarea ref="content" name="Content" className="c-form__input"
-                type="text" placeholder=" " required></textarea>
-            <label className="c-form__label" for="Subject">mensagem</label>
-        </div>
-
-        <load-button message={ "Enviar" } state={ status }>
-            <yield to="completed">Mensagem Enviada</yield>
-        </load-button>
+        <StatusButton 
+          handleClick={this.handleSubmit}
+          status={this.state.status} /> 
       </form>
-
-      
-
-  </contact-form> 
     )
   }
 }
+
+export default ContactForm;
