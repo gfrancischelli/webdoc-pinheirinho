@@ -36,19 +36,18 @@ const routes = {
 exports = module.exports = function(app) {
 
 
-    // Api
-  
+    // API
     // TODO - workin titles names
     // app.get('/public/images/:folder/:title/:filename', imageAPI);
     app.get('/imgs/:folder/:filename', images);
-    
-    // Timeline 
-    app.get('/api/timeline', routes.api.timeline);
-
 
     // Mail
-    app.post('/mail', mailer);
+    app.post('/api/mail', mailer);
+
+    // Timeline
+    app.get('/api/:content', routes.api.index);
 
 
-  app.get(/(?!api)/, routes.views.index);
+    // React
+    app.get(/(?!api)/, routes.views.index);
 }
