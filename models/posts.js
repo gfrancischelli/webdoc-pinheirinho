@@ -33,10 +33,10 @@ Post.schema.virtual('heroUrl').get(function() {
 });
 
 Post.add({
-    "título": { type: String, initial: true, required: true },
-    "tipo": { type:Types.Select, options: 'timeline, notícia', initial: true, required: true},
-    "data": { type: Types.Date, format: 'D M YYYY', dependsOn: { tipo: 'timeline' }  },
-    "horário": { type: String, dependsOn: { tipo: 'timeline' } },
+    title: { type: String, initial: true, required: true, label: 'Título' },
+    tipo: { type:Types.Select, options: 'timeline, notícia', initial: true, required: true},
+    data: { type: Types.Date, format: 'D M YYYY', dependsOn: { tipo: 'timeline' }, label: 'Data'  },
+    time: { type: String, dependsOn: { tipo: 'timeline' }, label: 'Horário' },
     status: {
       type: Types.Select, options: 'rascunho, publicado, arquivado',
       default: 'rascunho', required: true, dependsOn: { tipo: 'notícia' }
@@ -52,16 +52,16 @@ Post.add({
     heroImage: {
         type: Types.File,
         storage: postStorage,
-        label: 'foto de capa',
+        label: 'Foto de capa',
     },
-    "vídeo": { type: Types.Url },
+    video: { type: Types.Url },
     flicker: { type: Types.Url },
-    autor: { type: String, dependsOn: { tipo: 'noticía' } },
+    author: { type: String, dependsOn: { tipo: 'noticía' }, label: 'Autor' },
     content: { type: Types.Html, wysiwyg: true, height: 400 },
     createdAt: { type: Types.Date, default: Date.now, dependsOn: { tipo: 'notícia' } },
     publishedAt: { type: Types.Date, dependsOn: { tipo: 'notícia' } } ,
 });
 
-Post.defaultColumns = 'título, tipo|10%, status|10%, publishedAt|10%';
+Post.defaultColumns = 'title, tipo|10%, status|10%, publishedAt|10%';
 
 Post.register();

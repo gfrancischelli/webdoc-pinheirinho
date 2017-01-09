@@ -19,7 +19,7 @@ class TimelineItem extends Component {
   }
   
   render() {
-    const title = this.props.post['título'];
+    const title = this.props.post.title;
     const { content, data } = this.props.post;
     const date = new Date(data);
     return (

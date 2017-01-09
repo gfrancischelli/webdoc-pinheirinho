@@ -21,7 +21,7 @@ const NewsList = ({ posts }) => (
           <div className='flag__fluid-cp u-pad-left-large'>
             <Link to={ resourceURL('noticias', post.slug) }>
               <h3 className='c-heading c-heading--small'>
-                { post['título'] }
+                { post.title }
               </h3>
             </Link>
             <p>{ post.createdAt.slice(0, 10) }</p>

@@ -18,7 +18,7 @@ function FeaturedList({ featured, type }) {
           <div className='o-card__body'>
             <Link to={ resourceURL(type, item.slug) }>
               <h3 className='c-heading c-heading--small'>
-                { item['título'] }
+                { item.title }
               </h3>
             </Link>
             { !item.content ? null :

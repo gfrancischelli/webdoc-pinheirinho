@@ -32,6 +32,7 @@ Gallery.add({
     heroImage: { 
         type: Types.File,
         storage: galleryStorage,
+      label: 'Foto de capa',
     },
     images: {
         type: Types.CloudinaryImages,
