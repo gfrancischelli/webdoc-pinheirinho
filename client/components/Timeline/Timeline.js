@@ -23,7 +23,7 @@ class Timeline extends Component {
 
   updatePages = (page) => {
     const self = this;
-    this.store.getPage(page)
+    this.store.getPage(page, 'timeline')
       .then( pages => {
         return {
           posts: pages.posts.reduce(concatArray, []),

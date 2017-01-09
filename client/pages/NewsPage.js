@@ -3,6 +3,8 @@ import {Link} from 'react-router';
 
 import {resourceURL, imageURL, concatArray} from 'utils';
 
+import NewsList from 'components/NewsList/NewsList';
+
 class NewsPage extends React.Component {
 
   constructor(props) {
@@ -20,7 +22,7 @@ class NewsPage extends React.Component {
 
   updatePages = (page) => {
     const self = this;
-    this.store.getPage(page)
+    this.store.getPage(page, 'news')
       .then( pages => {
         return {
           posts: pages.posts.reduce(concatArray, []),
@@ -37,40 +39,10 @@ class NewsPage extends React.Component {
     this.updatePages(this.state.next);
   }
 
-  renderList(posts) {
-    console.log('posts: \n', posts)
-    return (
-      <ul className='list-ui'>
-        { posts.map( post => (
-          <li 
-            key={post._id}
-            className='o-list-ui__item'>
-            <div className='flag flag--stack@mb'>
-              <div className='flag__solid-cp'>
-                <img className='c-thumb-large'
-                  src={``} />
-              </div>
-              <div className='flag__fluid-cp u-pad-left-large'>
-                <Link to={ resourceURL('noticias', post.slug) }>
-                  <h3 className='c-heading c-heading--small'>
-                    { post['título'] }
-                  </h3>
-                </Link>
-                <p>{ post.createdAt.slice(0, 10) }</p>
-                <div dangerouslySetInnerHTML={{
-                  __html: post.content.slice(0, 360)
-                }} />
-              </div>
-            </div>
-          </li>
-        ))}
-      </ul>
-    )
-  }
-
   render() {
     const next = this.state.next;
     const posts = this.state.posts.slice(1);
+    console.log(posts)
     return (
       <main className="o-band">
         <section className='o-wrapper o-wrapper--slim@ds'>
@@ -79,7 +51,7 @@ class NewsPage extends React.Component {
           </h2>
           <div className='o-layout'>
             <div className='o-layout__item'>
-              { this.renderList(posts) }
+              { <NewsList posts={posts} /> }
             </div>
           </div>
         </section>
