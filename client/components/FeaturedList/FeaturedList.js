@@ -12,6 +12,7 @@ function FeaturedList({ featured, type }) {
           { !item.heroImage ? null :
             <ImageSet 
               url={ imageURL(type, item.heroImage.filename)}
+              className='o-card__figure'
             />
           }
           <div className='o-card__body'>

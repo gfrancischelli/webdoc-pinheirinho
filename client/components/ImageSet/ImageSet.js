@@ -1,7 +1,7 @@
 import React from 'react';
 import breakpoints from 'media-query.js';
 
-export default ({ url }) => (
+export default ({ url, className }) => (
   <picture>
     <source
       media={`max-width: ${breakpoints.phone}`}
@@ -11,7 +11,7 @@ export default ({ url }) => (
       srcSet={ `${ url }?width=${ 400 }` } />
     <img 
       src={ url }
-      className='o-card__figure' /> 
+      className={className} /> 
   </picture>
 )
 
