@@ -2,26 +2,29 @@ import React from 'react';
 import { Link } from 'react-router';
 import ImageSet from 'components/ImageSet/ImageSet';
 
-function FeaturedList({ featured }) {
+import {imageURL, resourceURL} from 'utils';
+
+function FeaturedList({ featured, type }) {
   return (
     <ul className='o-feat-list'>
       { featured.map( (item, index) => (
         <li key={ index } className='o-feat-list__item o-card'>
           { !item.heroImage ? null :
-            <ImageSet url={ item.heroUrl }>
-              <img className='o-card__figure' /> 
-            </ImageSet>
+            <ImageSet 
+              url={ imageURL(type, item.heroImage.filename)}
+            />
           }
           <div className='o-card__body'>
-            <Link to='/noticias'>
+            <Link to={ resourceURL(type, item.slug) }>
               <h3 className='c-heading c-heading--small'>
                 { item['título'] }
               </h3>
             </Link>
             { !item.content ? null :
-              <p
-                dangerouslySetInnerHTML={{__html:item.content.slice(0, 220)}}
-                className='summary' />
+              <p className='summary' 
+                dangerouslySetInnerHTML={
+                  {__html: item.content.slice(0, 220)}
+                } />
             }
           </div>
         </li>
