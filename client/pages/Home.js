@@ -2,9 +2,10 @@ import React from 'react';
 import { Link } from 'react-router';
 
 // Components
-import Header from '../components/Header/Header';
+import Header from 'components/Header/Header';
 import TimelineItem from 'components/Timeline/TimelineItem';
-import FeaturedList from '../components/FeaturedList/FeaturedList';
+import FeaturedList from 'components/FeaturedList/FeaturedList';
+import ContactForm from 'components/ContactForm/ContactForm';
 
 class Home extends React.Component {
   render() {
@@ -51,6 +52,12 @@ class Home extends React.Component {
                 className='c-link u-float-right'> mais galerias
               </Link>
             </h5>
+          </div>
+        </section>
+        <section id='fale-conosco' className='o-band'>
+          <div className='o-wrapper o-wrapper--small@ds'>
+            <h3 className='c-heading'>Fale Conosco</h3>
+            <ContactForm />
           </div>
         </section>
       </main>
