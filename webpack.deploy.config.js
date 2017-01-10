@@ -13,7 +13,6 @@ var ReactCustomResolver = {
           query: request.query,
           directory: path.resolve(`./client/${req}`)
         };
-        console.log('obj => \n', obj)
         this.doResolve(['file'], obj, callback);
       }
       else {
