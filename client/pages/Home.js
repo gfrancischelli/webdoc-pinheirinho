@@ -49,7 +49,7 @@ class Home extends React.Component {
             <FeaturedList featured={ galleries } type='galleries' />
             <h5>
               <Link to='/noticias'
-                className='c-link u-float-right'> mais galerias
+                className='c-link u-font-white u-float-right'> mais galerias
               </Link>
             </h5>
           </div>

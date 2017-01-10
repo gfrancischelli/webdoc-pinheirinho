@@ -3,8 +3,8 @@ const keystone = require('keystone'),
       path = require('path');
 
 const Post = new keystone.List('Post', {
-    autokey: { path: 'slug', from: 'título', unique: true },
-    map: { name: 'título' },
+    autokey: { path: 'slug', from: 'title', unique: true },
+    map: { name: 'title' },
     defaultSort: '-createdAt',
 });
 

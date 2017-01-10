@@ -1,11 +1,12 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { Link } from 'react-router';
 import breakpoints from '../../media-query';
 import measure from 'remeasure';
 
 const links = {
   always_visible: [
-    { name: "home", path: "/" },
+    { name: <span className='fa fa-home' />, path: "/" },
     { name: "galerias", path: "/galerias" },
     { name: "linha do tempo", path: "/timeline" },
     { name: "notícias", path: "/noticias" },
@@ -16,34 +17,43 @@ const links = {
   ],
 }
 
-
-@measure
 class Nav extends React.Component {
   constructor() {
     super()
+    this.initialY = false;
     this.state = {
-      initialY: null,
-      open: false,
+      isOnHeader: true
     }
   }
 
   componentDidMount() {
-    console.log(this.props.position.offsetTop)
-    this.setState({
-      initialY: this.props.position.offsetTop,
-    })
+    document.addEventListener('scroll', this.updatePosition)
   }
 
-  // isOnHeader = () => {
-  //   if ( distance_scrolled > initial_height) {
-  //       nav.classList.remove('is-on-header')
-  //   } else {
-  //       nav.classList.add('is-on-header') 
-  //   }
-  //   this.setState({
-  //     isOnHeader
-  //   })
-  // }
+  updatePosition = () => {
+    // initialY is a hack to correctly set position
+    // don't know why the position is wrong when
+    // calculating on mount
+    const top = this.Nav.offsetTop
+    console.log('initialY: ', this.initialY)
+    if (this.initialY > -1 && top > 0) this.initialY = top;
+
+
+    const scrolled = document.body.scrollTop;
+    if (scrolled < this.initialY) {
+        this.setState({
+          isOnHeader: true
+        })
+      } else {
+        this.setState({
+          isOnHeader: false
+        })
+      }
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('scroll', this.updatePosition)
+  }
 
   renderLink = (link) => (
     <li 
@@ -57,30 +67,40 @@ class Nav extends React.Component {
     </li>
   )
 
-  toggle = () => { 
-    console.log(this.refs.nav.offsetTop);
-    const open = !this.state.open;
-    this.setState({
-      open: open
-    })
+  toggle = () => {
+    this.setState( (prevState, props) => {
+      return {open: !prevState.open}
+    });
   }
-
   render() {
+    const onHeaderClass = this.state.isOnHeader ? 'is-on-header' : '';
     return (
       <nav
-        ref='nav'
-        className='c-site-nav is-on-header'>
+        ref={ c => this.Nav = c }
+        className={`c-site-nav ${onHeaderClass}`}>
         <ul className='c-site-nav__list'>
           { links.always_visible.map( this.renderLink )}
           <li className='c-site-nav__item'>
-            <button onClick={ this.toggle }>
+            <button 
+              onClick={ this.toggle }>
               <span className='fa fa-bars' />
             </button>
           </li>
           { !this.state.open ? null :
-            links.mobile_hidden.map( this.renderLink )
+            <div className='dropdown'>
+              {links.mobile_hidden.map( this.renderLink )}
+            </div>
           }
         </ul>
+        <style jsx>{`
+          .dropdown {
+            margin-top: 8px;
+          }
+          button {
+            color: currentColor;
+            background-color: transparent;
+          } 
+          `}</style>
       </nav>
     )
   }
