@@ -17,32 +17,31 @@ class NewsPage extends React.Component {
   }
 
   componentDidMount() {
-    this.updatePages(1);
-  }
-
-  updatePages = (page) => {
+    const {store, loadPage} = this;
     const self = this;
-    this.store.getPage(page, 'news')
-      .then( pages => {
-        return {
-          posts: pages.posts.reduce(concatArray, []),
-          next: pages.next,
-        }
-      })
-      .then( result => self.setState({
-        posts: result.posts,
-        next: result.next
-      }));
+
+    this.data$ = store
+    .dataStream('news')
+    .subscribe({
+      next: (pages) => self.setState(pages),
+    });
+
+    this.store.request(0, 'news');
   }
 
-  loadNext = () => {
-    this.updatePages(this.state.next);
+  componentWillUnmount() {
+    // Delete obj to prevent memory leak
+    this.data$ = null;
+    this.store.close('news')
   }
+
+  loadPage = (p) => this.store.request(p, 'timeline');
+
+  loadNext = () => this.loadPage(this.state.next);
 
   render() {
-    const next = this.state.next;
-    const posts = this.state.posts.slice(1);
-    console.log(posts)
+    const {posts, next} = this.state;
+    const page = posts[0] || [];
     return (
       <main className="o-band">
         <section className='o-wrapper o-wrapper--slim@ds'>
@@ -51,15 +50,13 @@ class NewsPage extends React.Component {
           </h2>
           <div className='o-layout'>
             <div className='o-layout__item'>
-              { <NewsList posts={posts} /> }
+              { <NewsList posts={page} /> }
             </div>
           </div>
         </section>
       </main>
     )
-    
   }
 }
-
 
 export default NewsPage;

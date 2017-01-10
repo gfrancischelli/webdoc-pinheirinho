@@ -2,9 +2,9 @@ import React from 'react';
 import { Component } from 'react';
 import { Link } from 'react-router';
 
-import TimelineItem from './TimelineItem';
-
 const concatArray = (arr, el) => arr.concat(el);
+
+import TimelineItem from './TimelineItem';
 
 class Timeline extends Component {
 
@@ -15,38 +15,43 @@ class Timeline extends Component {
       next: 1,
     }
     this.store = this.props.store;
-    this.store.subscribe('update', this.updatePages)
   }
 
   componentDidMount() {
-    this.store.request(1, 'timeline');
-  }
+    const {store, loadPage} = this;
+    const self = this;
 
-  updatePages = (pages) => {
-    this.setState({
-      posts: pages.posts.reduce(concatArray, []),
-      next: pages.next,
+    this.data$ = store
+    .dataStream('timeline')
+    .subscribe({
+      next: (pages) => self.setState(pages),
     });
+
+    loadPage(0);
   }
 
-  loadNext = () => {
-    this.store.request(this.state.next, 'timeline')
-    //this.updatePages(this.state.next);
+  // Delete obj to prevent memory leak
+  componentWillUnmount() {
+    this.store.close('timeline')
+    this.data$ = null;
   }
+
+  loadPage = (p) => this.store.request(p, 'timeline');
+
+  loadNext = () => this.loadPage(this.state.next);
 
   render() {
-    const next = this.state.next;
-    const posts = this.state.posts.slice(1);
+    const {posts, next} = this.state;
     return (
       <div className='o-wrapper' >
         <div className='o-band'> 
-          { posts.map( post => (
+          { posts.reduce(concatArray, []).map( post => (
               <TimelineItem
                 key={post._id}
                 post={post}
               />
           )) }
-          { !next ? null :
+          { !next && posts.length > 0 ? null :
             <button 
                 className='c-btn'   
                 onClick={this.loadNext}>
