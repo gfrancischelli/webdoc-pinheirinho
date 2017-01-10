@@ -10,6 +10,8 @@ class Store {
     this.galleries = {posts: []}
 
     this.subscribers = {};
+
+    this.loadPage(0, 'news')
   }
 
   emit = (data) => {

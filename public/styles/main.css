@@ -813,7 +813,8 @@ p {
 .page-head {
   position: relative;
   width: 100%;
-  margin: 0; }
+  margin: 0;
+  margin-bottom: 12px; }
   .page-head__img {
     display: block;
     width: 100%; }

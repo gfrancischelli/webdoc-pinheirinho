@@ -17,7 +17,7 @@ const routes = () => (
   <Route path='/' component={ Page }>
     <Route path='/timeline' component={ Timeline } />
     <Route path='/noticias' component={ NewsPage } />
-    <Route path='/noticias/:id' component={ SinglePost } />
+    <Route path='/noticias/:slug' component={ SinglePost } />
     <Redirect from='*' to='/' />
     <IndexRoute component={ Home } />
   </Route>
