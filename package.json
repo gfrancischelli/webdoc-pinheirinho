@@ -64,6 +64,7 @@
     "react-test-renderer": "^15.4.1",
     "riot": "^3.0.1",
     "riotjs-loader": "^3.0.0",
+    "styled-jsx": "^0.4.1",
     "webpack": "^1.13.3"
   }
 }
