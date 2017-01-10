@@ -1,87 +1,65 @@
 import Stream from 'lib/streams';
+const concatArray = (arr, el) => arr.concat(el);
 
 class Store {
   constructor() {
-    this.news = {
-      posts: ['dumb api starts counting from 1'],
-      next: 1,
-    }
-    this.timeline = {
-      posts: ['dumb api starts counting from 1'],
-      next: 1,
-    }
-    this.galleries = {
-      posts: ['dumb api starts counting from 1'],
-      next: 1,
-    }
-    this.subscribers = {'update': []};
-    this.dataStream = Stream( function(observer) {
-      this.subscribe('update', observer.next());
-      console.log('dispatch data')
-    })
+    const self = this;
+
+    this.news = {posts: []}
+    this.timeline = {posts: []}
+    this.galleries = {posts: []}
+
+    this.subscribers = {};
   }
 
   emit = (data) => {
-    const keys = Object.keys(this.subscribers);
-    keys.forEach( key => {
-      this.subscribers[key].forEach( fn => fn(data) )
-    });
+    Object.keys(this.subscribers)
+      .forEach(key => this.subscribers[key](data));
   }
 
-  subscribe = (event, fn) => {
-    console.log('subscribe: ', event, fn)
-    this.subscribers[event] = this
-      .subscribers[event]
-      .concat(fn);
-    console.log(this.subscribers)
+  dataStream = (key) => {
+    const self = this;
+    return Stream( observer => {
+      self.subscribe(key, observer.next)
+    }); 
   }
+
+  subscribe = (key, fn) => {
+    const {subscribers} = this;
+    ! subscribers[key] 
+    ? subscribers[key] = fn
+    : console.warn('Two subscribers must have diferent keys');
+  } 
+
+  close = (key) => delete this.subscribers[key];
 
   request = (page, type) => {
-    console.log('request: ', page, type)
-    if (this[type].posts[page]) {
-      const page = {
-        posts: this[type].posts.slice(0, page + 1),
-        next: page + 1,
-      }
-      this.emit(page);
-    } else {
-      this.loadPage(page, type)
-      .then(this.emit);
-    }
-  }
+    const {[type]: data, emit, loadPage} = this;
+    let {posts} = data;
 
-  getPage = (page, type) => {
-    if(this[type].posts[page]) {
-      return Promise.resolve({
-        posts: this[type].posts.slice(0, page + 1),
-        next: page + 1,
-      });
-    }
-    else {
-      return this.loadPage(page, type);
-    }
+    ! posts[page]
+    ? loadPage(page, type).then(emit)
+    : posts = posts.slice(0, page + 1) 
+      emit({posts, next: page + 1 });
   }
 
   updateState = (data, type) => {
-    this.currentPage = data.currentPage;
-    this[type].next = data.next
-    this[type].posts = this[type].posts.concat([ data.results ]);
+    const {[type]: lists, currentPage} = this;
+    lists.next = data.next - 1;
+    lists.posts = lists.posts.concat([ data.results ]);
   }
   
   loadPage = (page, type) => {
     const store = this;
-    const page_query = `?page=${page ? page : 0}`;
     const url =
-      `http://104.236.198.234/api/${type}${page_query}`;
+      `http://104.236.198.234/api/${type}?page=${page + 1}`;
 
     return fetch( url )
       .then( res => res.json() )
       .then( pages => {
         store.updateState(pages, type);
-        return {
-          posts: store[type].posts,
-          next: store[type].next,
-        }
+        const {posts, next} = store[type];
+        return {posts, next}
       });
   }
 
