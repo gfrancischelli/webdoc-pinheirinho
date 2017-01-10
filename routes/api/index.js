@@ -6,6 +6,7 @@ exports = module.exports = function(req, res) {
 
   let news;
   let where_prop, where_val, sort_param;
+
   switch (req.params.content) {
     case 'timeline':
       where_prop = 'tipo';

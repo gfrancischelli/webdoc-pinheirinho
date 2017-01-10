@@ -44,9 +44,11 @@ exports = module.exports = function(app) {
     // Mail
     app.post('/api/mail', mailer);
 
+    // Single Item
+    app.get('/api/unique/:resource/:slug', routes.api.singleItem)
+  
     // Timeline
     app.get('/api/:content', routes.api.index);
-
 
     // React
     app.get(/(?!api)/, routes.views.index);
