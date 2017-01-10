@@ -26722,7 +26722,6 @@
 	      // don't know why the position is wrong when
 	      // calculating on mount
 	      var top = _this.Nav.offsetTop;
-	      console.log('initialY: ', _this.initialY);
 	      if (_this.initialY > -1 && top > 0) _this.initialY = top;
 
 	      var scrolled = document.body.scrollTop;
@@ -35611,23 +35610,16 @@
 
 	    var _this = _possibleConstructorReturn(this, (Timeline.__proto__ || Object.getPrototypeOf(Timeline)).call(this, props));
 
-	    _this.updatePages = function (page) {
-	      var self = _this;
-	      _this.store.getPage(page, 'timeline').then(function (pages) {
-	        return {
-	          posts: pages.posts.reduce(concatArray, []),
-	          next: pages.next
-	        };
-	      }).then(function (result) {
-	        return self.setState({
-	          posts: result.posts,
-	          next: result.next
-	        });
+	    _this.updatePages = function (pages) {
+	      _this.setState({
+	        posts: pages.posts.reduce(concatArray, []),
+	        next: pages.next
 	      });
 	    };
 
 	    _this.loadNext = function () {
-	      _this.updatePages(_this.state.next);
+	      _this.store.request(_this.state.next, 'timeline');
+	      //this.updatePages(this.state.next);
 	    };
 
 	    _this.state = {
@@ -35635,13 +35627,14 @@
 	      next: 1
 	    };
 	    _this.store = _this.props.store;
+	    _this.store.subscribe('update', _this.updatePages);
 	    return _this;
 	  }
 
 	  _createClass(Timeline, [{
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
-	      this.updatePages(1);
+	      this.store.request(1, 'timeline');
 	    }
 	  }, {
 	    key: 'render',
@@ -35716,7 +35709,7 @@
 
 /***/ },
 /* 430 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -35724,12 +35717,46 @@
 	  value: true
 	});
 
+	var _streams = __webpack_require__(432);
+
+	var _streams2 = _interopRequireDefault(_streams);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 	var Store = function Store() {
 	  var _this = this;
 
 	  _classCallCheck(this, Store);
+
+	  this.emit = function (data) {
+	    var keys = Object.keys(_this.subscribers);
+	    keys.forEach(function (key) {
+	      _this.subscribers[key].forEach(function (fn) {
+	        return fn(data);
+	      });
+	    });
+	  };
+
+	  this.subscribe = function (event, fn) {
+	    console.log('subscribe: ', event, fn);
+	    _this.subscribers[event] = _this.subscribers[event].concat(fn);
+	    console.log(_this.subscribers);
+	  };
+
+	  this.request = function (page, type) {
+	    console.log('request: ', page, type);
+	    if (_this[type].posts[page]) {
+	      var _page = {
+	        posts: _this[type].posts.slice(0, _page + 1),
+	        next: _page + 1
+	      };
+	      _this.emit(_page);
+	    } else {
+	      _this.loadPage(page, type).then(_this.emit);
+	    }
+	  };
 
 	  this.getPage = function (page, type) {
 	    if (_this[type].posts[page]) {
@@ -35751,7 +35778,7 @@
 	  this.loadPage = function (page, type) {
 	    var store = _this;
 	    var page_query = '?page=' + (page ? page : 0);
-	    var url = '/api/' + type + page_query;
+	    var url = 'http://104.236.198.234/api/' + type + page_query;
 
 	    return fetch(url).then(function (res) {
 	      return res.json();
@@ -35780,6 +35807,11 @@
 	    posts: ['dumb api starts counting from 1'],
 	    next: 1
 	  };
+	  this.subscribers = { 'update': [] };
+	  this.dataStream = (0, _streams2.default)(function (observer) {
+	    this.subscribe('update', observer.next());
+	    console.log('dispatch data');
+	  });
 	};
 
 	exports.default = Store;
@@ -35838,6 +35870,77 @@
 	};
 
 	exports.default = App;
+
+/***/ },
+/* 432 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	function Stream(subscribe) {
+
+	  function map(transform) {
+	    var input$ = this;
+	    return Stream(function (output$) {
+	      input$.subscribe({
+	        next: function next(x) {
+	          output$.next(transform(x));
+	        },
+	        error: function error(e) {
+	          return output$.error(e);
+	        },
+	        done: function done() {
+	          return output$.done();
+	        }
+	      });
+	    });
+	  }
+
+	  function filter(condition) {
+	    var input$ = this;
+	    return Stream(function (output$) {
+	      input$.subscribe({
+	        next: function next(x) {
+	          condition(x) ? observer.next(x) : null;
+	        },
+	        error: function error(e) {
+	          return observer.error(e);
+	        },
+	        done: function done() {
+	          return observer.done();
+	        }
+	      });
+	    });
+	  }
+
+	  return {
+	    subscribe: subscribe,
+	    filter: filter,
+	    map: map
+	  };
+	}
+
+	function map(stream, fn) {
+	  return Stream();
+	}
+
+	var click$ = Stream(function (observer) {
+	  document.addEventListener('click', function (e) {
+	    observer.next();
+	  });
+	});
+
+	var array$ = Stream(function (observer) {
+	  [10, 20, 30].forEach(function (item) {
+	    return observer.next(item);
+	  });
+	  observer.done();
+	});
+
+	exports.default = Stream;
 
 /***/ }
 /******/ ]);

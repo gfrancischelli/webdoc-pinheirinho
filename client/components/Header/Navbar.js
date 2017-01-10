@@ -35,9 +35,7 @@ class Nav extends React.Component {
     // don't know why the position is wrong when
     // calculating on mount
     const top = this.Nav.offsetTop
-    console.log('initialY: ', this.initialY)
     if (this.initialY > -1 && top > 0) this.initialY = top;
-
 
     const scrolled = document.body.scrollTop;
     if (scrolled < this.initialY) {

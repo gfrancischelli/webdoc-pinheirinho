@@ -15,29 +15,23 @@ class Timeline extends Component {
       next: 1,
     }
     this.store = this.props.store;
+    this.store.subscribe('update', this.updatePages)
   }
 
   componentDidMount() {
-    this.updatePages(1);
+    this.store.request(1, 'timeline');
   }
 
-  updatePages = (page) => {
-    const self = this;
-    this.store.getPage(page, 'timeline')
-      .then( pages => {
-        return {
-          posts: pages.posts.reduce(concatArray, []),
-          next: pages.next,
-        }
-      })
-      .then( result => self.setState({
-        posts: result.posts,
-        next: result.next
-      }));
+  updatePages = (pages) => {
+    this.setState({
+      posts: pages.posts.reduce(concatArray, []),
+      next: pages.next,
+    });
   }
-  
+
   loadNext = () => {
-    this.updatePages(this.state.next);
+    this.store.request(this.state.next, 'timeline')
+    //this.updatePages(this.state.next);
   }
 
   render() {
