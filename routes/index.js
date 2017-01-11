@@ -46,6 +46,8 @@ exports = module.exports = function(app) {
 
     // Single Item
     app.get('/api/unique/:resource/:slug', routes.api.singleItem)
+
+    app.get('/api/images/:folder/:fileName', routes.api.images)
   
     // Timeline
     app.get('/api/:content', routes.api.index);
