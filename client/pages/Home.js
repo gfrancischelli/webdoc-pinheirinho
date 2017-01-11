@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { Link } from 'react-router';
 
 // Components
@@ -34,7 +35,7 @@ class Home extends React.Component {
         <section className='o-band o-band--tint'>
           <div className='o-wrapper clearfix'>
             <h3 className='c-heading'>Notícias</h3>
-            <FeaturedList featured={ news } type='noticias' />
+            <FeaturedList featured={ news } type='news' />
             <h5>
               <Link to='/noticias'
                 className='c-link u-float-right'>
@@ -46,7 +47,7 @@ class Home extends React.Component {
         <section className='o-band o-band--red'>
           <div className='o-wrapper clearfix'>
             <h3 className='c-heading u-font-white'>Galerias</h3>
-            <FeaturedList featured={ galleries } type='galerias' />
+            <FeaturedList featured={ galleries } type='galleries' />
             <h5>
               <Link to='/noticias'
                 className='c-link u-font-white u-float-right'> mais galerias
