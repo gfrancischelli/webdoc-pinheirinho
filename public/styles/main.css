@@ -596,7 +596,6 @@ p {
       color: #CCCCCC; }
 
 .c-site-nav {
-  --is-on-header: 0;
   position: fixed;
   z-index: 100;
   top: 0;
@@ -636,16 +635,16 @@ p {
   .c-site-nav__link:after {
     content: '';
     position: absolute;
-    bottom: 1px;
+    bottom: -2px;
     left: 0;
     height: 1px;
     width: 100%;
     background-color: currentColor;
-    transform: scaleX(0);
+    transform: scale(0, 1);
     transform-origin: 50% 50%;
     transition: transform 0.5s ease; }
   .c-site-nav__link:hover:after {
-    transform: scaleX(1); }
+    transform: scale(1, 1); }
 
 .c-heading {
   color: var(--font-color, #2A2A2A);
