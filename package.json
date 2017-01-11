@@ -7,7 +7,7 @@
     "test": "clear && jest",
     "start": "nodemon web.js",
     "build": "webpack --config ./webpack.deploy.config.js --progress --colors",
-    "deploy": "npm run build && cap production deploy",
+    "deploy": "cap production deploy",
     "webpack": "webpack -w"
   },
   "jest": {

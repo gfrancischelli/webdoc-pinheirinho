@@ -4,7 +4,8 @@
 /config
 /lib
 /log
-/public/images
+/public/images/news
+/public/images/galleries
 secrets.json
 yarn-error.log
 npm-debug.log
