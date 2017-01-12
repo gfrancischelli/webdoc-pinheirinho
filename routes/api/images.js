@@ -1,5 +1,4 @@
-const gm = require('gm');
-console.log(gm)
+const gm = require('gm').subClass({imageMagick: true});
 
 exports = module.exports = function(req, res, next) {
 
