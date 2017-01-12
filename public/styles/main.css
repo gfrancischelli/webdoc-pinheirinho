@@ -615,6 +615,9 @@ p {
   @media (min-width: 769px) {
     .c-site-nav {
       padding: 16px; } }
+  @media (max-width: 419px) {
+    .c-site-nav {
+      padding: 10px; } }
   .c-site-nav__list {
     display: block;
     margin: 0 auto;
@@ -817,10 +820,9 @@ p {
   .page-head__img {
     display: block;
     width: 100%; }
-  .page-head .placeholder {
-    display: block;
-    margin: 0 auto;
-    height: 100%; }
+    @media (max-width: 419px) {
+      .page-head__img {
+        width: auto; } }
 
 .o-wrapper {
   padding-left: 16px;

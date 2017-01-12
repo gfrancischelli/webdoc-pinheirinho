@@ -24,6 +24,10 @@
     @include media('>tablet') {
         padding: $spacing-default;
     }
+    
+    @include media('<phone') {
+      padding: $spacing-tiny;
+    }
 
     &__list {
         display: block;

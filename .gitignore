@@ -1,4 +1,5 @@
 /node_modules
+.gitignore
 .git
 .env
 /config
@@ -9,3 +10,5 @@
 secrets.json
 yarn-error.log
 npm-debug.log
+
+.hyperlayout
