@@ -22,14 +22,20 @@ class Home extends React.Component {
           </div>
         </section>
         { /* Preview Timeline */ }
-        <section className='o-band o-band--tint'>
+        <section className='o-band o-band'>
           <div className='o-wrapper clearfix'>
               <Link to='/timeline'>
                 <h3 className='c-heading'>Linha do Tempo</h3>
               </Link>
+              <div className='c-timeline'>
               { APP_DATA.timeline.map( (post, index) => (
                 <TimelineItem key={index} post={post} />
               ))}
+              </div>
+              <Link to='/timeline'
+                className='c-link u-float-right'>
+                Veja a linha do tempo completa
+              </Link>
           </div>
         </section>
         <section className='o-band o-band--tint'>

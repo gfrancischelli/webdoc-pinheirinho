@@ -670,6 +670,87 @@ p {
   .c-thumb-jumbo {
     width: 340px; }
 
+.c-timeline {
+  --timeline: 2px;
+  position: relative;
+  border-left: var(--timeline) solid #444444;
+  max-width: 900px;
+  margin: 0 auto; }
+  .c-timeline:before {
+    content: '';
+    position: absolute;
+    border-left: var(--timeline) dashed #444444;
+    width: 0;
+    height: 30px;
+    left: -2px;
+    bottom: -30px; }
+
+.c-timeline-item {
+  --distance: 32px;
+  position: relative;
+  margin-left: var(--distance, 32px);
+  font-family: "Lora", serif;
+  cursor: pointer; }
+  @media (max-width: 767px) {
+    .c-timeline-item {
+      --distance: 16px;
+      margin-left: var(--distance); } }
+  .c-timeline-item + .c-timeline-item {
+    margin-top: 48px; }
+  .c-timeline-item__date {
+    font-family: "Open Sans", sans-serif;
+    font-size: 1.333rem;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #2A2A2A; }
+    .c-timeline-item__date:before {
+      --size: 16px;
+      content: '';
+      position: absolute;
+      left: calc( -1 * var(--distance) - (var(--size) / 2 ) - (var(--timeline) / 2));
+      top: calc(var(--size) / 2);
+      height: var(--size);
+      width: var(--size);
+      background-color: #F5F5F5;
+      border: 2px solid #2A2A2A;
+      border-radius: 100%;
+      transition: background-color 0.4s ease-in-out; }
+      @media (max-width: 767px) {
+        .c-timeline-item__date:before {
+          top: calc(var(--size) / 3); } }
+  .c-timeline-item__title {
+    font-size: 1.333rem;
+    color: #444444;
+    margin-left: 16px; }
+    @media (max-width: 420px) {
+      .c-timeline-item__title {
+        margin-left: 0; } }
+  .c-timeline-item__content {
+    overflow: hidden;
+    margin-top: 16px;
+    margin-left: 16px;
+    max-height: 0;
+    transition: all 0.4s ease; }
+    .c-timeline-item__content p {
+      font-family: "Open Sans", sans-serif !important;
+      line-height: 1.5;
+      color: #444444; }
+    .c-timeline-item__content p + p {
+      margin-top: 16px; }
+    @media (max-width: 420px) {
+      .c-timeline-item__content {
+        margin-left: 0; } }
+  .c-timeline-item.is-active .c-timeline-item__date {
+    color: #f03e3e; }
+    .c-timeline-item.is-active .c-timeline-item__date:before {
+      box-sizing: padding-box;
+      border-color: #F5F5F5;
+      border-width: 4px;
+      background-color: #f03e3e; }
+  .c-timeline-item.is-active .c-timeline-item__content {
+    will-change: height;
+    max-height: 1000px; }
+
 .o-band {
   margin: 0 auto;
   padding: 48px 0; }

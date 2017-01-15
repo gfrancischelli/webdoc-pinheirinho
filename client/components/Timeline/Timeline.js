@@ -45,16 +45,19 @@ class Timeline extends Component {
     return (
       <div className='o-wrapper' >
         <div className='o-band'> 
+          <div className='c-timeline'>
           { posts.reduce(concatArray, []).map( post => (
               <TimelineItem
                 key={post._id}
                 post={post}
               />
           )) }
+          </div>
           { !next && posts.length > 0 ? null :
             <button 
                 className='c-btn'   
-                onClick={this.loadNext}>
+                onClick={this.loadNext}
+                style={ {margin: '0 auto', marginTop: '32px'} }>
               Carregar mais
             </button>
           }

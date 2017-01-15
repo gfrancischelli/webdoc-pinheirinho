@@ -20,24 +20,23 @@ class TimelineItem extends Component {
   
   render() {
     const title = this.props.post.title;
+    const {open} = this.state;
     const { content, data } = this.props.post;
-    const date = new Date(data);
+    const date = data? new Date(data) : false;
     return (
       <div
-        className='timeline-item'
+        className={`c-timeline-item${ open ? ' is-active' : '' }` }
         onClick={ this.handleClick }>
-        <div>
-          <h6>
-            { `${date.getMonth().toLocaleString('pt-BR')}/${date.getFullYear()}` }
-          </h6>
-          <h5> { title }</h5>
+        { !date ? null :
+        <div className='c-timeline-item__date'>
+          {`${date.getMonth().toLocaleString('pt-BR')}/${date.getFullYear()}` }
         </div>
-
-        { this.state.open == 0 ? null:
-          <div className='timeline-item__content'
-            dangerouslySetInnerHTML={{__html: content}}>
-          </div>
         }
+        <h3 className='c-timeline-item__title'> { title }</h3>
+
+        <div className='c-timeline-item__content'
+          dangerouslySetInnerHTML={{__html: content}}>
+        </div>
       </div>
     )
   }

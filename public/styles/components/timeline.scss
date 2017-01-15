@@ -1,0 +1,113 @@
+.c-timeline {
+  --timeline: 2px;
+  position: relative;
+  border-left: var(--timeline) solid $medium-gray;
+  max-width: 900px;
+  margin: 0 auto;
+
+  &:before {
+    content: '';
+    position: absolute;
+    border-left: var(--timeline) dashed $medium-gray;
+    width: 0;
+    height: 30px;
+    left: -2px;
+    bottom: -30px;
+  }
+}
+
+.c-timeline-item {
+  
+  --distance: $spacing-large;
+  position: relative;
+  margin-left: var(--distance, $spacing-large);
+  font-family: $font-primary;
+  cursor: pointer;
+
+  @include media('<tablet') {
+    --distance: $spacing-small;
+    margin-left: var(--distance);
+  }
+
+  & + & {
+    margin-top: $spacing-kilo;
+  }
+
+  &__date {
+    font-family: $font-secondary;
+    font-size: $font-large;
+    margin-bottom: $spacing-tiny;
+    font-weight: bold;
+    color: $dark-gray;
+
+    &:before {
+      --size: 16px;
+      content: '';
+      position: absolute;
+      left: calc(
+        -1 * var(--distance)
+        - (var(--size) / 2 )
+        - (var(--timeline) / 2)
+      );
+      top: calc(var(--size) / 2);
+      height: var(--size);
+      width: var(--size);
+
+      background-color: $base-white;
+      border: 2px solid $dark-gray;
+      border-radius: 100%;
+
+      transition: background-color 0.4s ease-in-out;
+
+      @include media('<tablet') {
+        top: calc(var(--size) / 3);
+      }
+    }
+  }
+
+  &__title {
+    font-size: $font-large;
+    color: $medium-gray;
+    margin-left: $spacing-small;
+
+    @include media('<=phone') {
+      margin-left: 0;
+    }
+  }
+  &__content {
+    overflow: hidden;
+    margin-top: $spacing-small;
+    margin-left: $spacing-small;
+    max-height: 0;
+    transition: all 0.4s ease;
+
+    p {
+      font-family: $font-secondary !important;
+      line-height: 1.5;
+      color: $medium-gray;
+    }
+
+    p + p { margin-top: $spacing-small; }
+
+    @include media('<=phone') {
+      margin-left: 0;
+    }
+  }
+
+  &.is-active {
+    .c-timeline-item__date {
+      color: $primary-red;
+      &:before {
+        box-sizing: padding-box;
+        border-color: $base-white;
+        border-width: 4px;
+        background-color: $primary-red;
+      }
+    }
+
+    .c-timeline-item__content {
+      will-change: height;
+      max-height: 1000px; 
+    }
+  }
+}
