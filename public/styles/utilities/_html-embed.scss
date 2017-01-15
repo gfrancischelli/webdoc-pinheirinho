@@ -1,0 +1,9 @@
+.s-html-embed {
+    p {
+      font-family: $font-secondary !important;
+      line-height: 1.5;
+      color: $medium-gray;
+    }
+
+    p + p { margin-top: $spacing-small; }
+}

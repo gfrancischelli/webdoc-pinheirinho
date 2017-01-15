@@ -897,7 +897,13 @@ p {
   position: relative;
   width: 100%;
   margin: 0;
-  margin-bottom: 12px; }
+  margin-bottom: 64px; }
+  @media (max-width: 420px) {
+    .page-head {
+      margin-bottom: 32px; } }
+  @media (max-width: 768px) {
+    .page-head {
+      margin-bottom: 48px; } }
   .page-head__img {
     display: block;
     width: 100%; }
@@ -941,3 +947,11 @@ p {
 
 .u-text-center {
   text-align: center; }
+
+.s-html-embed p {
+  font-family: "Open Sans", sans-serif !important;
+  line-height: 1.5;
+  color: #444444; }
+
+.s-html-embed p + p {
+  margin-top: 16px; }

@@ -2,6 +2,7 @@ import React from 'react';
 import {Link} from 'react-router';
 import {imageURL, resourceURL} from 'utils';
 import ImageSet from 'components/ImageSet/ImageSet';
+import DangerousHTML from 'components/DangerousHTML/DangerousHTML';
 
 const NewsList = ({ posts }) => (
   <ul className='list-ui'>
@@ -25,9 +26,7 @@ const NewsList = ({ posts }) => (
               </h3>
             </Link>
             <p>{ post.createdAt.slice(0, 10) }</p>
-            <div dangerouslySetInnerHTML={{
-              __html: post.content.slice(0, 360)
-            }} />
+            <DangerousHTML content={post.content.slice(0, 360)} />
           </div>
         </div>
       </li>

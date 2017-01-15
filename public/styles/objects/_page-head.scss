@@ -2,7 +2,15 @@
     position: relative;
     width: 100%;
     margin: 0;
-    margin-bottom: 12px;
+    margin-bottom: $spacing-mega;
+
+    @include media('<=phone') {
+      margin-bottom: $spacing-large;
+    }
+
+    @include media('<=tablet') {
+      margin-bottom: $spacing-kilo;
+    }
 
     &__img {
         display: block;

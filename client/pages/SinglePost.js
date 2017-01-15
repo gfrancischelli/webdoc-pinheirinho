@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router';
+import DangerousHTML from 'components/DangerousHTML/DangerousHTML';
 
 class SinglePost extends React.Component {
   constructor() {
@@ -28,7 +29,7 @@ class SinglePost extends React.Component {
         <h1 className='c-heading c-heading--large@ds'>
           {post.title}
         </h1>
-        <div dangerouslySetInnerHTML={{__html: post.content}} />
+        <DangerousHTML content={post.content} />
       </div>
     )
   }

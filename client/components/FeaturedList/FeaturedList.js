@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 import ImageSet from 'components/ImageSet/ImageSet';
+import DangerousHTML from 'components/DangerousHTML/DangerousHTML';
 
 import {imageURL, resourceURL} from 'utils';
 
@@ -22,10 +23,7 @@ function FeaturedList({ featured, type }) {
               </h3>
             </Link>
             { !item.content ? null :
-              <p className='summary' 
-                dangerouslySetInnerHTML={
-                  {__html: item.content.slice(0, 220)}
-                } />
+              <DangerousHTML content={item.content.slice(0, 200) + ' ...'} />
             }
           </div>
         </li>
