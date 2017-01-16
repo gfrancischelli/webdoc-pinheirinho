@@ -10,7 +10,7 @@ class SinglePost extends React.Component {
     }
   }
   componentDidMount() {
-    const store = this.props.store;
+    console.log('he')
     this.loadPage(this.props.params.slug)
   }
 
@@ -24,6 +24,7 @@ class SinglePost extends React.Component {
 
   render() {
     const {post} = this.state;
+    console.log(post)
     return (
       <div className='o-wrapper o-wrapper--slim@ds'>
         <h1 className='c-heading c-heading--large@ds'>

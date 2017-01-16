@@ -14,8 +14,7 @@ class Store {
   }
 
   emit = (data) => {
-    Object.keys(this.subscribers)
-      .forEach(key => this.subscribers[key](data));
+    this.subscribers[data.key](data);
   }
 
   dataStream = (key) => {
@@ -35,40 +34,53 @@ class Store {
   close = (key) => delete this.subscribers[key];
 
   request = (page, type) => {
-    const {[type]: data, emit, loadPage} = this;
-    let {posts, pagination} = data;
-    pagination.next = page + 1
+    page = parseInt(page);
 
-    ! posts[page]
-    ? loadPage(page, type).then(emit)
-    : posts = posts.slice(0, page + 1) 
-      emit({posts, pagination});
+    let {posts, pagination} = this[type];
+    const {emit, loadPage} = this;
+
+    if (posts[page - 1] && posts[page - 1] != undefined) {
+      console.log(page, pagination.totalPages)
+      pagination.currentPage = page;
+      pagination.previous = page - 1;
+      pagination.next = page >= pagination.totalPages ? false:  page + 1;
+
+      posts = posts[page - 1];
+
+      emit({posts, pagination, key: type});
+    } else {
+      loadPage(page, type).then(emit)
+    }
   }
 
   updateState = (data, type) => {
-    const {[type]: lists, currentPage} = this;
-    lists.pagination = {
-      next: data.next - 1,
+    const list = this[type];
+
+    const newPosts = list.posts.slice(0);
+    newPosts[data.currentPage - 1] = data.results;
+
+    list.posts = newPosts;
+    list.pagination = {
+      next: data.next ,
       previous: data.previous,
       currentPage: data.currentPage,
       pages: data.pages,
+      totalPages: data.totalPages,
     }
-    const newPosts = lists.posts.slice(0);
-    newPosts[data.currentPage - 1] = data.results;
-    lists.posts = newPosts;
   }
   
   loadPage = (page, type) => {
     const store = this;
     const url =
-      `/api/${type}?page=${page + 1}`;
+      `/api/${type}?page=${parseInt( page )}`;
 
     return fetch( url )
       .then( res => res.json() )
       .then( pages => {
         store.updateState(pages, type);
         const {posts, pagination} = store[type];
-        return {posts, pagination}
+        const response = {posts: posts[page - 1], pagination, key: type}
+        return response;
       });
   }
 

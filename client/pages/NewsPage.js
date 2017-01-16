@@ -11,27 +11,31 @@ class NewsPage extends React.Component {
     super(props);
     this.state = {
       posts: [],
-      pagination: { 
-        next: 1,
+      pagination: {
+        pages: [],
       }
     }
-    this.page = this.props.location.query.page - 1 || 0;
     this.store = this.props.store;
   }
 
   componentDidMount() {
-    const {store, loadPage} = this;
+    const currentPage = this.props.location.query.page || 1;
     const self = this;
 
-    this.data$ = store
+    this.data$ = self.store
     .dataStream('news')
     .subscribe({
-      next: (pages) => self.setState(pages),
+      next: (pages) => {
+        if (pages.posts == undefined) {
+          console.warn('posts is undefined')
+          return
+        } else {
+          self.setState(pages)
+        }
+      } 
     });
-
-    console.log('this.page', this.page)
-
-    this.store.request(this.page, 'news');
+    
+    this.store.request(currentPage, 'news');
   }
 
   componentWillUnmount() {
@@ -40,15 +44,14 @@ class NewsPage extends React.Component {
     this.store.close('news')
   }
 
-  loadPage = (p) => this.store.request(p, 'timeline');
-
-  loadNext = () => this.loadPage(this.state.next);
+  componentWillReceiveProps(nextProps) {
+    const page = nextProps.location.query.page;
+    this.store.request(page, 'news');
+  }
 
   render() {
     const {posts, pagination} = this.state;
-    console.log(pagination.currentPage)
-    const page = posts[pagination.currentPage - 1] || [];
-    console.log(posts)
+    console.log('pagination: \n', JSON.stringify(pagination, 2, null))
     return (
       <main className="o-band">
         <section className='o-wrapper o-wrapper--slim@ds'>
@@ -57,10 +60,10 @@ class NewsPage extends React.Component {
           </h2>
           <div className='o-layout'>
             <div className='o-layout__item'>
-              { <NewsList posts={page} /> }
+              { posts == undefined ? null : <NewsList posts={posts} /> }
             </div>
           </div>
-          { !pagination.pages ? null :
+          { pagination.pages.length < 2 ? null :
           <Pagination 
             pagination={pagination} />
           }

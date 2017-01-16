@@ -13,7 +13,7 @@ class Timeline extends Component {
     this.state = {
       posts:  [],
       pagination:  {
-        next: 1,
+        next: 2,
       },
     }
     this.store = this.props.store;
@@ -26,10 +26,23 @@ class Timeline extends Component {
     this.data$ = store
     .dataStream('timeline')
     .subscribe({
-      next: (pages) => self.setState(pages),
+      next: (pages) => self.appendPage(pages),
     });
 
-    loadPage(0);
+    loadPage(1);
+  }
+
+  appendPage = ({posts, pagination}) => {
+    const newPosts = this.state
+      .posts
+      .slice(0)
+      .reduce(concatArray, [])
+      .concat(posts)
+  
+    this.setState({
+      posts: newPosts,
+      pagination: pagination,
+    });
   }
 
   // Delete obj to prevent memory leak
@@ -44,19 +57,18 @@ class Timeline extends Component {
 
   render() {
     const {posts, pagination} = this.state;
-    console.log(pagination.next)
     return (
       <div className='o-wrapper' >
         <div className='o-band'> 
           <div className='c-timeline'>
-          { posts.reduce(concatArray, []).map( post => (
+          { posts.map( post => (
               <TimelineItem
                 key={post._id}
                 post={post}
               />
           )) }
           </div>
-          { !pagination.next && posts.length > 0 ? null :
+          { pagination.next < 0 && posts.length > 0 ? null :
             <button 
                 className='c-btn'   
                 onClick={this.loadNext}

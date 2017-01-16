@@ -1,8 +1,9 @@
 import React from 'react';
 
-export default ({content}) => (
+export default (props) => (
   <div
-    className='s-html-embed'
-    dangerouslySetInnerHTML={{__html: content}}
+    {...props}
+    className={`s-html-embed ${props.className}`}
+    dangerouslySetInnerHTML={{__html: props.content}}
   />
 )

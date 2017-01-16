@@ -12,9 +12,9 @@ const NewsList = ({ posts }) => (
         className='o-list-ui__item'>
         <div className='flag flag--stack@mb'>
           <div className='flag__solid-cp'>
-            { !post.heroImage ? null :
+            { !post.cover ? null :
               <ImageSet
-                url={imageURL('news', post.heroImage.filename)}
+                url={imageURL('news', post.cover.filename)}
                 className='c-thumb-large'
               />
             }

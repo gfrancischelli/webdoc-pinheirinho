@@ -12,7 +12,7 @@ exports = module.exports = function(req, res, next) {
 
   const rootPath = process.env.ENV == 'production'
     ? './applications/webdoc/current/public/images' 
-    : './public/images';
+    : './uploads/images';
 
   const filePath = `${rootPath}/${params.folder}/${params.fileName}`;
 

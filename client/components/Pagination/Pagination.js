@@ -6,10 +6,10 @@ export default ({pagination}) => {
   if (pages.length < 0) return null;
 
   const isActive = (page) => page === currentPage ? 'is-active' : '';
-  console.log('next', currentPage)
 
   const url = (page) => `/noticias?page=${page}`;
 
+  console.log(previous)
   return (
     <ul className='c-pagination'>
 
@@ -20,12 +20,13 @@ export default ({pagination}) => {
           <span className='fa fa-chevron-left' />
         </Link>
       </li>
+
       { pages.map( page => (
         <li
           key={page}
           className='c-pagination__item'>
           <Link 
-            to={ url(page) }
+            to={{ pathname: '/noticias', query: { page: page } }}
             className={`c-pagination__link ${ isActive(page) }` }>
             {page}
           </Link>

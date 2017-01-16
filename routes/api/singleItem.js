@@ -9,7 +9,7 @@ exports = module.exports = function(req, res) {
 
   switch(type) {
     case 'news':
-      Model = keystone.list('Post').model;
+      Model = keystone.list('New').model;
       break;
     case 'galleries':
       Model = keystone.list('Gallery').model;

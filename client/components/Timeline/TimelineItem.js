@@ -2,6 +2,8 @@ import React from 'react';
 import { Component, PropTypes } from 'react';
 import { render } from 'react-dom';
 
+import DangerousHTML from 'components/DangerousHTML/DangerousHTML';
+
 class TimelineItem extends Component {
   handleClick() {
     if (this.state.open == 0) {
@@ -20,21 +22,30 @@ class TimelineItem extends Component {
   render() {
     const title = this.props.post.title;
     const {open} = this.state;
-    const { content, data } = this.props.post;
+    const { content, data, pdf } = this.props.post;
     const date = data? new Date(data) : false;
     return (
       <div
         className={`c-timeline-item${ open ? ' is-active' : '' }` }
         onClick={ this.handleClick }>
         { !date ? null :
-        <div className='c-timeline-item__date'>
-          {`${date.getMonth().toLocaleString('pt-BR')}/${date.getFullYear()}` }
-        </div>
+          <div className='c-timeline-item__date'>
+            {`${date.getMonth().toLocaleString('pt-BR')}/${date.getFullYear()}` }
+          </div>
         }
         <h3 className='c-timeline-item__title'> { title }</h3>
 
-        <div className='c-timeline-item__content'
-          dangerouslySetInnerHTML={{__html: content}}>
+        <div className='c-timeline-item__content'>
+          <label>Download </label> 
+          { !pdf ? null :
+            <a 
+              href={pdf.filename}
+              style={{zIndex: 10}}
+              download={pdf.originalname}>
+              {pdf.originalname} 
+            </a>
+          }
+          <DangerousHTML content={content} />
         </div>
       </div>
     )
