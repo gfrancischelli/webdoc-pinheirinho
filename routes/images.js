@@ -1,21 +1,26 @@
-const gm = require('gm');
+const path = require('path');
 
 exports = module.exports = function(req, res) {
 
-    const params = req.params;
-    const width = req.query.width;
+  const fileName = req.params.fileName;
+  
+  var options = {
+    root: path.join(__dirname, `../uploads/images/${req.params.folder}`),
+    dotfiles: 'deny',
+    headers: {
+      'x-timestamp': Date.now(),
+      'x-sent': true
+    }
+  };
 
-    console.log('width', width)
+  res.sendFile(fileName, options, function (err) {
+    if (err) {
+      console.log(err);
+      res.status(err.status).end();
+    }
+    else {
+      console.log('Sent:', fileName);
+    }
+  });
 
-    const root = process.env.ENV == 'production' ? './applications/webdoc/current/public' : './public';
-    
-    const file = `${root}/images/${params.folder}/${params.filename}`;
-
-    res.set('Content-Type', 'image/jpeg');
-
-    gm(file)
-        .resize( width )
-        .stream(function(err, stdout, stderr) {
-            stdout.pipe(res);
-        })
 }

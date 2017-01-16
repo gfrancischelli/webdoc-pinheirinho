@@ -43,10 +43,18 @@ exports = module.exports = function(app) {
 
     // Mail
     app.post('/api/mail', mailer);
+ 
+  // Imagemagick currently not working in production.
+  // TODO FIX IMAGEMAGICK
+  if ( process.env.ENV == 'production' ) {
+    app.get('/api/images/:folder/:fileName', images);
+  } else {
+    app.get('/api/images/:folder/:fileName', routes.api.images);
+  }
 
     // Single Item
     app.get('/api/unique/:resource/:slug', routes.api.singleItem)
-    app.get('/api/images/:folder/:fileName', routes.api.images)
+    
   
     // Timeline
     app.get('/api/news', routes.api.news);
