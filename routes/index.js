@@ -46,11 +46,12 @@ exports = module.exports = function(app) {
 
     // Single Item
     app.get('/api/unique/:resource/:slug', routes.api.singleItem)
-
     app.get('/api/images/:folder/:fileName', routes.api.images)
   
     // Timeline
-    app.get('/api/:content', routes.api.index);
+    app.get('/api/news', routes.api.news);
+    app.get('/api/timeline', routes.api.timeline);
+    app.get('/api/galleries', routes.api.galleries);
 
     // React
     app.get(/(?!api)/, routes.views.index);
