@@ -12,7 +12,9 @@ class Timeline extends Component {
     super(props);
     this.state = {
       posts:  [],
-      next: 1,
+      pagination:  {
+        next: 1,
+      },
     }
     this.store = this.props.store;
   }
@@ -38,10 +40,11 @@ class Timeline extends Component {
 
   loadPage = (p) => this.store.request(p, 'timeline');
 
-  loadNext = () => this.loadPage(this.state.next);
+  loadNext = () => this.loadPage(this.state.pagination.next);
 
   render() {
-    const {posts, next} = this.state;
+    const {posts, pagination} = this.state;
+    console.log(pagination.next)
     return (
       <div className='o-wrapper' >
         <div className='o-band'> 
@@ -53,7 +56,7 @@ class Timeline extends Component {
               />
           )) }
           </div>
-          { !next && posts.length > 0 ? null :
+          { !pagination.next && posts.length > 0 ? null :
             <button 
                 className='c-btn'   
                 onClick={this.loadNext}

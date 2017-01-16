@@ -2,6 +2,7 @@ import React from 'react';
 
 import {resourceURL, imageURL, concatArray} from 'utils';
 
+import Pagination from 'components/Pagination/Pagination';
 import NewsList from 'components/NewsList/NewsList';
 
 class NewsPage extends React.Component {
@@ -10,8 +11,11 @@ class NewsPage extends React.Component {
     super(props);
     this.state = {
       posts: [],
-      next: 1
+      pagination: { 
+        next: 1,
+      }
     }
+    this.page = this.props.location.query.page - 1 || 0;
     this.store = this.props.store;
   }
 
@@ -25,7 +29,9 @@ class NewsPage extends React.Component {
       next: (pages) => self.setState(pages),
     });
 
-    this.store.request(0, 'news');
+    console.log('this.page', this.page)
+
+    this.store.request(this.page, 'news');
   }
 
   componentWillUnmount() {
@@ -39,8 +45,10 @@ class NewsPage extends React.Component {
   loadNext = () => this.loadPage(this.state.next);
 
   render() {
-    const {posts, next} = this.state;
-    const page = posts[0] || [];
+    const {posts, pagination} = this.state;
+    console.log(pagination.currentPage)
+    const page = posts[pagination.currentPage - 1] || [];
+    console.log(posts)
     return (
       <main className="o-band">
         <section className='o-wrapper o-wrapper--slim@ds'>
@@ -52,6 +60,10 @@ class NewsPage extends React.Component {
               { <NewsList posts={page} /> }
             </div>
           </div>
+          { !pagination.pages ? null :
+          <Pagination 
+            pagination={pagination} />
+          }
         </section>
       </main>
     )

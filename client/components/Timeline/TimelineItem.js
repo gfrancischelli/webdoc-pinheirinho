@@ -4,7 +4,6 @@ import { render } from 'react-dom';
 
 class TimelineItem extends Component {
   handleClick() {
-    console.log('click')
     if (this.state.open == 0) {
       this.setState({open: 1});
     } else {

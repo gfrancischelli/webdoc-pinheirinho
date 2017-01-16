@@ -27,10 +27,10 @@ exports = module.exports = function(req, res) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 
-  Post.paginate({
+  Post
+    .paginate({
       page: req.query.page || 1,
-      perPage: 10,
-      maxPages: 10,
+      perPage: 1,
     })
     .where(where_prop, where_val)
     .sort(sort_param)
