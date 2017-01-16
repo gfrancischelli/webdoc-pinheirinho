@@ -8,7 +8,7 @@ exports = module.exports = function(req, res) {
 
   Post.paginate({
     page: req.query.page || 1,
-    perPage: 1,
+    perPage: 8,
   })
   .exec(function(err, results) {
     if (err) {

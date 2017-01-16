@@ -1,6 +1,7 @@
 const keystone = require('keystone'),
       Post = keystone.list('Post'),
       Gallery = keystone.list('Gallery'),
+      New = keystone.list('New'),
       sanitizeHtml = require('sanitize-html');
 
 function queryRecent(model, config = {}) {
@@ -32,13 +33,13 @@ exports = module.exports = function(req, res) {
   locals.title = "home";
 
   const timeline_config = {
-    where: {p: 'tipo', v: 'timeline'},
-    sort: 'data',
+    where: {p: '', v: ''},
+    sort: '-data',
   }
     
   view.on('init', function(next) {
     Promise.all([
-      queryRecent(Post.model),
+      queryRecent(New.model),
       queryRecent(Gallery.model),
       queryRecent(Post.model, timeline_config)
     ])

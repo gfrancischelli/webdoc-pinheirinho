@@ -10,9 +10,9 @@ function FeaturedList({ featured, type }) {
     <ul className='o-feat-list'>
       { featured.map( (item, index) => (
         <li key={ index } className='o-feat-list__item o-card'>
-          { !item.heroImage ? null :
+          { !item.cover ? null :
             <ImageSet 
-              url={ imageURL(type, item.heroImage.filename)}
+              url={ imageURL(type, item.cover.filename)}
               className='o-card__figure'
             />
           }

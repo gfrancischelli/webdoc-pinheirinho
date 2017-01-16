@@ -8,7 +8,7 @@ exports = module.exports = function(req, res) {
 
   New.paginate({
     page: req.query.page || 1,
-    perPage: 1,
+    perPage: 8,
   })
   .where('status', 'publicado')
   .exec(function(err, results) {

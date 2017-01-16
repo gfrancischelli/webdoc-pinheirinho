@@ -10,8 +10,7 @@ import ContactForm from 'components/ContactForm/ContactForm';
 
 class Home extends React.Component {
   render() {
-    const { news, galleries } = APP_DATA;
-    console.log('news: \n', news)
+    const { timeline, news, galleries } = APP_DATA;
     return (
       <main id="main">
         <section className='o-wrapper'>
@@ -28,7 +27,7 @@ class Home extends React.Component {
                 <h3 className='c-heading'>Linha do Tempo</h3>
               </Link>
               <div className='c-timeline'>
-              { APP_DATA.timeline.map( (post, index) => (
+              { timeline.map( (post, index) => (
                 <TimelineItem key={index} post={post} />
               ))}
               </div>

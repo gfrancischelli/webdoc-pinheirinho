@@ -51,7 +51,6 @@ class NewsPage extends React.Component {
 
   render() {
     const {posts, pagination} = this.state;
-    console.log('pagination: \n', JSON.stringify(pagination, 2, null))
     return (
       <main className="o-band">
         <section className='o-wrapper o-wrapper--slim@ds'>

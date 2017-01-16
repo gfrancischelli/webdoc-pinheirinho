@@ -40,7 +40,6 @@ class Store {
     const {emit, loadPage} = this;
 
     if (posts[page - 1] && posts[page - 1] != undefined) {
-      console.log(page, pagination.totalPages)
       pagination.currentPage = page;
       pagination.previous = page - 1;
       pagination.next = page >= pagination.totalPages ? false:  page + 1;
@@ -48,6 +47,9 @@ class Store {
       posts = posts[page - 1];
 
       emit({posts, pagination, key: type});
+    } 
+    else if ( !page ) {
+      console.warn('Request exceeded total pages');
     } else {
       loadPage(page, type).then(emit)
     }
@@ -73,6 +75,7 @@ class Store {
     const store = this;
     const url =
       `/api/${type}?page=${parseInt( page )}`;
+
 
     return fetch( url )
       .then( res => res.json() )

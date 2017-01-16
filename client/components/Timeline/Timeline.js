@@ -68,7 +68,7 @@ class Timeline extends Component {
               />
           )) }
           </div>
-          { pagination.next < 0 && posts.length > 0 ? null :
+          { !pagination.next && posts.length > 0 ? null :
             <button 
                 className='c-btn'   
                 onClick={this.loadNext}
