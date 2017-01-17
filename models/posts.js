@@ -42,7 +42,6 @@ Post.add({
       required: true,
       label: 'Data'
     },
-    time: { type: String, label: 'Horário' },
     pdf: {
       type: Types.File,
       storage: pdfStorage,
