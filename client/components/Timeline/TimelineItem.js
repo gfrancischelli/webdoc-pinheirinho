@@ -36,14 +36,16 @@ class TimelineItem extends Component {
         <h3 className='c-timeline-item__title'> { title }</h3>
 
         <div className='c-timeline-item__content'>
-          <label>Download </label> 
           { !pdf ? null :
-            <a 
-              href={pdf.filename}
-              style={{zIndex: 10}}
-              download={pdf.originalname}>
-              {pdf.originalname} 
-            </a>
+            <div className='c-download-link'>
+              <label>Download: </label> 
+              <a 
+                href={pdf.filename}
+                style={{zIndex: 10}}
+                download={pdf.originalname}>
+                {pdf.originalname} 
+              </a>
+            </div>
           }
           <DangerousHTML content={content} />
         </div>

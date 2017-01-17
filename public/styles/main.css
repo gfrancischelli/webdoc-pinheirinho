@@ -691,12 +691,14 @@ p {
   margin-left: var(--distance, 32px);
   font-family: "Lora", serif;
   cursor: pointer; }
+  .c-timeline-item + .c-timeline-item {
+    margin-top: 16px; }
   @media (max-width: 767px) {
     .c-timeline-item {
       --distance: 16px;
-      margin-left: var(--distance); } }
-  .c-timeline-item + .c-timeline-item {
-    margin-top: 48px; }
+      margin-left: var(--distance); }
+      .c-timeline-item + .c-timeline-item {
+        margin-top: 10px; } }
   .c-timeline-item__date {
     font-family: "Open Sans", sans-serif;
     font-size: 1.333rem;
@@ -754,6 +756,9 @@ p {
 .o-band {
   margin: 0 auto;
   padding: 48px 0; }
+  @media (max-width: 420px) {
+    .o-band {
+      padding: 10px 0; } }
   .o-band--large {
     padding: 48px 48px; }
   .o-band--tint {
@@ -893,17 +898,23 @@ p {
       .o-mosaic__item {
         width: calc( 25% - var(--margin)); } }
 
+.o-page {
+  padding-bottom: 32px; }
+  @media (min-width: 1024px) {
+    .o-page {
+      min-height: 50vh; } }
+
 .page-head {
   position: relative;
   width: 100%;
   margin: 0;
   margin-bottom: 64px; }
-  @media (max-width: 420px) {
-    .page-head {
-      margin-bottom: 32px; } }
   @media (max-width: 768px) {
     .page-head {
       margin-bottom: 48px; } }
+  @media (max-width: 420px) {
+    .page-head {
+      margin-bottom: 24px; } }
   .page-head__img {
     display: block;
     width: 100%; }

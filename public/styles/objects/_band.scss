@@ -2,6 +2,10 @@
     margin: 0 auto;
     padding: $spacing-kilo 0;
     
+    @include media('<=phone') {
+      padding: $spacing-tiny 0;
+    }
+
     &--large { 
         padding: $spacing-kilo $spacing-kilo;
     }

@@ -4,12 +4,12 @@
     margin: 0;
     margin-bottom: $spacing-mega;
 
-    @include media('<=phone') {
-      margin-bottom: $spacing-large;
-    }
-
     @include media('<=tablet') {
       margin-bottom: $spacing-kilo;
+    }
+
+    @include media('<=phone') {
+      margin-bottom: $spacing-medium;
     }
 
     &__img {

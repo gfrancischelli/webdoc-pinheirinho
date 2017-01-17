@@ -10,6 +10,7 @@ exports = module.exports = function(req, res) {
     page: req.query.page || 1,
     perPage: 8,
   })
+  .sort('data')
   .exec(function(err, results) {
     if (err) {
       res.json( {status: err} );

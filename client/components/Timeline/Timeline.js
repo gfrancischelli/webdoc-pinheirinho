@@ -60,6 +60,7 @@ class Timeline extends Component {
     return (
       <div className='o-wrapper' >
         <div className='o-band'> 
+          <div className='c-heading'>Linha do Tempo</div>
           <div className='c-timeline'>
           { posts.map( post => (
               <TimelineItem

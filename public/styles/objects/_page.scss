@@ -1,0 +1,6 @@
+.o-page {
+  padding-bottom: $spacing-large;
+  @include media('>=desktop') {
+    min-height: 50vh;
+  }
+}

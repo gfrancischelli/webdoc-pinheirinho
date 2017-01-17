@@ -7,8 +7,10 @@ const store = new Store(APP_DATA.posts);
 export default props => (
   <div>
     <Header />
-    { props.children && React.cloneElement(props.children, {
-      store: store
-    })}
+    <main className='o-page'>
+      { props.children && React.cloneElement(props.children, {
+        store: store
+      })}
+    </main>
   </div>
 )

@@ -24,13 +24,17 @@
   font-family: $font-primary;
   cursor: pointer;
 
+  & + & {
+    margin-top: $spacing-small;
+  }
+
   @include media('<tablet') {
     --distance: $spacing-small;
     margin-left: var(--distance);
-  }
 
-  & + & {
-    margin-top: $spacing-kilo;
+    & + & {
+      margin-top: $spacing-tiny;
+    }
   }
 
   &__date {
