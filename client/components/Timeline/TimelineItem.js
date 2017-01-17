@@ -18,19 +18,27 @@ class TimelineItem extends Component {
     this.state = {open: 0};
     this.handleClick = this.handleClick.bind(this);
   }
-  
+
+  formatDate(date) {
+    if (date.getHours() == 0) {
+      return date.toLocaleDateString('pt-BR');
+    } else {
+      return date.toLocaleString('pt-BR').slice(0, -3);
+    }
+  }
+
   render() {
     const title = this.props.post.title;
     const {open} = this.state;
     const { content, data, pdf } = this.props.post;
-    const date = data? new Date(data) : false;
+    const date = data ? new Date(data) : false;
     return (
       <div
         className={`c-timeline-item${ open ? ' is-active' : '' }` }
         onClick={ this.handleClick }>
         { !date ? null :
           <div className='c-timeline-item__date'>
-            {`${date.getMonth().toLocaleString('pt-BR')}/${date.getFullYear()}` }
+            {`${ this.formatDate(date) }` }
           </div>
         }
         <h3 className='c-timeline-item__title'> { title }</h3>

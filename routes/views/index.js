@@ -11,7 +11,7 @@ function queryRecent(model, config = {}) {
 
     const q = model.find()
         .limit(limit)
-        .sort('-publishedAt')
+        .sort(sort)
 
     if (model.schema.paths.status) q.where(where.p, where.v);
 
@@ -34,7 +34,7 @@ exports = module.exports = function(req, res) {
 
   const timeline_config = {
     where: {p: '', v: ''},
-    sort: '-data',
+    sort: 'data',
   }
     
   view.on('init', function(next) {

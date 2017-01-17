@@ -35,8 +35,9 @@ const pdfStorage = new keystone.Storage({
 Post.add({
     title: { type: String, initial: true, required: true, label: 'Título' },
     data: { 
-      type: Types.Date,
-      format: 'D M YYYY',
+      type: Types.Datetime,
+      default: new Date('0'),
+      format: 'D M YYYY hh:mm',
       initial: true,
       required: true,
       label: 'Data'
