@@ -60,6 +60,8 @@ exports = module.exports = function(app) {
     app.get('/api/news', routes.api.news);
     app.get('/api/timeline', routes.api.timeline);
     app.get('/api/galleries', routes.api.galleries);
+  
+    app.get('/api/pdf/:fileName', routes.api.pdf);
 
     // React
     app.get(/(?!api)/, routes.views.index);

@@ -2,6 +2,8 @@ import React from 'react';
 import { Component, PropTypes } from 'react';
 import { render } from 'react-dom';
 
+import {imageURL, resourceURL} from 'utils';
+import ImageSet from 'components/ImageSet/ImageSet';
 import DangerousHTML from 'components/DangerousHTML/DangerousHTML';
 
 class TimelineItem extends Component {
@@ -30,8 +32,9 @@ class TimelineItem extends Component {
   render() {
     const title = this.props.post.title;
     const {open} = this.state;
-    const { content, data, pdf } = this.props.post;
+    const { content, data, pdf, cover } = this.props.post;
     const date = data ? new Date(data) : false;
+    console.log(this.props.post)
     return (
       <div
         className={`c-timeline-item${ open ? ' is-active' : '' }` }
@@ -42,14 +45,19 @@ class TimelineItem extends Component {
           </div>
         }
         <h3 className='c-timeline-item__title'> { title }</h3>
-
+        { !cover ? null :
+          <ImageSet
+            alt={cover.originalname}
+            url={imageURL('posts', cover.filename)}
+            className='c-thumb-large'
+          />
+        }
         <div className='c-timeline-item__content'>
           { !pdf ? null :
             <div className='c-download-link'>
               <label>Download: </label> 
               <a 
-                href={pdf.filename}
-                style={{zIndex: 10}}
+                href={`/api/pdf/${pdf.filename}`}
                 download={pdf.originalname}>
                 {pdf.originalname} 
               </a>

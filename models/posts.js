@@ -24,7 +24,7 @@ const pdfStorage = new keystone.Storage({
   adapter: keystone.Storage.Adapters.FS,
   fs: {
     path: keystone.expandPath('./uploads/pdf'),
-    publicPath: '/public/pdf',
+    publicPath: '/public/uploads/pdf',
   },
   schema: {
     originalname: true,

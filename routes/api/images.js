@@ -25,7 +25,6 @@ exports = module.exports = function(req, res, next) {
         if(err) return next(err);
         stdout.pipe(res);
 
-
         stdout.on('error', next)
     })
 }
