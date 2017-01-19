@@ -57,7 +57,7 @@ class TimelineItem extends Component {
           </div>
         }
         <h3 className='c-timeline-item__title'> { title }</h3>
-        { !pdf && !pdfAtPreview ? null : this.renderDownload(pdf) }
+        { !pdf || !pdfAtPreview ? null : this.renderDownload(pdf) }
         { !cover ? null :
           <ImageSet
             alt={cover.originalname}
