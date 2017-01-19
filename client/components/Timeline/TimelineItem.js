@@ -29,12 +29,24 @@ class TimelineItem extends Component {
     }
   }
 
+  renderDownload = (pdf) => (
+    <div className='c-download-link'>
+      <a 
+        href={`/api/pdf/${pdf.filename}`}
+        download={pdf.originalname}>
+        {pdf.originalname} 
+      </a>
+    </div>
+  )
+
   render() {
     const title = this.props.post.title;
     const {open} = this.state;
-    const { content, data, pdf, cover } = this.props.post;
+    const { content, data, pdf, pdfAtPreview, image, cover } = this.props.post;
     const date = data ? new Date(data) : false;
     console.log(this.props.post)
+    console.log(pdf, pdfAtPreview)
+    console.log('!pdf && pdfAtPreview ', !pdf && pdfAtPreview )
     return (
       <div
         className={`c-timeline-item${ open ? ' is-active' : '' }` }
@@ -45,6 +57,7 @@ class TimelineItem extends Component {
           </div>
         }
         <h3 className='c-timeline-item__title'> { title }</h3>
+        { !pdf && !pdfAtPreview ? null : this.renderDownload(pdf) }
         { !cover ? null :
           <ImageSet
             alt={cover.originalname}
@@ -53,9 +66,9 @@ class TimelineItem extends Component {
           />
         }
         <div className='c-timeline-item__content'>
-          { !pdf ? null :
+          { !pdf || pdfAtPreview ? null :
             <div className='c-download-link'>
-              <label>Download: </label> 
+              <label>Baixar pdf: </label> 
               <a 
                 href={`/api/pdf/${pdf.filename}`}
                 download={pdf.originalname}>
@@ -63,6 +76,15 @@ class TimelineItem extends Component {
               </a>
             </div>
           }
+          { !image ? null :
+            <div className='c-download-link'>
+                <label>Baixar imagem: </label> 
+                <a 
+                  href={`/api/images/${image.filename}`}
+                  download={image.originalname}>
+                  {image.originalname} 
+                </a>
+              </div>}
           <DangerousHTML content={content} />
         </div>
       </div>

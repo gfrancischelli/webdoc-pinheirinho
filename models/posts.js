@@ -46,10 +46,19 @@ Post.add({
       type: Types.File,
       storage: pdfStorage,
     },
+    pdfAtPreview: {
+      type: Types.Boolean,
+      label: "Pdf junto ao título ?",
+    },
     category: {
       label: 'Categoria',
       type: Types.Select,
       options: 'importante, judicial, exemplo',
+    },
+    image: {
+      type: Types.File,
+      storage: postStorage,
+      label: 'Imagem para download',
     },
     cover: {
       type: Types.File,
