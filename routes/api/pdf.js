@@ -8,7 +8,7 @@ exports = module.exports = function(req, res, next) {
   res.set('Content-Type', 'application/pdf');
 
   const rootPath = process.env.ENV == 'production'
-    ? './applications/webdoc/current/uploads/pdf' 
+    ? './shared/uploads/pdf' 
     : './uploads/pdf';
 
   const filePath = `${rootPath}/${params.fileName}`;
