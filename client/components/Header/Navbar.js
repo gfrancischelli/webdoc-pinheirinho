@@ -6,7 +6,7 @@ import measure from 'remeasure';
 
 const links = {
   always_visible: [
-    { name: <span className='fa fa-home' />, path: "/" },
+    { name: <span className='fa fa-home' />, path: "/#home" },
     { name: "galerias", path: "/galerias" },
     { name: "linha do tempo", path: "/timeline" },
     { name: "notícias", path: "/noticias" },

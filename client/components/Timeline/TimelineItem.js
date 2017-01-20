@@ -31,9 +31,12 @@ class TimelineItem extends Component {
 
   renderDownload = (pdf) => (
     <div className='c-download-link'>
+      <span 
+        style={{marginRight: '10px'}}
+        className='fa fa-file-pdf-o' />
       <a 
         href={`/api/pdf/${pdf.filename}`}
-        download={pdf.originalname}>
+        download={pdf.originalname}> 
         {pdf.originalname} 
       </a>
     </div>
@@ -44,9 +47,6 @@ class TimelineItem extends Component {
     const {open} = this.state;
     const { content, data, pdf, pdfAtPreview, image, cover } = this.props.post;
     const date = data ? new Date(data) : false;
-    console.log(this.props.post)
-    console.log(pdf, pdfAtPreview)
-    console.log('!pdf && pdfAtPreview ', !pdf && pdfAtPreview )
     return (
       <div
         className={`c-timeline-item${ open ? ' is-active' : '' }` }
@@ -68,7 +68,9 @@ class TimelineItem extends Component {
         <div className='c-timeline-item__content'>
           { !pdf || pdfAtPreview ? null :
             <div className='c-download-link'>
-              <label>Baixar pdf: </label> 
+              <span 
+                style={{marginRight: '12px'}}
+                className='fa fa-file-pdf-o' />
               <a 
                 href={`/api/pdf/${pdf.filename}`}
                 download={pdf.originalname}>
@@ -76,7 +78,7 @@ class TimelineItem extends Component {
               </a>
             </div>
           }
-          { !image ? null :
+          { !image || image.filename == 'null' ? null :
             <div className='c-download-link'>
                 <label>Baixar imagem: </label> 
                 <a 

@@ -10,6 +10,7 @@ const gradient = [
 
 const Header = () => (
   <header 
+    id='home'
     className='page-head'
     style={{
     backgroundColor: gradient[image_src]}} >
