@@ -23,6 +23,7 @@ class Nav extends React.Component {
   }
 
   componentDidMount() {
+    const { Nav, Menu } = this;
     const dragHandler = this.dragHandler;
     const viewportWidth = document.body.clientWidth;
     const menuWidth = this.Menu.scrollWidth;
@@ -31,40 +32,58 @@ class Nav extends React.Component {
 
     if (viewportWidth < menuWidth) {
 
-      this.Nav.addEventListener('mousedown', (e) => {
+      Nav.addEventListener('touchstart', (e) => {
+        this.mouseX = e.targetTouches[0].clientX;
+        this.menuOffsetX = this.Menu.getBoundingClientRect().left;
+        Nav.addEventListener('touchmove', dragHandler, true);
+      });
+
+      Nav.addEventListener('touchend', (e) => {
+        Nav.removeEventListener('touchmove', dragHandler, true);
+      })
+
+      Nav.addEventListener('mousedown', (e) => {
         this.mouseX = e.x;
         this.menuOffsetX = this.Menu.getBoundingClientRect().left;
-
-        this.Nav.addEventListener('mousemove', dragHandler, true);
+        Nav.addEventListener('mousemove', dragHandler, true);
       });
 
-      this.Nav.addEventListener('mouseup', (e) => {
-        this.Nav.removeEventListener('mousemove', dragHandler, true)
+      Nav.addEventListener('mouseup', (e) => {
+        Nav.removeEventListener('mousemove', dragHandler, true)
       });
 
-      this.Nav.addEventListener('mouseout', () => {
-        this.Nav.removeEventListener('mousemove', dragHandler, true)
+      Nav.addEventListener('mouseout', () => {
+        Nav.removeEventListener('mousemove', dragHandler, true)
       });
 
-      this.Nav.addEventListener('mouseleave', () => {
-        this.Nav.removeEventListener('mousemove', dragHandler, true)
+      Nav.addEventListener('mouseleave', () => {
+        Nav.removeEventListener('mousemove', dragHandler, true)
       });
 
     }
   }
 
   dragHandler = (e) => {
+    let translation;
     const viewportWidth = document.body.clientWidth;
     const { left } = this.Menu.getBoundingClientRect();
     const right = this.Menu.scrollWidth - Math.abs(left);
 
-    const newMouseX = e.x;
+    const newMouseX = e.x || e.targetTouches[0].clientX;
     const deltaX = newMouseX - this.mouseX + this.menuOffsetX;
 
     if ( left < 0 && right < viewportWidth && newMouseX < this.mouseX ) return 0;
     if ( left > 0 && right > viewportWidth && newMouseX > this.mouseX ) return 0;
+    
+    if (deltaX > 0) {
+      translation = 0;
+    } else if (Math.abs(deltaX) > this.Menu.scrollWidth - viewportWidth) {
+      translation = -1 * (this.Menu.scrollWidth - viewportWidth + 12);
+    } else {
+      translation = deltaX;
+    }
 
-    this.Menu.style.transform = `translateX(${ deltaX }px)`;
+    this.Menu.style.transform = `translateX(${ translation }px)`;
   }
 
   updatePosition = () => {
