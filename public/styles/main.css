@@ -601,7 +601,7 @@ p {
   top: 0;
   left: 0;
   width: 100%;
-  padding: 16px;
+  white-space: nowrap;
   color: #2A2A2A;
   background-color: #F5F5F5;
   box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.3);
@@ -612,16 +612,17 @@ p {
     background-color: rgba(0, 0, 0, 0.5);
     top: unset;
     bottom: 0; }
-  @media (min-width: 769px) {
-    .c-site-nav {
-      padding: 16px; } }
-  @media (max-width: 419px) {
-    .c-site-nav {
-      padding: 10px; } }
   .c-site-nav__list {
     display: block;
     margin: 0 auto;
-    text-align: center; }
+    text-align: center;
+    padding: 16px; }
+    @media (min-width: 769px) {
+      .c-site-nav__list {
+        padding: 16px; } }
+    @media (max-width: 419px) {
+      .c-site-nav__list {
+        padding: 10px; } }
   .c-site-nav__item {
     display: inline; }
   .c-site-nav__item + .c-site-nav__item {

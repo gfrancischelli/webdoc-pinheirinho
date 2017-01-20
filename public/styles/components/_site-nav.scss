@@ -4,7 +4,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    padding: $spacing-small;
+    white-space: nowrap;
 
     color: $dark-gray;
     background-color: $base-white;
@@ -21,18 +21,19 @@
    }
     
 
-    @include media('>tablet') {
-        padding: $spacing-default;
-    }
-    
-    @include media('<phone') {
-      padding: $spacing-tiny;
-    }
-
     &__list {
-        display: block;
-        margin: 0 auto;
-        text-align: center;
+      display: block;
+      margin: 0 auto;
+      text-align: center;
+      padding: $spacing-small;
+
+      @include media('>tablet') {
+          padding: $spacing-default;
+      }
+      
+      @include media('<phone') {
+        padding: $spacing-tiny;
+      }
     }
 
     &__item {
