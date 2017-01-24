@@ -45,8 +45,19 @@ class TimelineItem extends Component {
   render() {
     const title = this.props.post.title;
     const {open} = this.state;
-    const { content, data, pdf, pdfAtPreview, image, cover } = this.props.post;
+    const { 
+      content,
+      data,
+      pdf,
+      pdfAtPreview,
+      image,
+      cover,
+      video,
+      videoAtPreview
+    } = this.props.post;
+
     const date = data ? new Date(data) : false;
+    const youtubeIdRX = /^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
     return (
       <div
         className={`c-timeline-item${ open ? ' is-active' : '' }` }
@@ -55,6 +66,13 @@ class TimelineItem extends Component {
           <div className='c-timeline-item__date'>
             {`${ this.formatDate(date) }` }
           </div>
+        }
+        { !videoAtPreview ? null :
+            <iframe 
+              style={{maxWidth: "100%"}}
+              frameBorder="0"
+              allowFullScreen
+              src={ `https://www.youtube.com/embed/${ video.match(youtubeIdRX)[2] }` } />
         }
         <h3 className='c-timeline-item__title'> { title }</h3>
         { !pdf || !pdfAtPreview ? null : this.renderDownload(pdf) }
@@ -77,6 +95,13 @@ class TimelineItem extends Component {
                 {pdf.originalname} 
               </a>
             </div>
+          }
+          { !video || videoAtPreview ? null :
+            <iframe 
+              style={{maxWidth: '100%'}}
+              frameBorder="0"
+              allowFullScreen
+              src={ `https://www.youtube.com/embed/${ video.match(youtubeIdRX)[2] }` } />
           }
           { !image || image.filename == 'null' ? null :
             <div className='c-download-link'>

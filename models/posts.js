@@ -48,7 +48,7 @@ Post.add({
     },
     pdfAtPreview: {
       type: Types.Boolean,
-      label: "Pdf junto ao título ?",
+      label: "Pdf em Destaque",
     },
     category: {
       label: 'Categoria',
@@ -66,6 +66,10 @@ Post.add({
       label: 'Foto de capa',
     },
     video: { type: Types.Url, label: 'Vídeo' },
+    videoAtPreview: {
+      type: Types.Boolean,
+      label: "Vídeo em Destaque"
+    },
     flicker: { type: Types.Url },
     content: { type: Types.Html, wysiwyg: true, height: 400 },
 });

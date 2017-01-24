@@ -4,10 +4,19 @@
     margin: 0 auto;
     max-width: 1200px;
 
-    .birbi {
-        font-size: $font-small;
-        color: $soft-gray;
-        margin-bottom: $spacing-tiny;
+    &__featured {
+        margin: 0 auto;
+        max-width: 900px;
+        line-height: 1.68;
+        margin-bottom: $spacing-large;
+        text-align: justify;
+
+        p { margin-bottom: $spacing-medium }
+
+        @include media('<tablet') {
+          text-align: left;
+          p { margin-bottom: $spacing-small }
+        }
     }
 
     @include media('>tablet') {
