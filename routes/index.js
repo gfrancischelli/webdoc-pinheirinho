@@ -63,6 +63,8 @@ exports = module.exports = function(app) {
   
     app.get('/api/pdf/:fileName', routes.api.pdf);
 
+    app.get('/api/:data/complete', routes.api.data)
+
     // React
     app.get(/(?!api)/, routes.views.index);
 }
