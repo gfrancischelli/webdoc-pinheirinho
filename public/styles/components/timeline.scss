@@ -24,6 +24,12 @@
   font-family: $font-primary;
   cursor: pointer;
 
+  &.not-empty:hover {
+    .c-timeline-item__date {
+      color: $primary-red;
+    }
+  }
+
   & + & {
     margin-top: $spacing-small;
   }

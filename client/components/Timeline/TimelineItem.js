@@ -30,7 +30,9 @@ class TimelineItem extends Component {
   }
 
   renderDownload = (pdf) => (
-    <div className='c-download-link'>
+    <div 
+      style={{marginBottom: "12px"}}
+      className='c-download-link'>
       <span 
         style={{marginRight: '10px'}}
         className='fa fa-file-pdf-o' />
@@ -42,37 +44,53 @@ class TimelineItem extends Component {
     </div>
   )
 
+  renderVideo(video) {
+    const youtubeIdRX = /^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+    return (
+      <div 
+        style={{marginBottom: "12px"}}
+        className='c-flui-container-16-9'>
+        <iframe 
+          frameBorder="0"
+          allowFullScreen
+          src={ `https://www.youtube.com/embed/${ video.match(youtubeIdRX)[2] }` } />
+      </div>
+    )
+  }
+
   render() {
-    const title = this.props.post.title;
     const {open} = this.state;
     const { 
-      content,
+      title,
       data,
+      content,
       pdf,
-      pdfAtPreview,
       image,
       cover,
       video,
-      videoAtPreview
+      pdfAtPreview,
+      videoAtPreview,
     } = this.props.post;
-
     const date = data ? new Date(data) : false;
-    const youtubeIdRX = /^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+
+    function isNotEmpty() {
+      const pdf_inside = !!pdf && !pdfAtPreview;
+      const video_inside = !!video && !videoAtPreview;
+      console.log(pdf_inside, video_inside, !!content)
+      return content || pdf_inside || video_inside;
+    } 
+
     return (
       <div
-        className={`c-timeline-item${ open ? ' is-active' : '' }` }
-        onClick={ this.handleClick }>
+        className={`c-timeline-item${ open ? ' is-active' : '' } ${isNotEmpty() ? 'not-empty' : ''}` }
+        onClick={ isNotEmpty() ? this.handleClick : null }>
         { !date ? null :
           <div className='c-timeline-item__date'>
             {`${ this.formatDate(date) }` }
           </div>
         }
         { !videoAtPreview ? null :
-            <iframe 
-              style={{maxWidth: "100%"}}
-              frameBorder="0"
-              allowFullScreen
-              src={ `https://www.youtube.com/embed/${ video.match(youtubeIdRX)[2] }` } />
+            this.renderVideo(video)
         }
         <h3 className='c-timeline-item__title'> { title }</h3>
         { !pdf || !pdfAtPreview ? null : this.renderDownload(pdf) }
@@ -85,23 +103,10 @@ class TimelineItem extends Component {
         }
         <div className='c-timeline-item__content'>
           { !pdf || pdfAtPreview ? null :
-            <div className='c-download-link'>
-              <span 
-                style={{marginRight: '12px'}}
-                className='fa fa-file-pdf-o' />
-              <a 
-                href={`/api/pdf/${pdf.filename}`}
-                download={pdf.originalname}>
-                {pdf.originalname} 
-              </a>
-            </div>
+            this.renderDownload(pdf) 
           }
           { !video || videoAtPreview ? null :
-            <iframe 
-              style={{maxWidth: '100%'}}
-              frameBorder="0"
-              allowFullScreen
-              src={ `https://www.youtube.com/embed/${ video.match(youtubeIdRX)[2] }` } />
+              this.renderVideo(video)
           }
           { !image || image.filename == 'null' ? null :
             <div className='c-download-link'>
