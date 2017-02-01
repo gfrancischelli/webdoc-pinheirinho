@@ -13,8 +13,12 @@ const Gallery = new keystone.List('Gallery', {
 const galleryStorage = new keystone.Storage({
     adapter: keystone.Storage.Adapters.FS,
     fs: {
-        path: keystone.expandPath('./public/images/galleries'),
-        publicPath: '/public/images/galleries',
+        path: keystone.expandPath('./uploads/images/galleries'),
+        publicPath: '/public/uploads/images/galleries',
+    },
+    schema: {
+      originalname: true,
+      url: true,
     },
 });
 
@@ -27,19 +31,17 @@ Gallery.schema.virtual('heroUrl').get(function() {
 })
 
 Gallery.add({
-    title: { type: String, initial: true, required: true },
-    desc: { type: String, required: true, default: 'descrição' },
-    heroImage: { 
+    title: { type: String, initial: true, required: true, label: 'Título' },
+    desc: { 
+      type: Types.Html,
+      wysiwyg: true,
+      label: 'Descrição',
+    },
+    cover: { 
         type: Types.File,
         storage: galleryStorage,
-      label: 'Foto de capa',
+        label: 'Foto de capa',
     },
-    images: {
-        type: Types.CloudinaryImages,
-        publicID: 'slug',
-        autoCleanup: true,
-    },
-    createdAt: { type: Types.Date, default: Date.now },
 });
 
 Gallery.defaultColumns = 'title, createdAt';

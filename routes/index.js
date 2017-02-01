@@ -35,32 +35,29 @@ const routes = {
 
 exports = module.exports = function(app) {
 
-
-    // API
-    // TODO - workin titles names
-    // app.get('/public/images/:folder/:title/:filename', imageAPI);
-    app.get('/imgs/:folder/:filename', images);
-
     // Mail
     app.post('/api/mail', mailer);
  
-  // Imagemagick currently not working in production.
-  // TODO FIX IMAGEMAGICK
-  if ( process.env.ENV == 'production' ) {
-    app.get('/api/images/:folder/:fileName', images);
-  } else {
-    app.get('/api/images/:folder/:fileName', routes.api.images);
-  }
+    // Imagemagick currently not working in production.
+    // TODO FIX IMAGEMAGICK
+    if ( process.env.ENV == 'production' ) {
+      app.get('/api/images/:folder/:fileName', images);
+    } else {
+      app.get('/api/images/:folder/:fileName', routes.api.images);
+    }
+
+    app.get('/api/images/galleries/:albumname/:filename', routes.api.galleryImages)
 
     // Single Item
     app.get('/api/unique/:resource/:slug', routes.api.singleItem)
     
-  
     // Timeline
     app.get('/api/news', routes.api.news);
     app.get('/api/timeline', routes.api.timeline);
     app.get('/api/galleries', routes.api.galleries);
   
+
+    // Files
     app.get('/api/pdf/:fileName', routes.api.pdf);
 
     app.get('/api/:data/complete', routes.api.data)
