@@ -20,11 +20,10 @@ const GalleriesList = ({ posts }) => (
           </div>
           <div className='o-card__body'>
             <Link to={ resourceURL('galerias', post.slug) }>
-              <h3 className='o-card__title'>
+              <h5 className='o-card__title'>
                 { post.title }
-              </h3>
+              </h5>
             </Link>
-            <p>{ post.createdAt.slice(0, 10) }</p>
           </div>
         </div>
       </li>
