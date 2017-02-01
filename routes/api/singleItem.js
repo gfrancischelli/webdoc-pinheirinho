@@ -25,7 +25,7 @@ exports = module.exports = function(req, res) {
       if (!result) {
         res.json({status: 'document not found'});
       } else {
-        result.content = sanitizeHtml(result.content) 
+        if (result.content) result.content = sanitizeHtml(result.content);
         err ? res.json({status: err}) : res.json(result);
       }
     });
