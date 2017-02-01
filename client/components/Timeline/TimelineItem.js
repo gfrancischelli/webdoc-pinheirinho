@@ -76,7 +76,6 @@ class TimelineItem extends Component {
     function isNotEmpty() {
       const pdf_inside = !!pdf && !pdfAtPreview;
       const video_inside = !!video && !videoAtPreview;
-      console.log(pdf_inside, video_inside, !!content)
       return content || pdf_inside || video_inside;
     } 
 
@@ -97,7 +96,8 @@ class TimelineItem extends Component {
         { !cover ? null :
           <ImageSet
             alt={cover.originalname}
-            url={imageURL('posts', cover.filename)}
+            data-action='zoom'
+            src={imageURL('posts', cover.filename)}
             className='c-thumb-large'
           />
         }

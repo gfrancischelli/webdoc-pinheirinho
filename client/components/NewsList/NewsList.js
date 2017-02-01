@@ -14,7 +14,7 @@ const NewsList = ({ posts }) => (
           <div className='flag__solid-cp'>
             { !post.cover ? null :
               <ImageSet
-                url={imageURL('news', post.cover.filename)}
+                src={imageURL('news', post.cover.filename)}
                 className='c-thumb-large'
               />
             }

@@ -12,7 +12,7 @@ function FeaturedList({ featured, type }) {
         <li key={ index } className='o-feat-list__item o-card'>
           { !item.cover ? null :
             <ImageSet 
-              url={ imageURL(type, item.cover.filename)}
+              src={ imageURL(type, item.cover.filename)}
               className='o-card__figure'
             />
           }
