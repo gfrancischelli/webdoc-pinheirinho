@@ -480,6 +480,9 @@ button:hover {
   outline: none;
   border: none; }
 
+p {
+  margin-bottom: 1.2em; }
+
 html {
   font-size: 14px;
   font-family: "Lora", serif;
@@ -693,16 +696,16 @@ p {
 
 .c-heading {
   color: var(--font-color, #2A2A2A);
-  font-size: 1.777rem;
+  font-size: 1.333rem;
   font-family: "Open Sans", sans-serif;
   line-height: 1;
   margin-bottom: 32px; }
   @media (min-width: 769px) {
     .c-heading--large\@ds {
-      font-size: 3.157rem;
+      font-size: 1.777rem;
       margin-bottom: 32px; } }
   .c-heading--small {
-    font-size: 1.777rem;
+    font-size: 1.333rem;
     margin-bottom: 10px; }
 
 .c-thumb {
@@ -1000,6 +1003,9 @@ p {
 
 .u-mg-left {
   margin-left: 16px; }
+
+.u-mg-bottom {
+  margin-bottom: 2.2em; }
 
 .u-pad-left {
   padding-left: 16px; }

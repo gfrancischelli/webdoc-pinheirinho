@@ -7,6 +7,7 @@ import NewsPage from 'pages/NewsPage';
 import GalleriesPage from 'pages/GalleriesPage';
 import SinglePost from 'pages/SinglePost';
 import SingleGallery from 'pages/SingleGallery';
+import Characters from 'pages/Characters';
 
 // Components
 import Header from '#components/Header';
@@ -23,6 +24,8 @@ const routes = () => (
 
     <Route path='/galerias' component={ GalleriesPage } />
     <Route path='/galerias/:slug' component={ SingleGallery } />
+
+    <Route path='/ficha-tecnica' component={ Characters } />
 
     <Redirect from='*' to='/' />
     <IndexRoute component={ Home } />

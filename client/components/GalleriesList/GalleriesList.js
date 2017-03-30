@@ -4,7 +4,9 @@ import {imageURL, resourceURL} from 'utils';
 import ImageSet from 'components/ImageSet/ImageSet';
 
 const GalleriesList = ({ posts }) => (
-  <ul className='o-mosaic'>
+  <ul 
+    style={{ justifyContent: 'flex-start' }}
+    className='o-mosaic'>
     { posts.map( post => (
       <li 
         key={post._id}

@@ -1,6 +1,6 @@
 .c-heading {
     color: var(--font-color, $dark-gray);
-    font-size: $font-xlarge;
+    font-size: $font-large;
     font-family: $font-secondary;
     line-height: 1;
 
@@ -8,13 +8,13 @@
 
     &--large\@ds {
         @include media('>tablet') { 
-            font-size: $font-mega;
+            font-size: $font-xlarge;
             margin-bottom: $spacing-large;
         }
     }
 
     &--small {
-        font-size: $font-xlarge;
+        font-size: $font-large;
         margin-bottom: $spacing-tiny;
     }
 }
