@@ -32,7 +32,11 @@ class Home extends React.Component {
     const { timeline, news, galleries } = APP_DATA;
     return (
       <main id="main">
-        <section className="o-wrapper" />
+        <section className="o-wrapper">
+          <div className="c-fluid-container-16-9">
+            <iframe src="https://www.youtube.com/embed/S5rezgxdPC0" frameborder="1" allowfullscreen></iframe>
+          </div>
+        </section>
         {/* Preview Timeline */}
         <section className="o-band o-band">
           <div className="o-wrapper clearfix">
@@ -82,9 +86,9 @@ class Home extends React.Component {
         <section id="fale-conosco" className="o-band">
           <div className="o-wrapper o-wrapper--small@ds">
             <h3 className="c-heading">Fale Conosco</h3>
-            <p>Através do Fale Conosco, você tem um canal para solicitar informações, procurar apoio para o seu movimento e encaminhar documentos e outros arquivos que julgar serem de interesse. Este espaço também serve para o envio de sugestões, elogios e críticas.</p>
-            <p>Entendemos que a preservação da memória e sua difusão são uma luta política que deve ser travada no cotidiano e por todos, de forma a garantir a preservação democrática e plural da informação.</p>
-            <p>Encaminhe sua mensagem e entraremos em contato o mais rápido possível. Este site permanecerá em construção de acordo com as possibilidades.</p>
+            <p className="u-mg-bottom">Através do Fale Conosco, você tem um canal para solicitar informações, procurar apoio para o seu movimento e encaminhar documentos e outros arquivos que julgar serem de interesse. Este espaço também serve para o envio de sugestões, elogios e críticas.</p>
+            <p className="u-mg-bottom">Entendemos que a preservação da memória e sua difusão são uma luta política que deve ser travada no cotidiano e por todos, de forma a garantir a preservação democrática e plural da informação.</p>
+            <p className="u-mg-bottom">Encaminhe sua mensagem e entraremos em contato o mais rápido possível. Este site permanecerá em construção de acordo com as possibilidades.</p>
             <ContactForm />
           </div>
         </section>

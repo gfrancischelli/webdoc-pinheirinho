@@ -22,11 +22,11 @@
         }
         
         @include media('>phone', '<=tablet') {
-            width: calc( 33% - var(--margin) );
+            width: calc( 50% - var(--margin) );
         }
         
         @include media('>tablet') {
-            width: calc( 25% - var(--margin) );
+            width: calc( 33% - var(--margin) );
         }
     }
 

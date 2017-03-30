@@ -480,9 +480,6 @@ button:hover {
   outline: none;
   border: none; }
 
-p {
-  margin-bottom: 1.2em; }
-
 html {
   font-size: 14px;
   font-family: "Lora", serif;
@@ -940,10 +937,10 @@ p {
 
 @media (min-width: 421px) and (max-width: 768px) {
   .o-mosaic__item {
-    width: calc( 33% - var(--margin)); } }
+    width: calc( 50% - var(--margin)); } }
     @media (min-width: 769px) {
       .o-mosaic__item {
-        width: calc( 25% - var(--margin)); } }
+        width: calc( 33% - var(--margin)); } }
 
 .o-page {
   padding-bottom: 32px; }
