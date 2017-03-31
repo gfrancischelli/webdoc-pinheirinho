@@ -12,7 +12,7 @@ const GalleriesList = ({ posts }) => (
             {!post.cover
               ? null
               : <ImageSet
-                  url={imageURL("galleries", post.cover.filename)}
+                  src={imageURL("galleries", post.cover.filename)}
                   className="c-thumb-jumbo"
                 />}
           </div>
