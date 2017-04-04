@@ -84,7 +84,7 @@ class TimelineItem extends Component {
               {`${this.formatDate(date)}`}
             </div>}
 
-        <div className="flag">
+        <div className="flag flag--stack@mb">
           <div className="flag__solid-cp">
             {!videoAtPreview ? null : this.renderVideo(video)}
             {!cover
