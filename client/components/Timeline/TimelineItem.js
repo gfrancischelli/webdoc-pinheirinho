@@ -102,7 +102,7 @@ class TimelineItem extends Component {
               className="c-timeline-item__title"
               onClick={isNotEmpty() ? this.handleClick : null}
             >
-              &gt;{title}
+              {title}
             </h3>
 
             {!pdf || !pdfAtPreview
