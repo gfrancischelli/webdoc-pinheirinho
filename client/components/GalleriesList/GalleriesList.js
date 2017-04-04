@@ -8,14 +8,12 @@ const GalleriesList = ({ posts }) => (
     {posts.map(post => (
       <li key={post._id} className="o-mosaic__item o-mosaic__item--100@sm">
         <div className="o-card">
-          <div className="o-card__figure">
-            {!post.cover
-              ? null
-              : <ImageSet
-                  src={imageURL("galleries", post.cover.filename)}
-                  className="c-thumb-jumbo"
-                />}
-          </div>
+          {!post.cover
+            ? null
+            : <ImageSet
+                src={imageURL("galleries", post.cover.filename)}
+                className="o-card__figure"
+              />}
           <div className="o-card__body">
             <Link to={resourceURL("galerias", post.slug)}>
               <h5 className="o-card__title">
