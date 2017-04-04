@@ -1020,7 +1020,7 @@ p {
 .u-text-center {
   text-align: center; }
 
-.s-html-embed p {
+.s-html-embed p, .s-html-embed div {
   font-family: "Open Sans", sans-serif !important;
   line-height: 1.5;
   color: #444444; }
