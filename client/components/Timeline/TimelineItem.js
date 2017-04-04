@@ -7,19 +7,16 @@ import ImageSet from "components/ImageSet/ImageSet";
 import DangerousHTML from "components/DangerousHTML/DangerousHTML";
 
 class TimelineItem extends Component {
-  handleClick() {
-    if (this.state.open == 0) {
-      this.setState({ open: 1 });
-    } else {
-      this.setState({ open: 0 });
-    }
-  }
-
   constructor() {
     super();
     this.state = { open: 0 };
-    this.handleClick = this.handleClick.bind(this);
   }
+
+  handleClick = () => {
+    this.state.open === 0
+      ? this.setState({ open: 1 })
+      : this.setState({ open: 0 });
+  };
 
   formatDate(date) {
     if (date.getHours() == 0) {
@@ -77,39 +74,63 @@ class TimelineItem extends Component {
         className={
           `c-timeline-item${open ? " is-active" : ""} ${isNotEmpty() ? "not-empty" : ""}`
         }
-        onClick={isNotEmpty() ? this.handleClick : null}
       >
         {!date
           ? null
-          : <div className="c-timeline-item__date">
+          : <div
+              className="c-timeline-item__date"
+              onClick={isNotEmpty() ? this.handleClick : null}
+            >
               {`${this.formatDate(date)}`}
             </div>}
-        {!videoAtPreview ? null : this.renderVideo(video)}
-        <h3 className="c-timeline-item__title">{title}</h3>
-        {!pdf || !pdfAtPreview ? null : this.renderDownload(pdf)}
-        {!cover
-          ? null
-          : <ImageSet
-              alt={cover.originalname}
-              data-action="zoom"
-              src={imageURL("posts", cover.filename)}
-              className="c-thumb-large"
-            />}
-        <div className="c-timeline-item__content">
-          {!pdf || pdfAtPreview ? null : this.renderDownload(pdf)}
-          {!video || videoAtPreview ? null : this.renderVideo(video)}
-          {!image || image.filename == "null"
-            ? null
-            : <div className="c-download-link">
-                <label>Baixar imagem: </label>
-                <a
-                  href={`/api/images/${image.filename}`}
-                  download={image.originalname}
-                >
-                  {image.originalname}
-                </a>
-              </div>}
-          <DangerousHTML content={content} />
+
+        <div className="flag">
+          <div className="flag__solid-cp">
+            {!videoAtPreview ? null : this.renderVideo(video)}
+            {!cover
+              ? null
+              : <ImageSet
+                  alt={cover.originalname}
+                  data-action="zoom"
+                  src={imageURL("posts", cover.filename)}
+                  className="c-thumb-large"
+                />}
+
+          </div>
+          <div className="flag__fluid-cp u-pad-left-large">
+            <h3
+              className="c-timeline-item__title"
+              onClick={isNotEmpty() ? this.handleClick : null}
+            >
+              &gt;{title}
+            </h3>
+
+            {!pdf || !pdfAtPreview
+              ? null
+              : <div style={{ marginLeft: "16px" }}>
+                  {" "}{this.renderDownload(pdf)}
+                </div>}
+
+            <div className="c-timeline-item__content">
+              {!pdf || pdfAtPreview ? null : this.renderDownload(pdf)}
+              {!video || videoAtPreview ? null : this.renderVideo(video)}
+              {!image || image.filename == "null"
+                ? null
+                : <div className="c-download-link">
+                    <label>Baixar imagem: </label>
+                    <a
+                      href={`/api/images/${image.filename}`}
+                      download={image.originalname}
+                    >
+                      {image.originalname}
+                    </a>
+                  </div>}
+              <div onClick={isNotEmpty() ? this.handleClick : null}>
+                <DangerousHTML content={content} />
+              </div>
+            </div>
+
+          </div>
         </div>
       </div>
     );
