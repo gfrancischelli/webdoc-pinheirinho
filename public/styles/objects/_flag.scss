@@ -29,10 +29,11 @@
                 padding-left: 0 !important;
             }
             & .flag__solid-cp {
-                > img {
+                 img {
                     max-width: 100%;
                     width: 100%;
-                    margin: 0;
+                    margin: 0 auto;
+                    display: block;
                     margin-bottom: $spacing-tiny;
                 }
             }
@@ -44,11 +45,11 @@
     }
 
     &__solid-cp {
-        > img {
+        img {
             display: block;
             
             @include media('>tablet') {
-                max-width: none;
+                max-width: 16em;
             }
         }
     }

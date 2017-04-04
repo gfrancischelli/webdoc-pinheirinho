@@ -5,7 +5,10 @@
     &__figure {
         display: block;
         width: 100%;
+        max-height: 10rem;
         margin-bottom: $spacing-default;
+        object-fit: cover;
+        object-position: 0 0;
     }
 
     &__title {

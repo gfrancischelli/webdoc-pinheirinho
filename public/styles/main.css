@@ -820,7 +820,10 @@ p {
   .o-card__figure {
     display: block;
     width: 100%;
-    margin-bottom: 16px; }
+    max-height: 10rem;
+    margin-bottom: 16px;
+    object-fit: cover;
+    object-position: 0 0; }
   .o-card__title {
     margin-bottom: 10px; }
   .o-card__body {
@@ -873,18 +876,19 @@ p {
       max-width: 100%; }
     .flag--stack\@mb .flag__fluid-cp {
       padding-left: 0 !important; }
-    .flag--stack\@mb .flag__solid-cp > img {
+    .flag--stack\@mb .flag__solid-cp img {
       max-width: 100%;
       width: 100%;
-      margin: 0;
+      margin: 0 auto;
+      display: block;
       margin-bottom: 10px; } }
   .flag__fluid-cp {
     width: 100%; }
-  .flag__solid-cp > img {
+  .flag__solid-cp img {
     display: block; }
     @media (min-width: 769px) {
-      .flag__solid-cp > img {
-        max-width: none; } }
+      .flag__solid-cp img {
+        max-width: 16em; } }
 
 .o-layout {
   margin-left: -32px; }
@@ -908,7 +912,8 @@ p {
 
 .media__img {
   float: left;
-  margin-right: 10px; }
+  margin-right: 10px;
+  display: inline; }
   .media__img img {
     display: block; }
 
