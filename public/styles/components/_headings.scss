@@ -5,7 +5,11 @@
     line-height: 1;
 
     margin-bottom: $spacing-large;
-
+    
+    @include media('<tablet') { 
+        margin-bottom: $spacing-default;
+    }
+ 
     &--large\@ds {
         @include media('>tablet') { 
             font-size: $font-xlarge;
