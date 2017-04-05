@@ -22,7 +22,6 @@
   position: relative;
   margin-left: var(--distance, $spacing-large);
   font-family: $font-primary;
-  cursor: pointer;
 
   &.not-empty:hover {
     .c-timeline-item__date {

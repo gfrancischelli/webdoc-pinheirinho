@@ -734,8 +734,7 @@ p {
   --distance: 32px;
   position: relative;
   margin-left: var(--distance, 32px);
-  font-family: "Lora", serif;
-  cursor: pointer; }
+  font-family: "Lora", serif; }
   .c-timeline-item.not-empty:hover .c-timeline-item__date {
     color: #f03e3e; }
   .c-timeline-item + .c-timeline-item {

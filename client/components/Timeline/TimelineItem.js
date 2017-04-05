@@ -26,14 +26,16 @@ class TimelineItem extends Component {
     }
   }
 
-  renderDownload = pdf => (
-    <div style={{ marginBottom: "12px" }} className="c-download-link">
-      <span style={{ marginRight: "10px" }} className="fa fa-file-pdf-o" />
-      <a href={`/api/pdf/${pdf.filename}`} download={pdf.originalname}>
-        {pdf.originalname}
-      </a>
-    </div>
-  );
+  renderDownload = pdf => {
+    return pdf.originalname === undefined
+      ? null
+      : <div style={{ marginBottom: "12px" }} className="c-download-link">
+          <span style={{ marginRight: "10px" }} className="fa fa-file-pdf-o" />
+          <a href={`/api/pdf/${pdf.filename}`} download={pdf.originalname}>
+            {pdf.originalname || pdf.filename}
+          </a>
+        </div>;
+  };
 
   renderVideo(video) {
     const youtubeIdRX = /^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
@@ -49,7 +51,6 @@ class TimelineItem extends Component {
   }
 
   render() {
-    const { open } = this.state;
     const {
       title,
       data,
@@ -61,6 +62,7 @@ class TimelineItem extends Component {
       pdfAtPreview,
       videoAtPreview
     } = this.props.post;
+    const { open } = this.state;
     const date = data ? new Date(data) : false;
 
     function isNotEmpty() {
@@ -69,16 +71,16 @@ class TimelineItem extends Component {
       return content || pdf_inside || video_inside;
     }
 
+    const activeClass = open ? "is-active" : "";
+    const emptyClass = isNotEmpty() ? "not-empty" : "";
+
     return (
-      <div
-        className={
-          `c-timeline-item${open ? " is-active" : ""} ${isNotEmpty() ? "not-empty" : ""}`
-        }
-      >
+      <div className={`c-timeline-item ${activeClass} ${emptyClass}`}>
         {!date
           ? null
           : <div
               className="c-timeline-item__date"
+              style={{cursor: "pointer"}}
               onClick={isNotEmpty() ? this.handleClick : null}
             >
               {`${this.formatDate(date)}`}
@@ -95,11 +97,12 @@ class TimelineItem extends Component {
                   src={imageURL("posts", cover.filename)}
                   className="c-thumb-large"
                 />}
-
           </div>
+
           <div className="flag__fluid-cp u-pad-left-large">
             <h3
               className="c-timeline-item__title"
+              style={{cursor: "pointer"}}
               onClick={isNotEmpty() ? this.handleClick : null}
             >
               {title}
