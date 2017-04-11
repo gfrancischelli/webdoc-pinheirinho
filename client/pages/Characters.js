@@ -34,7 +34,7 @@ const Characters = () => (
         </div>
       </div>
 
-      <div className="flag flag--stack@mb o-layout__item">
+      <div className="flag flag--stack@mb o-layout__item u-margin-bottom">
         <div className="flag__solid-cp">
           <ImageSet src="/images/characters/carmen.png" />
         </div>
@@ -44,6 +44,29 @@ const Characters = () => (
             Carmen Benedita é costureira e ex-moradora do Pinheirinho. Em 2005 ela morava em Rio Comprido, Jacareí, quando ficou sabendo da ocupação pela TV, no aniversário de 1 ano do bairro. Com o aluguel vencido, mudou-se para lá e construiu uma casa num amplo terreno onde cultivava a própria horta. A fartura era tanta que além dos alimentos para ela e para sua família, compartilhava com os vizinhos. Durante a desocupação, foi ferida na perna pelos policiais. Carmen promete lutar para que todas as pessoas que moraram no Pinheirinho garantam o seu próprio lugar.
           </p>
         </div>
+      </div>
+
+      <div className="o-layout__item">
+      <ul style={{marginTop: "2em"}}>
+        <li className="u-mg-bottom-small">Empresa Produtora: <b>Davi Filmes</b></li>
+        <li className="u-mg-bottom-small">Direção: <b>Viny Psoa</b></li>
+        <li className="u-mg-bottom-small">Co-Direção: <b>Lívia Perez</b></li>
+        <li className="u-mg-bottom-small">Roteiro: <b>Viny Psoa, Lívia Perez</b></li>
+        <li className="u-mg-bottom-small">Produção Executiva: <b>Viny Psoa, Daniel Perseguim</b></li>
+        <li className="u-mg-bottom-small">Consultoria Jurídica: <b>Karina Quintanilha</b></li>
+        <li className="u-mg-bottom-small">Produção: <b>Maria Psoa</b></li>
+        <li className="u-mg-bottom-small">Fotografia: <b>Daniel Perseguim</b></li>
+        <li className="u-mg-bottom-small">Assistência de Fotografia: <b>Angélica de Paula, Diego Moreira, Douglas Dias</b></li>
+        <li className="u-mg-bottom-small">Imagens aéreas: <b>Rodrigo Correia</b></li>
+        <li className="u-mg-bottom-small">Som: <b>Giovanni Francischelli, Vanessa Negrine</b></li>
+        <li className="u-mg-bottom-small">Montagem: <b>Viny Psoa</b></li>
+        <li className="u-mg-bottom-small">Finalização de cor: <b>Igor Ângelo</b></li>
+        <li className="u-mg-bottom-small">Trilha Sonora: <b>Tássia Reis</b></li>
+        <li className="u-mg-bottom-small">Trilha Original e finalização de Som: <b>Renato Navarro</b></li>
+        <li className="u-mg-bottom-small">Maquiagem: <b>Camilla Lima, Milena Tenreiro</b></li>
+        <li className="u-mg-bottom-small">Design: <b>Romerito Pontes</b></li>
+        <li className="u-mg-bottom-small">Design e programação: <b>Giovanni Francischelli Santos</b></li>
+      </ul>
       </div>
 
     </div>
