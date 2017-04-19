@@ -34,7 +34,7 @@ class Home extends React.Component {
       <main id="main">
         <section className="o-wrapper">
           <div className="c-fluid-container-16-9">
-            <iframe src="https://www.youtube.com/embed/S5rezgxdPC0" frameborder="1" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/kaQIbMq8Xpc" frameborder="0" allowfullscreen></iframe>
           </div>
         </section>
         {/* Preview Timeline */}
